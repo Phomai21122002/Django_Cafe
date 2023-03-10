@@ -1,0 +1,51 @@
+
+{% extends "pages/base.html" %}
+
+{% load static %}
+{% block body %}
+    <div class="grid wide body-login">
+        <div class="header-navbar">
+            <div class="header-navbar">
+                <a href="/" class="decoration header-navbar_home">Trang chủ</a>
+            </div>
+            <div class="header-navbar">
+                /
+            </div>
+            <div class="header-navbar">
+                <a href="/Register" class="decoration header-navbar_now cl-base">Đăng ký tài khoản</a>
+            </div>
+        </div>
+        <div class="body-login-box">
+            <div class="body-login-box_header">
+                <h3 class="body-login-box_title">Đăng ký</h3>
+                <p class="body-login-box_desc">Đã có tài khoản, đăng nhập tại đây</p>
+            </div>
+
+            <form action="">
+                <div class="form-login">
+                    <input id="lastname" type="text" placeholder="Họ">
+                    <input id="firstname" type="text" placeholder="Tên">
+                    <input id="email" type="text" placeholder="Email">
+                    <input id="numberphone" type="text" placeholder="Số điện thoại">
+                    <input id="password" type="password" placeholder="Mật khẩu">
+                    <input id="btn" type="submit" value="Đăng ký">
+                </div>
+            </form>
+
+            <div class="body-login-box_different">
+                <div class="body-login-box_restore">
+                    Hoặc đăng nhập bằng
+                </div>
+                <div class="body-login-box_new">
+                    <a href="" class="decoration body-login-box_iconlink">
+                        <img src="{% static 'img/fb-btn.svg' %}" alt="">
+                    </a>
+                    <a href="" class="decoration body-login-box_iconlink">
+                        <img src="{% static 'img/gp-btn.svg' %}" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+{% endblock  %}

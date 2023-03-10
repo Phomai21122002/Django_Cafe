@@ -1,0 +1,54 @@
+
+@media (max-width: 1024px) {
+    
+}
+
+/* mobile */
+@media (max-width: 739px) {
+    .header {
+        display: none;
+    }
+    .header-mobile {
+        display: block;
+    }
+    .body-img {
+        height: 50vh;
+    }
+    .body-box-choose_desc {
+        text-align: justify;
+    }
+    .body-box-menu_list {
+        flex-wrap: wrap;
+    }
+    .body-news_member {
+        padding: 0 1rem;
+    }
+    .body-time-open_img {
+        display: none;
+    }
+    .body-time-open {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    /* news */
+    .header-navbar {
+        margin-left: 0.5rem;
+    }
+
+    .form-news-category_listimg {
+        height: 150px;
+    }
+
+    /* Product */
+    .header-produce {
+        margin-left: 1rem;
+    }
+}
+
+/* tablet */
+@media (min-width: 739px) and (max-width: 1024px) {
+    .body-img {
+        height: 50vh;
+    }
+}

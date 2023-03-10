@@ -1,0 +1,395 @@
+
+
+{% extends 'pages/base.html' %}
+{% load static %}
+{% block body %}
+    <div class="body">
+        <div style="background-image: url({% static 'img/cafe_first.jpg' %});" class="body-img"></div>
+        
+        <div class="body-box">
+            <div class="grid wide">
+                <div class="body-box_header">
+                    <h3 class="body-box_title">
+                        Danh mục sản phẩm
+                    </h3>
+                </div>
+                <ul class="row body-box-cover style">
+                    <li class="col l-3 m-6 c-6">
+                        <div class="body-box-cover_box">
+                            <a href="#" class="body-box-cover_link">
+                                <img src="{% static 'img/img-collection1_f2fef799a4e449a3afb8efad867b176c_master.webp' %}" alt="" class="body-box-cover_img">
+                            </a>
+                        </div>
+                        <div class="body-box-cover_box">
+                            <a href="#" class="body-menu_namecafe decoration cl-black">Cafe Capuchino</a>
+                        </div>
+                    </li>
+                    <li class="col l-3 m-6 c-6">
+                        <div class="body-box-cover_box">
+                            <a href="#" class="body-box-cover_link">
+                                <img src="{% static 'img/cafe-sua.png' %}" alt="" class="body-box-cover_img">
+                            </a>
+                        </div>
+                        <div class="body-box-cover_box">
+                            <a href="#" class="body-menu_namecafe decoration cl-black">Cafe sữa</a>
+                        </div>
+                    </li>
+                    <li class="col l-3 m-6 c-6">
+                        <div class="body-box-cover_box">
+                            <a href="#" class="body-box-cover_link">
+                                <img src="{% static 'img/cafe-den.png' %}" alt="" class="body-box-cover_img">
+                            </a>
+                        </div>
+                        <div class="body-box-cover_box">
+                            <a href="#" class="body-menu_namecafe decoration cl-black">Cafe đen</a>
+                        </div>
+                    </li>
+                    
+                    <li class="col l-3 m-6 c-6">
+                        <div class="body-box-cover_box">
+                            <a href="#" class="body-box-cover_link">
+                                <img src="{% static 'img/ca-phe-nau-da.png' %}" alt="" class="body-box-cover_img">
+                            </a>
+                        </div>
+                        <div class="body-box-cover_box">
+                            <a href="#" class="body-menu_namecafe decoration cl-black">Cafe nâu đá</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- choose -->
+        <div style="background-image: url({% static 'img/10-quan-ca-phe-moi-o-sai-gon-de-song-ao-85.webp' %});" class="cl-white body-box-choose_img body-choose">
+            <div class="grid wide">
+                <div class="body-box_header">
+                    <h3 class="body-box_title">
+                        Tại sao chọn chúng tôi
+                    </h3>
+                </div>
+                <div class="body-box-choose_desc">
+                    Với những nghệ nhân rang tâm huyết và đội ngũ tài năng cùng những câu chuyện cafe đầy cảm hứng, ngôi nhà Bermada cafe là không gian dành riêng cho những ai trót yêu say đắm hương vị của những hạt cafe nguyên bản tuyệt hảo.
+                </div>
+                <ul class="row body-box-choose_list style">
+                    <li class="col l-4 m-6 c-12 body-box-choose_item">
+                        <img src="{% static 'img/icon_why_1.webp' %}" alt="">
+                        <h3 class="body-box-choose_title cl-black">
+                            Giá:  cả phải chăng
+                        </h3>   
+                        <span class="body-box-choose_promise">
+                            Cam kết chỉ cung cấp cà phê có nguồn gốc được kiểm soát chất lượng
+                        </span>
+                    </li>
+                    <li class="col l-4 m-6 c-12 body-box-choose_item">
+                        <img src="{% static 'img/icon_why_2.webp' %}" alt="">
+                        <h3 class="body-box-choose_title cl-black">
+                            Hường vị tuyệt hảo
+                        </h3>   
+                        <span class="body-box-choose_promise">
+                            Những đọt trà được lựa chọn cẩn thận ngay từ lúc đang ngâm mình trong sương
+                        </span>
+                    </li>
+                    <li class="col l-4 m-6 c-12 body-box-choose_item">
+                        <img src="{% static 'img/icon_why_3.webp' %}" alt="">
+                        <h3 class="body-box-choose_title cl-black">
+                            Sản phẩm tự nhiên
+                        </h3>   
+                        <span class="body-box-choose_promise">
+                            Cam kết chỉ cung cấp lá trà có nguồn gốc được kiểm soát chất lượng chặt
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- menu -->
+        <div class="body-menu">
+            <div class="grid wide">
+                <div class="body-box_header">
+                    <h3 class="body-box_title">
+                        Menu hôm nay
+                    </h3>
+                </div>
+                
+                <ul class="body-box-menu_list style">
+                    <li class="body-box-menu_item">
+                        <a class="body-box-menu_link body-box-menu_link--click decoration cl-black" href="#">
+                            Cafe nâu đen
+                        </a>
+                    </li>
+                    <li class="body-box-menu_item">
+                        <a class="body-box-menu_link decoration cl-black" href="#">
+                            Cafe sữa
+                        </a>
+                    </li>
+                    <li class="body-box-menu_item">
+                        <a class="body-box-menu_link decoration cl-black" href="#">
+                            Cafe đen
+                        </a>
+                    </li>
+                    <li class="body-box-menu_item">
+                        <a class="body-box-menu_link decoration cl-black" href="#">
+                            Cafe capuchino
+                        </a>
+                    </li>
+                </ul>
+                
+                <ul class="row body-menu_list style">
+                    <li class="col l-3 m-4 c-6 body-menu_item">
+                        <a href="" class="body-menu_linkcafe decoration cl-black">
+                            <div class="body-menu_background">
+                                <img src="{% static 'img/img-collection1_f2fef799a4e449a3afb8efad867b176c_master.webp' %}" alt="" class="body-menu_img">
+                            </div>
+                            <div class="body-menu_box">
+                                <h3 class="body-menu_namecafe">
+                                    Cafe capuchino
+                                </h3>
+                                <div class="body-menu_price">
+                                    <p class="body-menu_title">Giá: </p>
+                                    <div class="body-menu_money">40.000đ</div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="body-menu_modalcart">
+                            <button class="body-menu_btncart js-btn-cart">Thêm vào giỏ hàng</button>
+                        </div>
+                    </li>
+                    <li class="col l-3 m-4 c-6 body-menu_item">
+                        <a href="" class="body-menu_linkcafe decoration cl-black">
+                            <div class="body-menu_background">
+                                <img src="{% static 'img/img-collection1_f2fef799a4e449a3afb8efad867b176c_master.webp' %}" alt="" class="body-menu_img">
+                            </div>
+                            <div class="body-menu_box">
+                                <h3 class="body-menu_namecafe">
+                                    Cafe capuchino
+                                </h3>
+                                <div class="body-menu_price">
+                                    <p class="body-menu_title">Giá: </p>
+                                    <div class="body-menu_money">40.000đ</div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="body-menu_modalcart">
+                            <button class="body-menu_btncart js-btn-cart">Thêm vào giỏ hàng</button>
+                        </div>
+                    </li>
+                    <li class="col l-3 m-4 c-6 body-menu_item">
+                        <a href="" class="body-menu_linkcafe decoration cl-black">
+                            <div class="body-menu_background">
+                                <img src="{% static 'img/img-collection1_f2fef799a4e449a3afb8efad867b176c_master.webp' %}" alt="" class="body-menu_img">
+                            </div>
+                            <div class="body-menu_box">
+                                <h3 class="body-menu_namecafe">
+                                    Cafe capuchino
+                                </h3>
+                                <div class="body-menu_price">
+                                    <p class="body-menu_title">Giá: </p>
+                                    <div class="body-menu_money">40.000đ</div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="body-menu_modalcart">
+                            <button class="body-menu_btncart js-btn-cart">Thêm vào giỏ hàng</button>
+                        </div>
+                    </li>
+                    <li class="col l-3 m-4 c-6 body-menu_item">
+                        <a href="" class="body-menu_linkcafe decoration cl-black">
+                            <div class="body-menu_background">
+                                <img src="{% static 'img/img-collection1_f2fef799a4e449a3afb8efad867b176c_master.webp' %}" alt="" class="body-menu_img">
+                            </div>
+                            <div class="body-menu_box">
+                                <h3 class="body-menu_namecafe">
+                                    Cafe capuchino
+                                </h3>
+                                <div class="body-menu_price">
+                                    <p class="body-menu_title">Giá: </p>
+                                    <div class="body-menu_money">40.000đ</div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="body-menu_modalcart">
+                            <button class="body-menu_btncart js-btn-cart">Thêm vào giỏ hàng</button>
+                        </div>
+                    </li>
+                    <li class="col l-3 m-4 c-6 body-menu_item">
+                        <a href="" class="body-menu_linkcafe decoration cl-black">
+                            <div class="body-menu_background">
+                                <img src="{% static 'img/img-collection1_f2fef799a4e449a3afb8efad867b176c_master.webp' %}" alt="" class="body-menu_img">
+                            </div>
+                            <div class="body-menu_box">
+                                <h3 class="body-menu_namecafe">
+                                    Cafe capuchino
+                                </h3>
+                                <div class="body-menu_price">
+                                    <p class="body-menu_title">Giá: </p>
+                                    <div class="body-menu_money">40.000đ</div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="body-menu_modalcart">
+                            <button class="body-menu_btncart js-btn-cart">Thêm vào giỏ hàng</button>
+                        </div>
+                    </li>
+                    <li class="col l-3 m-4 c-6 body-menu_item">
+                        <a href="" class="body-menu_linkcafe decoration cl-black">
+                            <div class="body-menu_background">
+                                <img src="{% static 'img/img-collection1_f2fef799a4e449a3afb8efad867b176c_master.webp' %}" alt="" class="body-menu_img">
+                            </div>
+                            <div class="body-menu_box">
+                                <h3 class="body-menu_namecafe">
+                                    Cafe capuchino
+                                </h3>
+                                <div class="body-menu_price">
+                                    <p class="body-menu_title">Giá: </p>
+                                    <div class="body-menu_money">40.000đ</div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="body-menu_modalcart">
+                            <button class="body-menu_btncart js-btn-cart">Thêm vào giỏ hàng</button>
+                        </div>
+                    </li>
+                    <li class="col l-3 m-4 c-6 body-menu_item">
+                        <a href="" class="body-menu_linkcafe decoration cl-black">
+                            <div class="body-menu_background">
+                                <img src="{% static 'img/img-collection1_f2fef799a4e449a3afb8efad867b176c_master.webp' %}" alt="" class="body-menu_img">
+                            </div>
+                            <div class="body-menu_box">
+                                <h3 class="body-menu_namecafe">
+                                    Cafe capuchino
+                                </h3>
+                                <div class="body-menu_price">
+                                    <p class="body-menu_title">Giá: </p>
+                                    <div class="body-menu_money">40.000đ</div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="body-menu_modalcart">
+                            <button class="body-menu_btncart js-btn-cart">Thêm vào giỏ hàng</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- time -->
+        <div class="body-box">
+            <div class="grid wide">
+                <div class="row no-gutter body-time">
+                    <div class="col l-6 m-6 c-6 body-time-open">
+                        <div class="body-time_box">
+                            <div class="body-time_schedule">
+                                <div class="body-time_header cl-white">
+                                    <h3 class="body-time_title">
+                                        Thời gian mở cửa
+                                    </h3>
+                                    <p class="body-time_desc">
+                                        “Cà phê nhé" - Một lời hẹn rất riêng của người Việt. Một lời ngỏ mộc mạc để mình ngồi lại bên nhau và sẻ chia câu chuyện của riêng mình.
+                                    </p>
+                                </div>
+                                <div class="body-time_hour cl-white">
+                                    <span class="body-time_houropen">
+                                        T2 - T6: 8h30 - 21h30
+                                    </span>
+                                    <span class="body-time_houropen">
+                                        T7 - CN: 8h00 - 22h00
+                                    </span>
+                                </div>
+                                <div class="body-time_reservation">
+                                    <a href="#" class="cl-white decoration body-time_reservation-link">
+                                        Đặt bàn ngay
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l-6 m-6 c-6 body-time-open">
+                        <div class="body-time-open_img" style="background-image: url({% static 'img/img_background.jpg' %});"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- news -->
+        <div class="body-box">
+            <div class="grid wide">
+                <div class="body-news">
+                    <div class="body-box_header">
+                        <a href="#" class="body-box_title decoration cl-black">
+                            Menu hôm nay
+                        </a>
+                    </div>
+                    <ul class="row body-news_group style">
+                        <li class="col l-4 m-6 c-12 body-news_member">
+                            <div class="body-news_box">
+                                <a href="#" class="decoration cl-black body-news_imglink">
+                                    <div class="body-news_img" style="background-image: url({% static 'img/cafe_natutive.jpg' %});"></div>
+                                </a>
+                                <a href="#" class="decoration cl-black body-news_titlelink">
+                                    Nhâm nhi cà phê bao lâu nhưng bạn tận mắt nhìn kỹ xem hạt cà phê chưa?
+                                </a>
+                                <p class="body-news_desc">Cốc cafe vị đăng đắng, lẫn thêm chút ngọt bùi của sữa đặc sao mà gây nghiện đến thế. Không chỉ cuốn hút ở mùi vị, một cốc cafe sáng còn giúp ngày mới tràn đầy năng lượng với người trẻ, sẵn sàng cho...</p>
+                            </div>
+                        </li>
+                        <li class="col l-4 m-6 c-12 body-news_member">
+                            <div class="body-news_box">
+                                <a href="#" class="decoration cl-black body-news_imglink">
+                                    <div class="body-news_img" style="background-image: url({% static 'img/cafe_natutive.jpg' %});"></div>
+                                </a>
+                                <a href="#" class="decoration cl-black body-news_titlelink">
+                                    Nhâm nhi cà phê bao lâu nhưng bạn tận mắt nhìn kỹ xem hạt cà phê chưa?
+                                </a>
+                                <p class="body-news_desc">Cốc cafe vị đăng đắng, lẫn thêm chút ngọt bùi của sữa đặc sao mà gây nghiện đến thế. Không chỉ cuốn hút ở mùi vị, một cốc cafe sáng còn giúp ngày mới tràn đầy năng lượng với người trẻ, sẵn sàng cho...</p>
+                            </div>
+                        </li>
+                        <li class="col l-4 m-6 c-12 body-news_member">
+                            <div class="body-news_box">
+                                <a href="#" class="decoration cl-black body-news_imglink">
+                                    <div class="body-news_img" style="background-image: url({% static 'img/cafe_natutive.jpg' %});"></div>
+                                </a>
+                                <a href="#" class="decoration cl-black body-news_titlelink">
+                                    Nhâm nhi cà phê bao lâu nhưng bạn tận mắt nhìn kỹ xem hạt cà phê chưa?
+                                </a>
+                                <p class="body-news_desc">Cốc cafe vị đăng đắng, lẫn thêm chút ngọt bùi của sữa đặc sao mà gây nghiện đến thế. Không chỉ cuốn hút ở mùi vị, một cốc cafe sáng còn giúp ngày mới tràn đầy năng lượng với người trẻ, sẵn sàng cho...</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- list img -->
+        <div class="body-box">
+            <div class="grid">
+                <ul class="row no-gutter style body-listimg">
+                    <li class="col l-2-5 m-4 c-6">
+                        <a href="#" class="body-listimg_link">
+                            <div class="body-listimg_img" style="background-image: url({% static 'img/cafe_natutive.jpg' %});"></div>
+                        </a>
+                    </li>
+                    <li class="col l-2-5 m-4 c-6">
+                        <a href="#" class="body-listimg_link">
+                            <div class="body-listimg_img" style="background-image: url({% static 'img/cafe_natutive.jpg' %});"></div>
+                        </a>
+                    </li>
+                    <li class="col l-2-5 m-4 c-6">  
+                        <a href="#" class="body-listimg_link">
+                            <div class="body-listimg_img" style="background-image: url({% static 'img/cafe_natutive.jpg' %});"></div>
+                        </a>
+                    </li>
+                    <li class="col l-2-5 m-4 c-6">
+                        <a href="#" class="body-listimg_link">
+                            <div class="body-listimg_img" style="background-image: url({% static 'img/cafe_natutive.jpg' %});"></div>
+                        </a>
+                    </li>
+                    <li class="col l-2-5 m-4 c-6">
+                        <a href="#" class="body-listimg_link">
+                            <div class="body-listimg_img" style="background-image: url({% static 'img/cafe_natutive.jpg' %});"></div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock  %}

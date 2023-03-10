@@ -1,0 +1,192 @@
+{% extends "pages/base.html" %}
+{% load static %}
+
+{% block body %}
+    <!-- News -->
+    <div class="form-navbar">
+        <div class="grid wide">
+            <div class="header-navbar">
+                <div class="header-navbar">
+                    <a href="/" class="decoration header-navbar_home">Trang chủ</a>
+                </div>
+                <div class="header-navbar">
+                    /
+                </div>
+                <div class="header-navbar">
+                    <a href="/News" class="decoration header-navbar_now cl-base">Tin tức</a>
+                </div>
+            </div>
+
+            <ul class="row form-news style">
+                <li class="col l-9 form-news-outstanding">
+                    <ul class="form-news-sub style row">
+                        <li class="col l-6 body-news_box">
+                            <a href="#" class="decoration cl-black body-news_imglink">
+                                <div class="body-news_img" style="background-image: url({% static 'img/cafe_natutive.jpg' %});"></div>
+                            </a>
+                            <a href="#" class="decoration cl-black body-news_titlelink">
+                                Nhâm nhi cà phê bao lâu nhưng bạn tận mắt nhìn kỹ xem hạt cà phê chưa?
+                            </a>
+                        </li>
+                        <li class="col l-6 body-news_box">
+                            <a href="#" class="decoration cl-black body-news_imglink">
+                                <div class="body-news_img" style="background-image: url({% static 'img/cafe_natutive.jpg' %});"></div>
+                            </a>
+                            <a href="#" class="decoration cl-black body-news_titlelink">
+                                Nhâm nhi cà phê bao lâu nhưng bạn tận mắt nhìn kỹ xem hạt cà phê chưa?
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="form-news-sub style row">
+                        <li class="col l-6 m-6 c-12 body-news_box">
+                            <ul class="form-news-sub-small style row">
+                                <li class="col l-6 m-6 c-12">
+                                    <a href="#" class="decoration cl-black body-news_imglink">
+                                        <div class="form-news-sub-small_img" style="background-image: url({% static 'img/cafe_natutive.jpg' %});"></div>
+                                    </a>
+                                </li>
+                                <li class="col l-6 m-6 c-12">
+                                    <a href="#" class="decoration cl-black form-news-sub-small_littlelink">
+                                        Dùng cốc giấy đựng cà phê nóng, thứ bạn uống đầy ắp những thứ đáng sợ này
+                                    </a>
+                                    <p class="body-news_desc">Đối với nhiều người, một ngày mới chỉ có thể khởi đầu tốt đẹp ...</p>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="col l-6 m-6 c-12 body-news_box">
+                            <ul class="form-news-sub-small style row">
+                                <li class="col l-6 m-6 c-12">
+                                    <a href="#" class="decoration cl-black body-news_imglink">
+                                        <div class="form-news-sub-small_img" style="background-image: url({% static 'img/cafe_natutive.jpg' %});"></div>
+                                    </a>
+                                </li>
+                                <li class="col l-6 m-6 c-12">
+                                    <a href="#" class="decoration cl-black form-news-sub-small_littlelink">
+                                        Uống cafe có mất ngủ không?
+                                    </a>
+                                    <p class="body-news_desc">Uống cafe có mất ngủ không? Đây có lẽ là câu hỏi kinh điển, nhấ...</p>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="col l-6 m-6 c-12 body-news_box">
+                            <ul class="form-news-sub-small style row">
+                                <li class="col l-6 m-6 c-12">
+                                    <a href="#" class="decoration cl-black body-news_imglink">
+                                        <div class="form-news-sub-small_img" style="background-image: url({% static 'img/cafe_natutive.jpg' %});"></div>
+                                    </a>
+                                </li>
+                                <li class="col l-6 m-6 c-12">
+                                    <a href="#" class="decoration cl-black form-news-sub-small_littlelink">
+                                        Cà phê hay thể dục: Lựa chọn nào giúp đánh bại cơn buồn ngủ tốt hơn?
+                                    </a>
+                                    <p class="body-news_desc">Có hai trường phái để đánh bại những cơn buồn ngủ vào sáng sớm...</p>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="col l-6 m-6 c-12 body-news_box">
+                            <ul class="form-news-sub-small style row">
+                                <li class="col l-6 m-6 c-12">
+                                    <a href="#" class="decoration cl-black body-news_imglink">
+                                        <div class="form-news-sub-small_img" style="background-image: url({% static 'img/cafe_natutive.jpg' %});"></div>
+                                    </a>
+                                </li>
+                                <li class="col l-6 m-6 c-12">
+                                    <a href="#" class="decoration cl-black form-news-sub-small_littlelink">
+                                        Bạn đã bao giờ thắc mắc tên gọi chính xác của cà phê bắt nguồn từ đâu chưa?
+                                    </a>
+                                    <p class="body-news_desc">Nói về cà phê thì người dân Việt Nam lẫn trên thế giới đều khô...</p>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="col l-3 form-news-category">
+                    <div class="form-news-category_box">
+                        <h3 class="form-news-category_header">
+                            Dang mục sản phẩm
+                        </h3>
+                        <ul class="form-news-category_list style">
+                            <li class="form-news-category_item">
+                                <a href="#" class="decoration form-news-category_link">
+                                    <i class="form-news-category_icon fa-solid fa-chevron-right"></i>
+                                    Trang chủ
+                                </a>
+                            </li>
+                            <li class="form-news-category_item">
+                                <a href="#" class="decoration form-news-category_link">
+                                    <i class="form-news-category_icon fa-solid fa-chevron-right"></i>
+                                    Giới thiệu
+                                </a>
+                            </li>
+                            <li class="form-news-category_item">
+                                <a href="#" class="decoration form-news-category_link">
+                                    <i class="form-news-category_icon fa-solid fa-chevron-right"></i>
+                                    Sản phẩm
+                                </a>
+                            </li>
+                            <li class="form-news-category_item">
+                                <a href="#" class="decoration form-news-category_link">
+                                    <i class="form-news-category_icon fa-solid fa-chevron-right"></i>
+                                    Tin tức
+                                </a>
+                            </li>
+                            <li class="form-news-category_item">
+                                <a href="#" class="decoration form-news-category_link">
+                                    <i class="form-news-category_icon fa-solid fa-chevron-right"></i>
+                                    Thực đơn
+                                </a>
+                            </li>
+                            <li class="form-news-category_item">
+                                <a href="#" class="decoration form-news-category_link">
+                                    <i class="form-news-category_icon fa-solid fa-chevron-right"></i>
+                                    Liên hệ
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="form-news-category_box">
+                        <h3 class="form-news-category_header">
+                            Về chúng tôi
+                        </h3>
+                        <div class="form-news-category_frame">
+                            <div class="form-news-category_boximg">
+                                <div class="form-news-category_img" style="background-image: url({% static 'img/cafe_first.jpg' %});"></div>
+                            </div>
+                            <p class="form-news-category_desc">Cafe berdama được sinh ra từ niềm đam mê bất tận với hạt cafe Việt Nam. Chúng tôi đã không ngừng mang đến những sản phẩm cafe thơm ngon, sánh đượm trong không gian thoải mái và lịch sự với mức giá hợp lý.</p>
+                        </div>
+                        <button class="form-news-category_btn cl-white">
+                            Đọc tiếp
+                        </button>
+                    </div>
+                    <div class="form-news-category_box">
+                        <h3 class="form-news-category_header">
+                            Về chúng tôi
+                        </h3>
+                        <ul class="form-news-category_list style row">
+                            <li class="col l-4 m-6 c-12 form-news-category_item">
+                                <div class="form-news-category_listimg" style="background-image: url({% static 'img/10-quan-ca-phe-moi-o-sai-gon-de-song-ao-85.webp' %});"></div>
+                            </li>
+                            <li class="col l-4 m-6 c-12 form-news-category_item">
+                                <div class="form-news-category_listimg" style="background-image: url({% static 'img/10-quan-ca-phe-moi-o-sai-gon-de-song-ao-85.webp' %});"></div>
+                            </li>
+                            <li class="col l-4 m-6 c-12 form-news-category_item">
+                                <div class="form-news-category_listimg" style="background-image: url({% static 'img/10-quan-ca-phe-moi-o-sai-gon-de-song-ao-85.webp' %});"></div>
+                            </li>
+
+                            <li class="col l-4 m-6 c-12 form-news-category_item">
+                                <div class="form-news-category_listimg" style="background-image: url({% static 'img/10-quan-ca-phe-moi-o-sai-gon-de-song-ao-85.webp' %});"></div>
+                            </li>
+                            <li class="col l-4 m-6 c-12 form-news-category_item">
+                                <div class="form-news-category_listimg" style="background-image: url({% static 'img/10-quan-ca-phe-moi-o-sai-gon-de-song-ao-85.webp' %});"></div>
+                            </li>
+                            <li class="col l-4 m-6 c-12 form-news-category_item">
+                                <div class="form-news-category_listimg" style="background-image: url({% static 'img/10-quan-ca-phe-moi-o-sai-gon-de-song-ao-85.webp' %});"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock  %}

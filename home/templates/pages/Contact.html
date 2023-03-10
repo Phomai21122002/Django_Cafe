@@ -1,0 +1,73 @@
+{% extends "pages/base.html" %}
+{% load static %}
+
+{% block body %}
+    <!-- Contact -->
+    <div class="form-navbar">
+        <div class="grid wide">
+            <div class="header-navbar">
+                <div class="header-navbar">
+                    <a href="/" class="decoration header-navbar_home">Trang chủ</a>
+                </div>
+                <div class="header-navbar">
+                    /
+                </div>
+                <div class="header-navbar">
+                    <a href="/Contact" class="decoration header-navbar_now cl-base">Thực đơn</a>
+                </div>
+            </div>
+            <div class="row form-navbar-contact">
+                <div class="col l-6 m-6 c-12">
+                    <div class="form-navbar-contact_img" style="background-image: url({% static 'img/map.jpg' %});"></div>
+                </div>
+                <div class="col l-6 m-6 c-12">
+                    <div class="form-navbar-contact_header">
+                        <h3 class="form-navbar-contact_title">
+                            Gửi thông tin cho tôi
+                        </h3>
+                        <p class="form-navbar-contact_desc">Hãy liên hệ ngay với chúng tôi để nhận được nhiều ưu đãi hấp dẫn dành cho bạn!</p>
+                        
+                        <div class="form-navbar-contact_box">
+                            <i class="footer-subbox_icon-contact fa-sharp fa-solid fa-location-dot"></i>
+                            <div class="form-navbar-contact_text">
+                                <b class="form-navbar-contact_name">Địa chỉ:</b>
+                                Tâng 6 toà nhà Ladeco, 266 Đội Cấn, phường Liễu Giai, Hà Nội
+                            </div>
+                        </div>
+                        <div class="form-navbar-contact_box">
+                            <i class="footer-subbox_icon-contact fa-solid fa-envelope"></i>
+                            <div class="form-navbar-contact_text">
+                                <b class="form-navbar-contact_name">Email:</b>
+                                <a href="#" class="decoration cl-black form-navbar-contact_exactly">hellocafein@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="form-navbar-contact_box">
+                            <i class="footer-subbox_icon-contact fa-solid fa-phone"></i>
+                            <div class="form-navbar-contact_text">
+                                <b class="form-navbar-contact_name">Hotline:</b>
+                                <a href="#" class="decoration cl-black form-navbar-contact_exactly"> 1900 6750</a>
+                            </div>
+                        </div>
+                        
+                        <div class="form-navbar-contact_forminput">
+                            <input type="text" placeholder="Họ và tên*" class="form-navbar-contact_input">
+                        </div>
+                        <div class="form-navbar-contact_forminput">
+                            <input type="text" placeholder="Email*" class="form-navbar-contact_input">
+                        </div>
+                        <div class="form-navbar-contact_forminput">
+                            <input type="text" placeholder="Điện thoại*" class="form-navbar-contact_input">
+                        </div>
+                        <div class="form-navbar-contact_forminput">
+                            <textarea type="text" placeholder="Nội dung*" rows="5" class="form-navbar-contact_input" ></textarea>
+                        </div>
+                        
+                        <div class="form-navbar-contact_send">
+                            <a href="#" class="decoration cl-white form-navbar-contact_btn">Gửi thông tin</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock  %}

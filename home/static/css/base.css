@@ -1,0 +1,89 @@
+:root {
+    --white-color: #fff;
+    --white-2-color: rgba(255, 255, 255, 0.8);
+    --black-color: #000;
+    --black-2-color: rgba(0, 0, 0, 0.5);
+    --base-color: rgb(107, 44, 8);
+    --base-color: #6b2c08;
+    --height-logo: 14rem;
+}
+
+* {
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    font-family: 'UTM Bebas' , sans-serif;
+    /* font-family: 'Montserrat', sans-serif; */
+    box-sizing: border-box;
+}
+
+.decoration {
+    text-decoration: none;
+}
+
+.cl-white {
+    color: var(--white-color);
+}
+
+.cl-black {
+    color: var(--black-color);
+}
+
+.cl-red {
+    color: red;
+}
+
+.cl-base {
+    color: var(--base-color);
+}
+
+.style {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.ml-2 {
+    margin-left: 2rem;
+}
+
+.mb-2 {
+    margin-bottom: 2rem !important;
+}
+
+.pd {
+    padding: 1rem !important;
+}
+
+.btn-delete {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.bg-color-base {
+    background-color: var(--base-color);
+}
+
+.bg-color-base-1 {
+    background-color: rgba(107, 44, 8, 0.1);
+}
+
+.btn {
+    display: block;
+    padding: 1.4rem 0;
+    width: 100%;
+    border-radius: 30px;
+    font-size: 1.8rem;
+    font-weight: 500;
+    border: 1px solid var(--base-color);
+    transition: all ease 0.5s;
+}
+
+.a-text {
+    text-align: center;
+}
+
