@@ -21,14 +21,14 @@
                 <p class="body-login-box_desc">Nếu bạn chưa có tài khoản, đăng ký tại đây</p>
             </div>
 
-            <form action="">
+            <form action="" method="post">
+                {% csrf_token %}
                 <div class="form-login">
-                    <input id="email" type="text" placeholder="Email">
-                    <input id="password" type="password" placeholder="Mật khẩu">
+                    <input name="email" id="email" type="text" placeholder="Email">
+                    <input name="password" id="password" type="password" placeholder="Mật khẩu">
                     <input id="btn" type="submit" value="Đăng nhập">
                 </div>
             </form>
-
             <div class="body-login-box_different">
                 <div class="body-login-box_forget">
                     <a href="#" class="decoration body-login-box_link">
