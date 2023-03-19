@@ -38,10 +38,10 @@
                                 <a href="#" class="header-top_lable decoration cl-white">Tài khoản</a>
                                 <ul class="header-top_subform style">
                                     <li class="header-top_subitem">
-                                        <a href="/Login" class="header-top_sublink decoration cl-base">Đăng nhập</a>
+                                        <a href="{% url 'Home:Login' %}" class="header-top_sublink decoration cl-base">Đăng nhập</a>
                                     </li>
                                     <li class="header-top_subitem">
-                                        <a href="/Register" class="header-top_sublink decoration cl-base">Đăng ký</a>
+                                        <a href="{% url 'Home:Register' %}" class="header-top_sublink decoration cl-base">Đăng ký</a>
                                     </li>
                                 </ul>
                             </li>
@@ -242,17 +242,17 @@
                 <div class="header-bottom">
                     <ul class="header-bottom_list style">
                         <li class="header-bottom_item">
-                            <a href="/" class="header-bottom_link decoration">
+                            <a href="{% url 'Home:Home' %}" class="header-bottom_link decoration">
                                 Trang chủ
                             </a>
                         </li>
                         <li class="header-bottom_item">
-                            <a href="/Introduce" class="header-bottom_link decoration">
+                            <a href="{% url 'Home:Introduce' %}" class="header-bottom_link decoration">
                                 Giới thiệu
                             </a>
                         </li>
                         <li class="header-bottom_item  header-bottom_hoversub">
-                            <a href="/Product" class="header-bottom_link decoration">
+                            <a href="{% url 'Home:Product' %}" class="header-bottom_link decoration">
                                 Sản phẩm
                             </a>
                             <ul class="header-bottom_subform style">
@@ -280,17 +280,17 @@
     
                     <ul class="header-bottom_list style">
                         <li class="header-bottom_item">
-                            <a href="/News" class="header-bottom_link decoration">
+                            <a href="{% url 'Home:News' %}" class="header-bottom_link decoration">
                                 Tin tức
                             </a>
                         </li>
                         <li class="header-bottom_item">
-                            <a href="/Menu" class="header-bottom_link decoration">
+                            <a href="{% url 'Home:Menu' %}" class="header-bottom_link decoration">
                                 Thực đơn
                             </a>
                         </li>
                         <li class="header-bottom_item">
-                            <a href="/Contact" class="header-bottom_link decoration">
+                            <a href="{% url 'Home:Contact' %}" class="header-bottom_link decoration">
                                 Liên hệ
                             </a>
                         </li>
