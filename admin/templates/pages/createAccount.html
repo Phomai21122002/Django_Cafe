@@ -17,35 +17,36 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="form-validation">
-                            <form class="form-valide" action="#" method="post">
+                            <form class="form-valide" action="{% url 'Admin:createaccount' %}" method="post">
+                                {% csrf_token %}
                                 <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label" for="val-username">First Name<span class="text-danger"></span>
+                                    <label class="col-lg-4 col-form-label" for="firstname">First Name<span class="text-danger"></span>
                                     </label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control" id="val-username" name="val-username" >
+                                        <input type="text" class="form-control" id="firstname" name="firstname" >
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label" for="val-username">Last Name<span class="text-danger"></span>
+                                    <label class="col-lg-4 col-form-label" for="lastname">Last Name<span class="text-danger"></span>
                                     </label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control" id="val-username" name="val-username" >
+                                        <input type="text" class="form-control" id="lastname" name="lastname" >
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label" for="val-email">Email<span class="text-danger"></span>
+                                    <label class="col-lg-4 col-form-label" for="email">Email<span class="text-danger"></span>
                                     </label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control" id="val-email" name="val-email">
+                                        <input type="text" class="form-control" id="email" name="email">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label" for="val-email">Phonenumber<span class="text-danger"></span>
+                                    <label class="col-lg-4 col-form-label" for="numberphone">Phonenumber<span class="text-danger"></span>
                                     </label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control" id="val-email" name="val-email">
+                                        <input type="text" class="form-control" id="numberphone" name="numberphone">
                                     </div>
                                 </div>
 
@@ -61,10 +62,10 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label" for="val-email">Password<span class="text-danger"></span>
+                                    <label class="col-lg-4 col-form-label" for="password">Password<span class="text-danger"></span>
                                     </label>
                                     <div class="col-lg-6">
-                                        <input type="password" class="form-control" id="val-email" name="val-email">
+                                        <input type="password" class="form-control" id="password" name="password">
                                     </div>
                                 </div>
 

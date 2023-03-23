@@ -45,7 +45,7 @@
         ***********************************-->
         <div class="nav-header">
             <div class="brand-logo">
-                <a href="index.html">
+                <a href="{% url 'Admin:Admin' %}">
                     <b class="logo-abbr"><img src="/static/template/images/logo.png" alt=""> </b>
                     <span class="logo-compact"><img src="/static/template/images/logo-compact.png" alt=""></span>
                     <span class="brand-title">
@@ -255,8 +255,10 @@
                             <i class="icon-speedometer menu-icon"></i><span class="nav-text">Sản Phẩm</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="/admin">Danh Sách Sản Phẩm</a></li>
-                            <li><a href="/admin/addproduct">Thêm Sản Phẩm</a></li>
+                            <li><a href="{% url 'Admin:listproduct' %}">Danh Sách Sản Phẩm</a></li>
+                            <li><a href="{% url 'Admin:listcategory' %}">Danh Sách Loại Sản Phẩm</a></li>
+                            <li><a href="{% url 'Admin:addproduct' %}">Thêm Sản Phẩm</a></li>
+                            <li><a href="{% url 'Admin:addcategory' %}">Thêm Loại Sản Phẩm</a></li>
                         </ul>
                     </li>
                     <li class="mega-menu mega-menu-sm">
@@ -264,9 +266,9 @@
                             <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Account</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="/admin/createaccount">Create Account</a></li>
-                            <li><a href="/admin/staffaccounts">Staff Account</a></li>
-                            <li><a href="/admin/customeraccounts">Customer Account</a></li>
+                            <li><a href="{% url 'Admin:createaccount' %}">Create Account</a></li>
+                            <li><a href="{% url 'Admin:staffaccounts' %}">Staff Account</a></li>
+                            <li><a href="{% url 'Admin:customeraccounts' %}">Customer Account</a></li>
                         </ul>
                     </li>
                     <li class="mega-menu mega-menu-sm">
@@ -274,10 +276,10 @@
                             <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Sales</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="./layout-blank.html">Day</a></li>
-                            <li><a href="./layout-blank.html">Week</a></li>
-                            <li><a href="./layout-blank.html">Month</a></li>
-                            <li><a href="./layout-blank.html">Year</a></li>
+                            <li><a href="{% url 'Admin:liststaffsales' %}">Danh Sách Bán Hàng</a></li>
+                            <li><a href="{% url 'Admin:createaccount' %}">Week</a></li>
+                            <li><a href="{% url 'Admin:createaccount' %}">Month</a></li>
+                            <li><a href="{% url 'Admin:createaccount' %}">Year</a></li>
                         </ul>
                     </li>
                     <li class="nav-label">Apps</li>

@@ -21,7 +21,7 @@
                 <p class="body-login-box_desc">Đã có tài khoản, đăng nhập tại đây</p>
             </div>
 
-            <form action="" method="post">
+            <form action="{% url 'Home:Register' %}" method="POST">
                 {% csrf_token %}
                 <div class="form-login">
                     <input required id="lastname" name = "lastname" type="text" placeholder="Họ">

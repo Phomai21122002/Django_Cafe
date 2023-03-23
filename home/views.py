@@ -1,10 +1,31 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from admin import admincontroller
 from . import models
 
+
 def index(request):
-    return render(request, 'pages/home.html')
+    query = "Select * from product where IdCategory = 1"
+    datas = models.connect_mysql_get_data(query)
+    result = []
+    for data in datas:
+        result.append({
+            'IDProduct': data[0],
+            'NameProduct': data[1],
+            'url_image': data[5],
+        })
+
+    query_order = "Select * from product where IdCategory != 1"
+    datas = models.connect_mysql_get_data(query_order)
+    result_order = []
+    for data in datas:
+        result_order.append({
+            'IDProduct': data[0],
+            'NameProduct': data[1],
+            'Price': data[2],
+        })
+
+    context = {'products': result, 'product_order': result_order}
+
+    return render(request, 'pages/home.html', context)
 
 def Introduce(request):
     return render(request, 'pages/Introduce.html')
@@ -30,9 +51,9 @@ def Login(request):
         result_mysql = models.connect_mysql_get_data(query)
         for data in result_mysql:
             if data[2] == Email and data[3] == PassWord:
-                return redirect('Admin')
-            else:
-                return HttpResponse('Email or PassWord is not accept')        
+                request.session['id'] = data[0]
+                request.session['classify'] = data[5]
+                return redirect('Admin:Admin')       
     return render(request, 'pages/Login.html')
 
 def Register(request):
@@ -49,7 +70,7 @@ def Register(request):
 
         models.connect_mysql(query)
 
-        return redirect('Login')
+        return redirect("Home:Login")
 
     return render(request, 'pages/Register.html')
 # Create your views here.

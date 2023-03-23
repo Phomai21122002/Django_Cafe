@@ -16,34 +16,35 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Staff Accounts</h4>
+                    <h4 class="card-title">List Product</h4>
                     <div class="table-responsive"> 
                         <table class="table table-bordered table-striped verticle-middle">
                             <thead>
                                 <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Phone Number</th>
-                                    <th scope="col">Fisrt Name</th>
-                                    <th scope="col">Last Name</th>
+                                    <th scope="col">IDProduct</th>
+                                    <th scope="col">Name Product</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Name Category</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% csrf_token %}
-                                {% for staff in staffs %}
+                            {% csrf_token %}
+                                {% for product in products %}
                                     <tr>
-                                        <td>{{ staff.ID }}</td>
+                                        <td>{{ product.IdProduct }}</td>
                                         <td>
-                                            {{ staff.Email }}
+                                            {{ product.NameProduct }}
                                         </td>
-                                        <td>{{ staff.PhoneNumber }}</td>
-                                        <td>{{ staff.FisrtName }}</td>
-                                        <td>{{ staff.LastName }}</td>
-                                        <td><span><a href="{% url 'Admin:updatestaff' staff.ID %}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i> </a><a href="#" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-trash color-danger"></i></a></span>
+                                        <td>{{ product.Price }}</td>
+                                        <td>{{ product.Description }}</td>
+                                        <td>{{ product.NameCategory }}</td>
+                                        <td><span><a href="{% url 'Admin:updateproduct' product.IdProduct %}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i> </a><a href="#" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-trash color-danger"></i></a></span>
                                         </td>
                                     </tr>
                                 {% endfor %}
+
                             </tbody>
                         </table>
                     </div>

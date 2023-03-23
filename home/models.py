@@ -24,5 +24,15 @@ def connect_mysql_get_data(query):
     myresult = mycursor.fetchall()
     return myresult
 
+def listCategory():
+    query = "Select * from category"
+    result_list_category = connect_mysql_get_data(query)
+    result = []
+    for data in result_list_category:
+        result.append({
+            'IdCategory': data[0],
+            'NameCategory': data[1],
+        })
+    return result
 
 # Create your models here.

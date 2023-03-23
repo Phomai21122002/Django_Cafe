@@ -21,7 +21,7 @@
                 <p class="body-login-box_desc">Nếu bạn chưa có tài khoản, đăng ký tại đây</p>
             </div>
 
-            <form action="" method="post">
+            <form action="{% url 'Home:Login' %}" method="POST">
                 {% csrf_token %}
                 <div class="form-login">
                     <input name="email" id="email" type="text" placeholder="Email">

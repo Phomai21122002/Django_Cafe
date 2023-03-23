@@ -16,34 +16,29 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Staff Accounts</h4>
+                    <h4 class="card-title">List Category</h4>
                     <div class="table-responsive"> 
                         <table class="table table-bordered table-striped verticle-middle">
                             <thead>
                                 <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Phone Number</th>
-                                    <th scope="col">Fisrt Name</th>
-                                    <th scope="col">Last Name</th>
+                                    <th scope="col">IDCategory</th>
+                                    <th scope="col">Name Category</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {% csrf_token %}
-                                {% for staff in staffs %}
+                                {% for category in categorys %}
                                     <tr>
-                                        <td>{{ staff.ID }}</td>
+                                        <td>{{ category.IdCategory }}</td>
                                         <td>
-                                            {{ staff.Email }}
+                                            {{ category.NameCategory }}
                                         </td>
-                                        <td>{{ staff.PhoneNumber }}</td>
-                                        <td>{{ staff.FisrtName }}</td>
-                                        <td>{{ staff.LastName }}</td>
-                                        <td><span><a href="{% url 'Admin:updatestaff' staff.ID %}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i> </a><a href="#" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-trash color-danger"></i></a></span>
+                                        <td><span><a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i> </a><a href="#" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-trash color-danger"></i></a></span>
                                         </td>
                                     </tr>
                                 {% endfor %}
+
                             </tbody>
                         </table>
                     </div>
