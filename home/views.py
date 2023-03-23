@@ -47,13 +47,12 @@ def Login(request):
     if request.method == "POST":
         Email = request.POST['email']
         PassWord = request.POST['password']
-        query = 'SELECT * FROM user WHERE Classify = 1'
-        result_mysql = models.connect_mysql_get_data(query)
-        for data in result_mysql:
-            if data[2] == Email and data[3] == PassWord:
-                request.session['id'] = data[0]
-                request.session['classify'] = data[5]
-                return redirect('Admin:Admin')       
+
+        request.session['user_id'] = '20'
+        userid = request.session.get('user_id')
+        print(userid)
+        return redirect('Admin:Admin') 
+  
     return render(request, 'pages/Login.html')
 
 def Register(request):

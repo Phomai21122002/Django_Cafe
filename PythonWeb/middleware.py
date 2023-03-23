@@ -10,9 +10,10 @@ class LoginRequiredMiddleware:
         response = self.get_response(required)
         return response
     
-    def admin_view(self, request, view_func, view_args, view_kwargs):
-        assert hasattr(request, 'user')
+    def process_view(self, request, view_func, view_args, view_kwargs):
+        view_name = view_func.__name__
+        print(view_name)
+        pass
+        
+            
 
-        if not request.user.is_authenticated():
-            if True:
-                return redirect(settings.LOGIN_URL)

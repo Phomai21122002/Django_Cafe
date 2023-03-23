@@ -12,6 +12,7 @@ def connect_mysql(query):
     mycursor.execute(query)
     mydb.commit()
 
+
 def connect_mysql_get_data(query):
     mydb = mysql.connector.connect(
         host = 'localhost',
@@ -34,5 +35,7 @@ def listCategory():
             'NameCategory': data[1],
         })
     return result
+
+
 
 # Create your models here.
