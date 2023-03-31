@@ -22,139 +22,27 @@
             </div>
             
             <ul class="row body-menu_list style">
-                <li class="col l-3 m-4 c-6 body-menu_item">
-                    <a href="" class="body-menu_linkcafe decoration cl-black">
-                        <div class="body-menu_background">
-                            <img src="{% static 'img/img-collection1_f2fef799a4e449a3afb8efad867b176c_master.webp' %}" alt="" class="body-menu_img">
-                        </div>
-                        <div class="body-menu_box">
-                            <h3 class="body-menu_namecafe">
-                                Cafe capuchino
-                            </h3>
-                            <div class="body-menu_price">
-                                <p class="body-menu_title">Giá: </p>
-                                <div class="body-menu_money">40.000đ</div>
+                {% for product in Products %}
+                    <li class="col l-3 m-4 c-6 body-menu_item">
+                        <a href="" class="body-menu_linkcafe decoration cl-black">
+                            <div class="body-menu_background">
+                                <img src="/static/img/{{product.Url_Image}}" alt="" class="body-menu_img">
                             </div>
-                        </div>
-                    </a>
-                    <div class="body-menu_modalcart">
-                        <button class="body-menu_btncart js-btn-cart">Thêm vào giỏ hàng</button>
-                    </div>
-                </li>
-                <li class="col l-3 m-4 c-6 body-menu_item">
-                    <a href="" class="body-menu_linkcafe decoration cl-black">
-                        <div class="body-menu_background">
-                            <img src="{% static 'img/img-collection1_f2fef799a4e449a3afb8efad867b176c_master.webp' %}" alt="" class="body-menu_img">
-                        </div>
-                        <div class="body-menu_box">
-                            <h3 class="body-menu_namecafe">
-                                Cafe capuchino
-                            </h3>
-                            <div class="body-menu_price">
-                                <p class="body-menu_title">Giá: </p>
-                                <div class="body-menu_money">40.000đ</div>
+                            <div class="body-menu_box">
+                                <h3 class="body-menu_namecafe">
+                                    {{product.Name_Product}}
+                                </h3>
+                                <div class="body-menu_price">
+                                    <p class="body-menu_title">Giá: </p>
+                                    <div class="body-menu_money">{{ product.Price }}đ</div>
+                                </div>
                             </div>
+                        </a>
+                        <div class="body-menu_modalcart">
+                            <button class="body-menu_btncart js-btn-cart">Thêm vào giỏ hàng</button>
                         </div>
-                    </a>
-                    <div class="body-menu_modalcart">
-                        <button class="body-menu_btncart js-btn-cart">Thêm vào giỏ hàng</button>
-                    </div>
-                </li>
-                <li class="col l-3 m-4 c-6 body-menu_item">
-                    <a href="" class="body-menu_linkcafe decoration cl-black">
-                        <div class="body-menu_background">
-                            <img src="{% static 'img/img-collection1_f2fef799a4e449a3afb8efad867b176c_master.webp' %}" alt="" class="body-menu_img">
-                        </div>
-                        <div class="body-menu_box">
-                            <h3 class="body-menu_namecafe">
-                                Cafe capuchino
-                            </h3>
-                            <div class="body-menu_price">
-                                <p class="body-menu_title">Giá: </p>
-                                <div class="body-menu_money">40.000đ</div>
-                            </div>
-                        </div>
-                    </a>
-                    <div class="body-menu_modalcart">
-                        <button class="body-menu_btncart js-btn-cart">Thêm vào giỏ hàng</button>
-                    </div>
-                </li>
-                <li class="col l-3 m-4 c-6 body-menu_item">
-                    <a href="" class="body-menu_linkcafe decoration cl-black">
-                        <div class="body-menu_background">
-                            <img src="{% static 'img/img-collection1_f2fef799a4e449a3afb8efad867b176c_master.webp' %}" alt="" class="body-menu_img">
-                        </div>
-                        <div class="body-menu_box">
-                            <h3 class="body-menu_namecafe">
-                                Cafe capuchino
-                            </h3>
-                            <div class="body-menu_price">
-                                <p class="body-menu_title">Giá: </p>
-                                <div class="body-menu_money">40.000đ</div>
-                            </div>
-                        </div>
-                    </a>
-                    <div class="body-menu_modalcart">
-                        <button class="body-menu_btncart js-btn-cart">Thêm vào giỏ hàng</button>
-                    </div>
-                </li>
-                <li class="col l-3 m-4 c-6 body-menu_item">
-                    <a href="" class="body-menu_linkcafe decoration cl-black">
-                        <div class="body-menu_background">
-                            <img src="{% static 'img/img-collection1_f2fef799a4e449a3afb8efad867b176c_master.webp' %}" alt="" class="body-menu_img">
-                        </div>
-                        <div class="body-menu_box">
-                            <h3 class="body-menu_namecafe">
-                                Cafe capuchino
-                            </h3>
-                            <div class="body-menu_price">
-                                <p class="body-menu_title">Giá: </p>
-                                <div class="body-menu_money">40.000đ</div>
-                            </div>
-                        </div>
-                    </a>
-                    <div class="body-menu_modalcart">
-                        <button class="body-menu_btncart js-btn-cart">Thêm vào giỏ hàng</button>
-                    </div>
-                </li>
-                <li class="col l-3 m-4 c-6 body-menu_item">
-                    <a href="" class="body-menu_linkcafe decoration cl-black">
-                        <div class="body-menu_background">
-                            <img src="{% static 'img/img-collection1_f2fef799a4e449a3afb8efad867b176c_master.webp' %}" alt="" class="body-menu_img">
-                        </div>
-                        <div class="body-menu_box">
-                            <h3 class="body-menu_namecafe">
-                                Cafe capuchino
-                            </h3>
-                            <div class="body-menu_price">
-                                <p class="body-menu_title">Giá: </p>
-                                <div class="body-menu_money">40.000đ</div>
-                            </div>
-                        </div>
-                    </a>
-                    <div class="body-menu_modalcart">
-                        <button class="body-menu_btncart js-btn-cart">Thêm vào giỏ hàng</button>
-                    </div>
-                </li>
-                <li class="col l-3 m-4 c-6 body-menu_item">
-                    <a href="" class="body-menu_linkcafe decoration cl-black">
-                        <div class="body-menu_background">
-                            <img src="{% static 'img/img-collection1_f2fef799a4e449a3afb8efad867b176c_master.webp' %}" alt="" class="body-menu_img">
-                        </div>
-                        <div class="body-menu_box">
-                            <h3 class="body-menu_namecafe">
-                                Cafe capuchino
-                            </h3>
-                            <div class="body-menu_price">
-                                <p class="body-menu_title">Giá: </p>
-                                <div class="body-menu_money">40.000đ</div>
-                            </div>
-                        </div>
-                    </a>
-                    <div class="body-menu_modalcart">
-                        <button class="body-menu_btncart js-btn-cart">Thêm vào giỏ hàng</button>
-                    </div>
-                </li>
+                    </li>
+                {% endfor %}
             </ul>
         </div>
     </div>

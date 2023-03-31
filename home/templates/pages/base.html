@@ -252,7 +252,7 @@
                             </a>
                         </li>
                         <li class="header-bottom_item  header-bottom_hoversub">
-                            <a href="{% url 'Home:Product' %}" class="header-bottom_link decoration">
+                            <a href="{% url 'Home:Product' 1 %}" class="header-bottom_link decoration">
                                 Sản phẩm
                             </a>
                             <ul class="header-bottom_subform style">
@@ -319,7 +319,7 @@
         
         {% block body %}{% endblock  %}
 
-        <div class="footer">
+        <div style="clear: both;" class="footer">
             <div class="bg_footer" style="background-image: url({% static 'img/bg_footer.webp' %});">
                 <footer>
                     <div class="grid wide">
@@ -523,6 +523,6 @@
         </div>
     </div>
 
-    <script src="{% static 'js/index.js' %}"></script>
+    <script src="/static/js/index_js.js"></script>
 </body>
 </html>

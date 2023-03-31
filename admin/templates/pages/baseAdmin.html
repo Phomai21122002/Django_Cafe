@@ -230,7 +230,7 @@
                                         <li>
                                             <a href="page-lock.html"><i class="icon-lock"></i> <span>Lock Screen</span></a>
                                         </li>
-                                        <li><a href="/"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                        <li><a href="{% url 'Home:Home' %}"><i class="icon-key"></i> <span>Logout</span></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -277,9 +277,6 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="{% url 'Admin:liststaffsales' %}">Danh Sách Bán Hàng</a></li>
-                            <li><a href="{% url 'Admin:createaccount' %}">Week</a></li>
-                            <li><a href="{% url 'Admin:createaccount' %}">Month</a></li>
-                            <li><a href="{% url 'Admin:createaccount' %}">Year</a></li>
                         </ul>
                     </li>
                     <li class="nav-label">Apps</li>

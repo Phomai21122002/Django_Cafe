@@ -4,11 +4,24 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from home.models import connect_mysql_get_data
 from home.models import connect_mysql
-from home.models import listCategory
+from home.models import addcategory
+from home.models import addproduct
+from home.models import listcategory
+from home.models import listproduct
+from home.models import liststaff
+from home.models import Register
+from home.models import updateproduct
+from home.models import updatestaff
+from home.models import get_product_by_id
+from home.models import get_staff_by_id
 import shutil
 import os
 
 
+def add_image_file(Image):
+    path = 'E:\Pictures'+ str('\\' + Image)
+    os.chmod('home/static/img/', 0o777)
+    shutil.copy(path, 'home/static/img/')
 
 def index(request):
     return render(request, 'pages/index.html')
@@ -18,83 +31,39 @@ def addProduct(request):
         NameProduct = request.POST['nameproduct']
         Price = request.POST['price']
         Description = request.POST['description']
-        Category = request.POST['category']
+        Category_id = request.POST['category']
         Image = request.POST['Image']
         
-        path = 'E:\Pictures'+ str('\\' + Image)
-        os.chmod('home/static/img/', 0o777)
-        shutil.copy(path, 'home/static/img/')
+        add_image_file(Image)
 
-        query = "insert into product(NameProduct, Price, Description, IdCategory, url_image) values('" + NameProduct + "', '" + Price + "', '" + Description + "', '" + Category + "', '" + Image + "')"
-        connect_mysql(query)
+        addproduct(NameProduct, Price, Description, Image, Category_id)
         return redirect('Admin:listproduct')
 
-    query = "Select * from category"
-    category = connect_mysql_get_data(query)
-    arrayCategory = []
-    for data in category:
-        arrayCategory.append({
-            'id': data[0],
-            'NameCategory': data[1],
-        })
-    content = {'category': arrayCategory}
+    arrayCategory = listcategory()
+    context = {'category': arrayCategory}
 
-    return render(request,'pages/addProduct.html', content)
+    return render(request,'pages/addProduct.html', context)
 
 def addCategory(request):
     if request.method == 'POST':
         NameCategory = request.POST['namecategory']
-        query = "Insert into category(NameCategory) values('"+ NameCategory +"')"
-        connect_mysql(query)
+        addcategory(NameCategory)
 
         return redirect('Admin:listcategory')
     return render(request, 'pages/addCategory.html')
 
 def listProduct(request):
-    query = "Select * from product"
-    result_List_Produce = connect_mysql_get_data(query)
-    result = []
-    for data in result_List_Produce:
-        query_id = "Select NameCategory from category where IdCategory = '"+ str(data[4]) +"'"
-        IdCategory = connect_mysql_get_data(query_id)
-        result.append({
-            'IdProduct': data[0],
-            'NameProduct': data[1],
-            'Price': data[2],
-            'Description': data[3],
-            'NameCategory': IdCategory[0][0],
-        })
-
-        context = {'products': result}
-
+    result = listproduct()
+    context = {'products': result}
     return render(request, 'pages/listProduct.html', context)
 
 def listCategory(request):
-    query = "Select * from category"
-    result_list_category = connect_mysql_get_data(query)
-    result = []
-    for data in result_list_category:
-        result.append({
-            'IdCategory': data[0],
-            'NameCategory': data[1],
-        })
+    result = listcategory()
     context = {'categorys': result}
     return render(request, 'pages/listCategory.html', context)
 
 def staffAccount(request):
-
-    query = "Select * from user where Classify=1"
-    result_staff = connect_mysql_get_data(query)
-    result = []
-    for data in result_staff:
-        result.append({
-            'ID': data[0],
-            'FisrtName': data[1],
-            'Email': data[2],
-            'PassWord': data[3],
-            'PhoneNumber': data[4],
-            'LastName': data[6],
-        })
+    result = liststaff()
     context = {'staffs': result}
 
     return render(request,'pages/listStaffAccount.html', context)
@@ -106,10 +75,10 @@ def createAccount(request):
         Email = request.POST['email']
         numberphone = request.POST['numberphone']
         password = request.POST['password']
+        classify = request.POST['classify']
+        date = request.POST['date']
 
-        query = "insert into user(FisrtName, Email, Pass_word, Phone_number, Classify, LastName) values('"+ FirstName +"', '"+ Email +"', '"+ password +"', '"+ numberphone +"', 1, '"+ LastName +"')"
-
-        connect_mysql(query)
+        Register(FirstName, Email, password, numberphone, classify, LastName, date)
 
         return redirect("Admin:staffaccounts")
 
@@ -128,32 +97,12 @@ def updateProduct(request, id):
         Description = request.POST['description']
         Category = request.POST['category']
 
-        query = "UPDATE `product` SET `NameProduct`='"+ NameProduct +"',`Price`='"+ Price+"',`Description`='"+ Description +"',`IdCategory`='"+ Category +"' WHERE `IdProduct`= '"+ str(id) +"'"
-        connect_mysql(query)
+        updateproduct(id, NameProduct, Price, Description, Category)
         return redirect('Admin:listproduct')
 
-    query = "Select * from product where IdProduct='"+ str(id) +"'"
-    result_product = connect_mysql_get_data(query)
-    for data in result_product:
-        query_id = "Select NameCategory from category where IdCategory = '"+ str(data[4]) +"'"
-        IdCategory = connect_mysql_get_data(query_id)
-        result = {
-            'IdProduct': data[0],
-            'NameProduct': data[1],
-            'Price': data[2],
-            'Description': data[3],
-            'IdCategory': data[4],
-            'NameCategory': IdCategory[0][0],
-        }
+    result = get_product_by_id(id)
+    result_category = listcategory()
 
-    query_category = "Select * from category"
-    result_list_category = connect_mysql_get_data(query_category)
-    result_category = []
-    for data in result_list_category:
-        result_category.append({
-            'IdCategory': data[0],
-            'NameCategory': data[1],
-        })
     context = {'Product': result, 'listCategory': result_category}
     return render(request, 'pages/updateProduct.html', context)
 
@@ -165,24 +114,13 @@ def updateStaff(request, id):
         Email = request.POST['email']
         numberphone = request.POST['numberphone']
         password = request.POST['password']
+        Date = request.POST['date']
 
-        query = "update `user` set `FisrtName` = '"+ FirstName +"', `LastName` = '"+ LastName +"', `Email` = '"+ Email +"', `Pass_word` = '"+ password +"', `Phone_number` = '"+ numberphone +"' where `ID`='"+ str(id) +"'"
-
-        connect_mysql(query)
+        updatestaff(id, FirstName, Email, password, numberphone, LastName, Date)
 
         return redirect("Admin:staffaccounts")
 
-    query = "Select * from user where ID='"+ str(id) +"'"
-    data = connect_mysql_get_data(query)
-    print(data)
-    result = {
-        'ID': data[0][0],
-        'FisrtName': data[0][1],    
-        'Email': data[0][2],
-        'PassWord': data[0][3],
-        'PhoneNumber': data[0][4],
-        'LastName': data[0][6],
-    }
+    result = get_staff_by_id(id)
 
     context = {'staff': result}
     return render(request, 'pages/updateStaff.html', context)
