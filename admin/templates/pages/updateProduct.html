@@ -23,7 +23,7 @@
                                     <label class="col-lg-4 col-form-label" for="nameproduct">Name Product<span class="text-danger"></span>
                                     </label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control" id="nameproduct" name="nameproduct" value="{{ Product.NameProduct }}">
+                                        <input type="text" class="form-control" id="nameproduct" name="nameproduct" value="{{ Product.Name_Product }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -45,13 +45,20 @@
                                     </label>
                                     <div class="col-lg-6">
                                         <select class="form-control" id="category" name="category" rows="5">
-                                            <option value="{{ Product.IdCategory }}">{{ Product.NameCategory }}</option>
+                                            <option value="{{ Product.Category_id }}">{{ Product.Category.Name_Category }}</option>
                                             {% for category in listCategory %}
-                                                {% if category.IdCategory != Product.IdCategory %}
-                                                    <option value="{{ category.IdCategory }}">{{ category.NameCategory }}</option>
+                                                {% if category.id != Product.Category_id %}
+                                                    <option value="{{ category.id }}">{{ category.Name_Category }}</option>
                                                 {% endif %}
                                             {% endfor %}
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="Image">Image<span class="text-danger"></span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        <input type="file" class="form-control" id="Image" name="Image">
                                     </div>
                                 </div>
                                 <div class="form-group row">

@@ -597,6 +597,7 @@
     line-height: 1.6rem;
     text-transform: uppercase;
     padding: 0 10px;
+    margin-top: 1rem;
 }
 
 .body-menu_namecafe:hover {
@@ -633,6 +634,7 @@
 }
 
 .body-menu_btncart {
+    display: block;
     width: 100%;
     padding: 12px;
     font-size: 1.6rem;
@@ -643,6 +645,7 @@
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     cursor: pointer;
+    text-align: center;
 }
 
 @keyframes arrivecart {
@@ -982,6 +985,7 @@
 }
 
 .form-order-product_box {
+    margin-top: 4rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
@@ -1060,15 +1064,22 @@
     border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.form-order_boxnumber {
-    flex: 1;
+#buy_amount {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 10px;
-    font-size: 1.4rem;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+}
 
+#buy_amount .buy_btn {
+    border: none;
+}
+
+.form-order_boxnumber {
+    font-size: 1.4rem;
+}
+
+#amount {
+    text-align: center;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .form-order_boxbuy {
@@ -1494,19 +1505,16 @@
 }
 
 .form-order_bill {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    width: 194px;
+    border-radius: 22px;
     border: 1px solid rgba(0, 0, 0, 0.2);
-    width: 100px;
-    padding: 1.6rem 1rem;
 }
 
 .form-order_plus-bill,
 .form-order_minus-bill {
     background-color: rgba(0, 0, 0, 0.5);
     color: var(--white-color);
-    padding: 1px 4px;
+    padding: 6px 12px;
     border-radius: 50%;
     text-align: center;
     cursor: pointer;
@@ -1623,4 +1631,38 @@
 
 .body-login-box_iconlink {
     margin: 2rem 1rem;
+}
+
+
+/* choose order address */
+
+.form-choose-address {
+    display: none;
+}
+
+.form-choose-address.open {
+    display: flex;
+}
+
+.box-order-address {
+    margin: 4rem 0;
+}
+
+.order_item {
+    display: flex;
+    align-items: center;
+}
+
+.header_address {
+    font-size: 2rem;
+}
+
+.label_address {
+    font-size: 1.4rem;
+    font-weight: 500;
+    padding-left: 1rem;
+}
+
+.order_item {
+    margin: 1rem 0;
 }

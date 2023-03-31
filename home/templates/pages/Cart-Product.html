@@ -1,0 +1,97 @@
+{% extends "pages/base.html" %}
+
+{% load static %}
+
+{% block body %}
+    <!-- Giỏ hàng -->
+    <div class="form-navbar">
+        <div class="grid wide">
+            <div class="header-navbar">
+                <div class="header-navbar">
+                    <a href="#" class="decoration header-navbar_home">Trang chủ</a>
+                </div>
+                <div class="header-navbar">
+                    /
+                </div>
+                <div class="header-navbar">
+                    <a href="#" class="decoration header-navbar_now cl-base">Giỏ hàng</a>
+                </div>
+                
+            </div>
+
+            <div class="form-bill">
+                <h3 class="form-navbar-contact_title">
+                    Giỏ hàng của bạn
+                </h3>
+                <div class="form-bill-product">
+                    <div class="" style="width: 15%;">
+                        <a href="#" class="decoration" style="display: block;">
+                            <img src="./assets/img/cafe-sua.png" alt="" class="form-bill-product_img">
+                        </a>
+                    </div>
+                    <div class="form-bill-product_info" style="width: 30%;">
+                        <div class="form-bill-product_nameproduct">
+                            <a href="#" class="decoration cl-black form-bill-product_nameproduct-link">Capuchino</a>
+                        </div>
+                        <div class="form-bill-product_money">55.000₫</div>
+                    </div>
+                    <div class="form-bill-product_active" style="width: 25%;">
+                        <div id="buy_amount" class="form-order_bill">
+                            <button onclick="handle_minus()" class="buy_btn form-order_minus-bill">
+                                <i class="form-order_changenumber-icon cl-white fa-solid fa-minus"></i>
+                            </button>
+                            <input type="text" name="amount" id="amount" value="1">
+                            <button onclick="handle_plus()" class="buy_btn form-order_plus-bill">
+                                <i class="form-order_changenumber-icon cl-white fa-solid fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-bill-product_price a-text" style="width: 12%;">55.000₫</div>
+                    <div class="form-bill-product_delete" style="width: 18%;">
+                        <a href="" title="Xóa" class="decoration form-bill-product_linkicon">
+                            <i class="form-bill-product_icondelete cl-black fa-solid fa-xmark"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <ul class="style box-order-address">
+                    <h3 class="header_address">Tùy chọn địa điểm</h3>
+                    <li class="order_item">
+                        <input id="order_shop" type="radio" name="choose_order">
+                        <label class="label_address" for="order_shop">Order tại quán</label>
+                    </li>
+                    <li class="order_item">
+                        <input id="order_address" type="radio" name="choose_order">
+                        <label class="label_address" for="order_address">Giao hàng tới địa điểm</label>
+                    </li>
+                </ul>
+
+                <div id="form_fillout" class="form-login form-choose-address">
+                    <input id="Number_Phone" type="text" placeholder="Number Phone">
+                    <input id="Address" type="text" placeholder="Address">
+                </div>
+                
+                <div class="form-bill-total">
+                    <ul class="row style form-bill-total_box">
+                        <li class="col l-6 form-bill-total_title--name">Tổng tiền</li>
+                        <li class="col l-6 form-bill-total_title--money">220.000₫</li>
+                    </ul>
+                    <ul class="row style form-bill-total_box">
+                        <li class="col l-6">
+                            <a href="/" class="btn decoration cl-white form-bill-total_link">
+                                <i class="form-bill-total_iconlink fa-solid fa-share"></i>
+                                Tiếp tục mua hàng
+                            </a>
+                        </li>
+                        <li class="col l-6">
+                            <a href="{% url 'Home:Cart-Product' %}" class="btn decoration cl-white form-bill-total_link">
+                                <i class="fa-solid fa-check"></i>
+                                Tiến hành thanh toán
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock  %}

@@ -3,35 +3,33 @@ from . import models
 
 
 def index(request):
-    query = "Select * from product where IdCategory = 1"
-    datas = models.connect_mysql_get_data(query)
-    result = []
-    for data in datas:
-        result.append({
-            'IDProduct': data[0],
-            'NameProduct': data[1],
-            'url_image': data[5],
-        })
+    result = models.listcategory()
+    result_product = models.get_product_by_category_id(1)
+    product_order = models.get_different_product(1)
 
-    query_order = "Select * from product where IdCategory != 1"
-    datas = models.connect_mysql_get_data(query_order)
-    result_order = []
-    for data in datas:
-        result_order.append({
-            'IDProduct': data[0],
-            'NameProduct': data[1],
-            'Price': data[2],
-        })
-
-    context = {'products': result, 'product_order': result_order}
-
+    context = {'Categorys': result, 'Products': result_product, 'Product_Order': product_order}
     return render(request, 'pages/home.html', context)
 
 def Introduce(request):
     return render(request, 'pages/Introduce.html')
 
-def Product(request):
-    return render(request, 'pages/Product.html')
+def Product(request, id):
+    result = models.get_product_by_category_id(id)
+    context = {"Products": result}
+    return render(request, 'pages/Product.html', context)
+
+def Detail_Product(request, id):
+
+    if(request.method == 'POST'):
+        print(models.get_product_by_id(id).id, models.get_product_by_id(id).Name_Product)
+        return redirect('Home:Cart-Product')
+    result = models.get_product_by_id(id)
+    result_product_different = models.get_different_product(id)
+    context = {'Product': result, 'Products_different': result_product_different}
+    return render(request, 'pages/Detail-Product.html', context)
+
+def Cart_Product(request):
+    return render(request, 'pages/Cart-Product.html')
 
 def News(request):
     return render(request, 'pages/News.html')
@@ -47,13 +45,12 @@ def Login(request):
     if request.method == "POST":
         Email = request.POST['email']
         PassWord = request.POST['password']
-        query = 'SELECT * FROM user WHERE Classify = 1'
-        result_mysql = models.connect_mysql_get_data(query)
-        for data in result_mysql:
-            if data[2] == Email and data[3] == PassWord:
-                request.session['id'] = data[0]
-                request.session['classify'] = data[5]
-                return redirect('Admin:Admin')       
+        checkLogin = models.Login(Email, PassWord)
+
+        if checkLogin != 0:
+            request.session['id'] = checkLogin.id
+            request.session['classify'] = checkLogin.Classify
+        return redirect('Admin:Admin')     
     return render(request, 'pages/Login.html')
 
 def Register(request):
@@ -64,13 +61,12 @@ def Register(request):
         Email = request.POST['email']
         numberphone = request.POST['numberphone']
         password = request.POST['password']
-        print(LastName,FirstName,Email,numberphone,password)
-
-        query = "insert into user(FisrtName, Email, Pass_word, Phone_number, Classify, LastName) values('"+ FirstName +"', '"+ Email +"', '"+ password +"', '"+ numberphone +"', 1, '"+ LastName +"')"
-
-        models.connect_mysql(query)
+        Date = request.POST['datetime']
+        
+        models.Register(FirstName, Email, password, numberphone, 1, LastName, Date)
 
         return redirect("Home:Login")
 
     return render(request, 'pages/Register.html')
+
 # Create your views here.

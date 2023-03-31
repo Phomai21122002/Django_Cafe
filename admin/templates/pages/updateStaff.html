@@ -23,7 +23,7 @@
                                     <label class="col-lg-4 col-form-label" for="firstname">First Name<span class="text-danger"></span>
                                     </label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control" id="firstname" name="firstname" value="{{ staff.FisrtName }}">
+                                        <input type="text" class="form-control" id="firstname" name="firstname" value="{{ staff.Fisrt_Name }}">
                                     </div>
                                 </div>
 
@@ -31,7 +31,15 @@
                                     <label class="col-lg-4 col-form-label" for="lastname">Last Name<span class="text-danger"></span>
                                     </label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control" id="lastname" name="lastname" value="{{ staff.LastName }}">
+                                        <input type="text" class="form-control" id="lastname" name="lastname" value="{{ staff.Last_Name }}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="date">Birthday<span class="text-danger"></span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        <input type="date" class="form-control" id="date" name="date" value="{{ staff.Date }}">
                                     </div>
                                 </div>
 
@@ -46,7 +54,7 @@
                                     <label class="col-lg-4 col-form-label" for="numberphone">Phonenumber<span class="text-danger"></span>
                                     </label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control" id="numberphone" name="numberphone" value="{{ staff.PhoneNumber }}">
+                                        <input type="text" class="form-control" id="numberphone" name="numberphone" value="{{ staff.Phone_Number }}">
                                     </div>
                                 </div>
 
@@ -55,7 +63,7 @@
                                     </label>
                                     <div class="col-lg-6">
                                         <select class="form-control" id="val-skill" name="val-skill">
-                                            <option value="">Staff</option>
+                                            <option value="1">Staff</option>
                                         </select>
                                     </div>
                                 </div>
@@ -64,7 +72,7 @@
                                     <label class="col-lg-4 col-form-label" for="password">Password<span class="text-danger"></span>
                                     </label>
                                     <div class="col-lg-6">
-                                        <input type="password" class="form-control" id="password" name="password" value="{{ staff.PassWord }}">
+                                        <input type="password" class="form-control" id="password" name="password" value="{{ staff.Pass_Word }}">
                                     </div>
                                 </div>
 

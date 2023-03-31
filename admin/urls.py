@@ -3,7 +3,7 @@ from . import admincontroller
 
 app_name = 'Admin'
 urlpatterns = [
-    path("", admincontroller.index, name='Admin'),
+    path("", admincontroller.listProduct, name='Admin'),
     path("addproduct/", admincontroller.addProduct , name='addproduct'),
     path("addcategory/", admincontroller.addCategory , name='addcategory'),
     path("listproduct/", admincontroller.listProduct , name='listproduct'),
