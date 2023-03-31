@@ -91,38 +91,6 @@ def updateproduct(id, Name_Product, Price, Description, Category_id):
 def updatestaff(id, First_Name, Email, Pass_Word, Number_Phone, Last_Name, Date):
     user.objects.filter(id = id).update(Fisrt_Name = First_Name, Email = Email, Pass_Word = Pass_Word, Phone_Number = Number_Phone, Last_Name = Last_Name, Date = Date)
 
-def connect_mysql(query):
-    mydb = mysql.connector.connect(
-        host = 'localhost',
-        username = 'root',
-        password = '',
-        database = 'quanlycafe',
-    )
-    mycursor = mydb.cursor()
-    mycursor.execute(query)
-    mydb.commit()
+def deleteProduct(idProduct):
+    product.objects.filter(id=idProduct).delete()
 
-def connect_mysql_get_data(query):
-    mydb = mysql.connector.connect(
-        host = 'localhost',
-        username = 'root',
-        password = '',
-        database = 'quanlycafe',
-    )
-    mycursor = mydb.cursor()
-    mycursor.execute(query)
-    myresult = mycursor.fetchall()
-    return myresult
-
-def listCategory():
-    query = "Select * from category"
-    result_list_category = connect_mysql_get_data(query)
-    result = []
-    for data in result_list_category:
-        result.append({
-            'IdCategory': data[0],
-            'NameCategory': data[1],
-        })
-    return result
-
-# Create your models here.

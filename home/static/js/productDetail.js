@@ -1,3 +1,5 @@
+const addBtn = document.getElementById('add_product_btn');
+
 const setCookie = (name, json) => {
     let cookieValue = '';
     let expire = '';
@@ -47,6 +49,27 @@ const addProductIntoCookie = ({ product }) => {
         return { result: true, product: product };
     }
 };
+
+addBtn.addEventListener('click', () => {
+    const count = document.getElementById('amount').value;
+    const path = window.location.pathname;
+    const id = path.split('/')[2];
+    const nameProduct = document.querySelector('.form-navbar-contact_title').textContent.trim();
+    const price = Number(document.getElementById('price_product').textContent);
+
+    const product = {
+        idProduct: id,
+        count: count,
+        nameProduct: nameProduct,
+        price: price,
+    };
+
+    const resultHandle = addProductIntoCookie({ product: product });
+
+    if (resultHandle.result == true) {
+        addProductViewCart({ product: resultHandle.product });
+    }
+});
 
 const addProductViewCart = ({ product }) => {
     const formshipment = document.querySelector('.header-top-shipment_list');
@@ -100,7 +123,9 @@ if (document.cookie.split('cart=').length < 2) {
     setCookie('cart', []);
 }
 
+// Lấy dữ liệu cart từ cookie và gán vào view
 var cart = JSON.parse(document.cookie.split('cart=')[1]);
+
 for (let i = 0; i < cart.length; i++) {
     const product = cart[i];
     addProductViewCart({ product });

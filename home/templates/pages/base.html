@@ -1,528 +1,371 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web_Cafe</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <link rel="stylesheet" href="{% static 'css/Grid.css' %}">
-    <link rel="stylesheet" href="{% static 'css/respontive.css' %}">
-    <link rel="stylesheet" href="{% static 'font/fontawesome-free-6.1.2-web/css/all.min.css' %}">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div class="app">
-        <div class="header">
-            <div class="header-top-backroundcolor">
-                <div class="grid wide"> 
-                    <div class="header-top cl-white">
-                        <div class="header-top_contact">
-                            <i class="header-top_icon fa-solid fa-phone-volume"></i>
-                            <div class="header-top_text">
-                                <span class="header-top_title">Hotline:</span>
-                                <a href="#" class="header-top_link decoration cl-white">1900 6750</a>
-                            </div>
-                        </div>
-    
-                        <ul class="header-top_list">
-                            <li class="header-top_item">
-                                <i class="header-top_icon fa-solid fa-magnifying-glass"></i>
-                                <span class="header-top_lable">Tìm kiếm</span>
-                            </li>
-                            <li class="header-top_item header-top_hoversub">
-                                <i class="header-top_icon fa-solid fa-user"></i>
-                                <a href="#" class="header-top_lable decoration cl-white">Tài khoản</a>
-                                <ul class="header-top_subform style">
-                                    <li class="header-top_subitem">
-                                        <a href="{% url 'Home:Login' %}" class="header-top_sublink decoration cl-base">Đăng nhập</a>
-                                    </li>
-                                    <li class="header-top_subitem">
-                                        <a href="{% url 'Home:Register' %}" class="header-top_sublink decoration cl-base">Đăng ký</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="header-top_item header-top_hoversub">
-                                <div class="header-top_formnumber">
-                                    <i class="header-top_icon  fa-solid fa-cart-shopping"></i>
-                                    <div class="header-top_number">
-                                        1
-                                    </div>
+    <head>
+        {% load static %}
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Web_Cafe</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+        <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/Grid.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/respontive.css' %}" />
+        <link rel="stylesheet" href="{% static 'font/fontawesome-free-6.1.2-web/css/all.min.css' %}" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="app">
+            <div class="header">
+                <div class="header-top-backroundcolor">
+                    <div class="grid wide">
+                        <div class="header-top cl-white">
+                            <div class="header-top_contact">
+                                <i class="header-top_icon fa-solid fa-phone-volume"></i>
+                                <div class="header-top_text">
+                                    <span class="header-top_title">Hotline:</span>
+                                    <a href="#" class="header-top_link decoration cl-white">1900 6750</a>
                                 </div>
-                                <a href="./CartProduce.html" class="header-top_lable decoration cl-white">Giỏ hàng</a>
-                                <div class="header-top_formshipment cl-black">
-                                    <div class="header-top-shipment">
-                                        <h3 class="header-top-shipment_header">
-                                            Giỏ hàng
-                                        </h3>
-                                        <ul class="header-top-shipment_list style">
-                                            <li class="header-top-shipment_item">
-                                                <div class="header-top-shipment_box">
-                                                    <div class="header-top-shipment_box-flex">
-                                                        <div class="header-top-shipment_name">
-                                                            Cafe Capuchino
-                                                        </div>
-                                                        <div class="header-top-shipment_size">
-                                                            (Size L)
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <div class="header-top-shipment_price">
-                                                        ₫48.000
-                                                    </div>
-                                                </div>
-                                                <ul class="header-top-shipment_sublist style">
-                                                    <li class="header-top-shipment_subitem">
-                                                        1 x 50% đường
-                                                    </li>
-                                                    <li class="header-top-shipment_subitem">
-                                                        1 x 50% đá
-                                                    </li>
-                                                    <li class="header-top-shipment_subitem">
-                                                        1 x Thêm sữa
-                                                    </li>
-                                                    <li class="header-top-shipment_subitem">
-                                                        1 x Thêm thạch
-                                                    </li>
-                                                </ul>
-                                                <div class="header-top-shipment_boxbottom">
-                                                    <button class="header-top-shipment_btndelete btn-delete">
-                                                        Xóa
-                                                    </button>
-                                                    <div class="form-order_boxnumber">
-                                                        <div class="form-order_minus pd">
-                                                            <i class="form-order_changenumber-icon fa-solid fa-minus"></i>
-                                                        </div>
-                                                        <span class="form-order_number">1</span>
-                                                        <div class="form-order_plus pd">
-                                                            <i class="form-order_changenumber-icon fa-solid fa-plus"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="header-top-shipment_item">
-                                                <div class="header-top-shipment_box">
-                                                    <div class="header-top-shipment_box-flex">
-                                                        <div class="header-top-shipment_name">
-                                                            Cafe Capuchino
-                                                        </div>
-                                                        <div class="header-top-shipment_size">
-                                                            (Size L)
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <div class="header-top-shipment_price">
-                                                        ₫48.000
-                                                    </div>
-                                                </div>
-                                                <ul class="header-top-shipment_sublist style">
-                                                    <li class="header-top-shipment_subitem">
-                                                        1 x 50% đường
-                                                    </li>
-                                                    <li class="header-top-shipment_subitem">
-                                                        1 x 50% đá
-                                                    </li>
-                                                    <li class="header-top-shipment_subitem">
-                                                        1 x Thêm sữa
-                                                    </li>
-                                                    <li class="header-top-shipment_subitem">
-                                                        1 x Thêm thạch
-                                                    </li>
-                                                </ul>
-                                                <div class="header-top-shipment_boxbottom">
-                                                    <button class="header-top-shipment_btndelete btn-delete">
-                                                        Xóa
-                                                    </button>
-                                                    <div class="form-order_boxnumber">
-                                                        <div class="form-order_minus pd">
-                                                            <i class="form-order_changenumber-icon fa-solid fa-minus"></i>
-                                                        </div>
-                                                        <span class="form-order_number">1</span>
-                                                        <div class="form-order_plus pd">
-                                                            <i class="form-order_changenumber-icon fa-solid fa-plus"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="header-top-shipment_item">
-                                                <div class="header-top-shipment_box">
-                                                    <div class="header-top-shipment_box-flex">
-                                                        <div class="header-top-shipment_name">
-                                                            Cafe Capuchino
-                                                        </div>
-                                                        <div class="header-top-shipment_size">
-                                                            (Size L)
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <div class="header-top-shipment_price">
-                                                        ₫48.000
-                                                    </div>
-                                                </div>
-                                                <ul class="header-top-shipment_sublist style">
-                                                    <li class="header-top-shipment_subitem">
-                                                        1 x 50% đường
-                                                    </li>
-                                                    <li class="header-top-shipment_subitem">
-                                                        1 x 50% đá
-                                                    </li>
-                                                    <li class="header-top-shipment_subitem">
-                                                        1 x Thêm sữa
-                                                    </li>
-                                                    <li class="header-top-shipment_subitem">
-                                                        1 x Thêm thạch
-                                                    </li>
-                                                </ul>
-                                                <div class="header-top-shipment_boxbottom">
-                                                    <button class="header-top-shipment_btndelete btn-delete">
-                                                        Xóa
-                                                    </button>
-                                                    <div class="form-order_boxnumber">
-                                                        <div class="form-order_minus pd">
-                                                            <i class="form-order_changenumber-icon fa-solid fa-minus"></i>
-                                                        </div>
-                                                        <span class="form-order_number">1</span>
-                                                        <div class="form-order_plus pd">
-                                                            <i class="form-order_changenumber-icon fa-solid fa-plus"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <div class="header-top-shipment_bottom">
-                                            <div class="header-top-shipment_formtotal">
-                                                <div class="header-top-shipment_box">
-                                                    <div class="header-top-shipment_totalproduct">
-                                                        Số sản phẩm
-                                                    </div>
-                                                    <div class="header-top-shipment_numberproduct">
-                                                        2 món
-                                                    </div>
-                                                </div>
-                                                <div class="header-top-shipment_box">
-                                                    <div class="header-top-shipment_discount">
-                                                        Giảm giá
-                                                    </div>
-                                                    <div class="header-top-shipment_numberproduct">
-                                                        ₫0
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="header-top-shipment_box">
-                                                <div class="header-top-shipment_total">
-                                                    <div class="header-top-shipment_title">
-                                                        Tổng giới
-                                                    </div>
-                                                    <div class="header-top-shipment_tax">
-                                                        Đã bao gồm thuế (nếu có)
-                                                    </div>
-                                                </div>
-                                                <div class="header-top-shipment_totalprice">
-                                                    ₫81,000
-                                                </div>
+                            </div>
 
-                                            </div>
-                                            <div class="header-top-shipment_box">
-                                                <a href="#" class="decoration header-top-shipment_btn">
-                                                    Tiến hành đặt hàng
-                                                </a>
+                            <ul class="header-top_list">
+                                <li class="header-top_item">
+                                    <i class="header-top_icon fa-solid fa-magnifying-glass"></i>
+                                    <span class="header-top_lable">Tìm kiếm</span>
+                                </li>
+                                <li class="header-top_item header-top_hoversub">
+                                    <i class="header-top_icon fa-solid fa-user"></i>
+                                    <a href="#" class="header-top_lable decoration cl-white">Tài khoản</a>
+                                    <ul class="header-top_subform style">
+                                        <li class="header-top_subitem">
+                                            <a
+                                                href="{% url 'Home:Login' %}"
+                                                class="header-top_sublink decoration cl-base"
+                                                >Đăng nhập</a
+                                            >
+                                        </li>
+                                        <li class="header-top_subitem">
+                                            <a
+                                                href="{% url 'Home:Register' %}"
+                                                class="header-top_sublink decoration cl-base"
+                                                >Đăng ký</a
+                                            >
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="header-top_item header-top_hoversub">
+                                    <div class="header-top_formnumber">
+                                        <i class="header-top_icon fa-solid fa-cart-shopping"></i>
+                                        <div class="header-top_number">1</div>
+                                    </div>
+                                    <a href="./CartProduce.html" class="header-top_lable decoration cl-white"
+                                        >Giỏ hàng</a
+                                    >
+                                    <div id="formshipment" class="header-top_formshipment cl-black">
+                                        <div class="header-top-shipment">
+                                            <h3 class="header-top-shipment_header">Giỏ hàng</h3>
+                                            <ul class="header-top-shipment_list style"></ul>
+                                            <div class="header-top-shipment_bottom">
+                                                <div class="header-top-shipment_formtotal">
+                                                    <div class="header-top-shipment_box">
+                                                        <div class="header-top-shipment_totalproduct">Số sản phẩm</div>
+                                                        <div class="header-top-shipment_numberproduct">2 món</div>
+                                                    </div>
+                                                    <div class="header-top-shipment_box">
+                                                        <div class="header-top-shipment_discount">Giảm giá</div>
+                                                        <div class="header-top-shipment_numberproduct">₫0</div>
+                                                    </div>
+                                                </div>
+                                                <div class="header-top-shipment_box">
+                                                    <div class="header-top-shipment_total">
+                                                        <div class="header-top-shipment_title">Tổng giới</div>
+                                                        <div class="header-top-shipment_tax">
+                                                            Đã bao gồm thuế (nếu có)
+                                                        </div>
+                                                    </div>
+                                                    <div class="header-top-shipment_totalprice">₫81,000</div>
+                                                </div>
+                                                <div class="header-top-shipment_box">
+                                                    <a href="#" class="decoration header-top-shipment_btn">
+                                                        Tiến hành đặt hàng
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid wide">
+                    <div class="header-bottom">
+                        <ul class="header-bottom_list style">
+                            <li class="header-bottom_item">
+                                <a href="{% url 'Home:Home' %}" class="header-bottom_link decoration"> Trang chủ </a>
+                            </li>
+                            <li class="header-bottom_item">
+                                <a href="{% url 'Home:Introduce' %}" class="header-bottom_link decoration">
+                                    Giới thiệu
+                                </a>
+                            </li>
+                            <li class="header-bottom_item header-bottom_hoversub">
+                                <a href="{% url 'Home:Product' 1 %}" class="header-bottom_link decoration">
+                                    Sản phẩm
+                                </a>
+                                <ul class="header-bottom_subform style">
+                                    <li class="header-bottom_subitem">
+                                        <a href="#" class="header-bottom_sublink decoration cl-base">Cafe</a>
+                                    </li>
+                                    <li class="header-bottom_subitem">
+                                        <a href="#" class="header-bottom_sublink decoration cl-base">Bánh ngọt</a>
+                                    </li>
+                                    <li class="header-bottom_subitem">
+                                        <a href="#" class="header-bottom_sublink decoration cl-base">Smoothies</a>
+                                    </li>
+                                    <li class="header-bottom_subitem">
+                                        <a href="#" class="header-bottom_sublink decoration cl-base">Trà hoa quả</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <div class="header-bottom_picture">
+                            <a href="/">
+                                <img src="{% static 'img/logo.png' %}" alt="" class="header-bottom_logo" />
+                            </a>
+                        </div>
+
+                        <ul class="header-bottom_list style">
+                            <li class="header-bottom_item">
+                                <a href="{% url 'Home:News' %}" class="header-bottom_link decoration"> Tin tức </a>
+                            </li>
+                            <li class="header-bottom_item">
+                                <a href="{% url 'Home:Menu' %}" class="header-bottom_link decoration"> Thực đơn </a>
+                            </li>
+                            <li class="header-bottom_item">
+                                <a href="{% url 'Home:Contact' %}" class="header-bottom_link decoration"> Liên hệ </a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="grid wide"> 
-                <div class="header-bottom">
-                    <ul class="header-bottom_list style">
-                        <li class="header-bottom_item">
-                            <a href="{% url 'Home:Home' %}" class="header-bottom_link decoration">
-                                Trang chủ
-                            </a>
-                        </li>
-                        <li class="header-bottom_item">
-                            <a href="{% url 'Home:Introduce' %}" class="header-bottom_link decoration">
-                                Giới thiệu
-                            </a>
-                        </li>
-                        <li class="header-bottom_item  header-bottom_hoversub">
-                            <a href="{% url 'Home:Product' 1 %}" class="header-bottom_link decoration">
-                                Sản phẩm
-                            </a>
-                            <ul class="header-bottom_subform style">
-                                <li class="header-bottom_subitem">
-                                    <a href="#" class="header-bottom_sublink decoration cl-base">Cafe</a>
-                                </li>
-                                <li class="header-bottom_subitem">
-                                    <a href="#" class="header-bottom_sublink decoration cl-base">Bánh ngọt</a>
-                                </li>
-                                <li class="header-bottom_subitem">
-                                    <a href="#" class="header-bottom_sublink decoration cl-base">Smoothies</a>
-                                </li>
-                                <li class="header-bottom_subitem">
-                                    <a href="#" class="header-bottom_sublink decoration cl-base">Trà hoa quả</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-    
-                    <div class="header-bottom_picture">
-                        <a href="/">
-                            <img src="{% static 'img/logo.png' %}" alt="" class="header-bottom_logo">
-                        </a>
+            <div class="header-mobile">
+                <div class="header-mobile_navbar">
+                    <i class="header-modbile_icon fa-solid fa-bars"></i>
+                    <div class="header-modbile_logo" style="background-image: url(/static/img/logo.png)"></div>
+                    <a href="#" class="header-mobile_basket">
+                        <i class="header-modbile_icon fa-solid fa-cart-shopping"></i>
+                    </a>
+                </div>
+                <div class="header-mobile_form">
+                    <div class="header-mobile_formsearch">
+                        <input type="text" placeholder="Tim sản phẩm bạn mong muốn..." class="header-mobile_search" />
                     </div>
-    
-                    <ul class="header-bottom_list style">
-                        <li class="header-bottom_item">
-                            <a href="{% url 'Home:News' %}" class="header-bottom_link decoration">
-                                Tin tức
-                            </a>
-                        </li>
-                        <li class="header-bottom_item">
-                            <a href="{% url 'Home:Menu' %}" class="header-bottom_link decoration">
-                                Thực đơn
-                            </a>
-                        </li>
-                        <li class="header-bottom_item">
-                            <a href="{% url 'Home:Contact' %}" class="header-bottom_link decoration">
-                                Liên hệ
-                            </a>
-                        </li>
-                    </ul>
+                    <a href="#" class="header-mobile_link decoration">
+                        <i class="header-mobile_icon cl-base fa-solid fa-magnifying-glass"></i>
+                    </a>
                 </div>
             </div>
-            
-        </div>
-        <div class="header-mobile">
-            <div class="header-mobile_navbar">
-                <i class="header-modbile_icon fa-solid fa-bars"></i>
-                <div class="header-modbile_logo" style="background-image: url({% static 'img/logo.png' %});"></div>
-                <a href="#" class="header-mobile_basket">
-                    <i class="header-modbile_icon fa-solid fa-cart-shopping"></i>
-                </a>
-            </div>
-            <div class="header-mobile_form">
-                <div class="header-mobile_formsearch">
-                    <input type="text" placeholder="Tim sản phẩm bạn mong muốn..." class="header-mobile_search">
-                </div>
-                <a href="#" class="header-mobile_link decoration">
-                    <i class="header-mobile_icon cl-base fa-solid fa-magnifying-glass"></i>
-                </a>
-            </div>
-        </div>
-        
-        {% block body %}{% endblock  %}
 
-        <div style="clear: both;" class="footer">
-            <div class="bg_footer" style="background-image: url({% static 'img/bg_footer.webp' %});">
-                <footer>
-                    <div class="grid wide">
-                        <div class="footer-box">
-                            <ul class="row footer-box_list style">
-                                <li class="col l-4 m-12 footer-box_item style">
-                                    <a href="#" class="footer-box_link">
-                                        <img class="footer-logo" src="{% static 'img/87f2699ec5f8deaf13aed5fbe0bebd0ea1ca1a87.webp' %}" alt="">
-                                    </a>
-                                    <p class="footer-box_desc">
-                                        Chúng tôi mong muốn cafe Bermada sẽ trở thành “Tiệm cafe", nơi mọi người xích lại gần nhau và tìm thấy niềm vui, sự sẻ chia thân tình bên những tách cà phê đượm hương, chất lượng.
-                                    </p>
-                                    <ul class="footer-subbox_list style">
-                                        <li class="footer-subbox_item">
-                                            <a href="#" class="decoration">
-                                                <i class="footer-subbox_icon fa-brands fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="footer-subbox_item">
-                                            <a href="#" class="decoration">
-                                                <i class="footer-subbox_icon fa-brands fa-facebook-f"></i>
-                                            </a>
-                                        </li>
-                                        <li class="footer-subbox_item">
-                                            <a href="#" class="decoration">
-                                                <i class="footer-subbox_icon fa-brands fa-pinterest"></i>
-                                            </a>
-                                        </li>
-                                        <li class="footer-subbox_item">
-                                            <a href="#" class="decoration">
-                                                <i class="footer-subbox_icon fa-brands fa-google"></i>
-                                            </a>
-                                        </li>
-                                        <li class="footer-subbox_item">
-                                            <a href="#" class="decoration">
-                                                <i class="footer-subbox_icon fa-brands fa-youtube"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="col l-4 m-12 footer-box_item style">
-                                    <h3 class="footer-box_header">
-                                        LIÊN HỆ VỚI CHÚNG TÔI
-                                    </h3>
-                                    <ul class="footer-subbox_contacts style">
-                                        <li class="footer-subbox_contact">
-                                            <i class="footer-subbox_icon-contact fa-sharp fa-solid fa-location-dot"></i>
-                                            <p class="footer-box_desc ml-2">
-                                                Đừng bỏ lỡ những sản phẩm và chương trình khuyến mãi hấp dẫn
-                                            </p>
-                                        </li>
-                                        <li class="footer-subbox_contact">
-                                            <i class="footer-subbox_icon-contact fa-solid fa-phone"></i>
-                                            <div class="footer-subbox_formcontact">
-                                                <p class="footer-box_phone ml-2">
-                                                    Hotline đặt bàn: 1900 6750
-                                                </p>
-                                                <p class="footer-box_phone ml-2">
-                                                    Hotline giao hàng: 1900 6750
-                                                </p>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="col l-4 m-12 footer-box_item style">
-                                    <h3 class="footer-box_header">
-                                        ĐĂNG KÝ NHẬN KHUYẾN MÃI
-                                    </h3>
-                                    <p class="footer-box_desc">
-                                        Đừng bỏ lỡ những sản phẩm và chương trình khuyến mãi hấp dẫn
-                                    </p>
-                                    <div class="footer-box_form style">
-                                        <input class="footer-box_input" type="text" placeholder="Email của bạn">
-                                        <a href="#" class="decoration cl-white footer-box_btn">
-                                            Đăng ký
+            {% block body %}{% endblock %}
+
+            <div style="clear: both" class="footer">
+                <div class="bg_footer" style="background-image: url(/static/img/bg_footer.webp)">
+                    <footer>
+                        <div class="grid wide">
+                            <div class="footer-box">
+                                <ul class="row footer-box_list style">
+                                    <li class="col l-4 m-12 footer-box_item style">
+                                        <a href="#" class="footer-box_link">
+                                            <img
+                                                class="footer-logo"
+                                                src="{% static 'img/87f2699ec5f8deaf13aed5fbe0bebd0ea1ca1a87.webp' %}"
+                                                alt=""
+                                            />
                                         </a>
-                                    </div>
-                                </li>
-                            </ul>
+                                        <p class="footer-box_desc">
+                                            Chúng tôi mong muốn cafe Bermada sẽ trở thành “Tiệm cafe", nơi mọi người
+                                            xích lại gần nhau và tìm thấy niềm vui, sự sẻ chia thân tình bên những tách
+                                            cà phê đượm hương, chất lượng.
+                                        </p>
+                                        <ul class="footer-subbox_list style">
+                                            <li class="footer-subbox_item">
+                                                <a href="#" class="decoration">
+                                                    <i class="footer-subbox_icon fa-brands fa-twitter"></i>
+                                                </a>
+                                            </li>
+                                            <li class="footer-subbox_item">
+                                                <a href="#" class="decoration">
+                                                    <i class="footer-subbox_icon fa-brands fa-facebook-f"></i>
+                                                </a>
+                                            </li>
+                                            <li class="footer-subbox_item">
+                                                <a href="#" class="decoration">
+                                                    <i class="footer-subbox_icon fa-brands fa-pinterest"></i>
+                                                </a>
+                                            </li>
+                                            <li class="footer-subbox_item">
+                                                <a href="#" class="decoration">
+                                                    <i class="footer-subbox_icon fa-brands fa-google"></i>
+                                                </a>
+                                            </li>
+                                            <li class="footer-subbox_item">
+                                                <a href="#" class="decoration">
+                                                    <i class="footer-subbox_icon fa-brands fa-youtube"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="col l-4 m-12 footer-box_item style">
+                                        <h3 class="footer-box_header">LIÊN HỆ VỚI CHÚNG TÔI</h3>
+                                        <ul class="footer-subbox_contacts style">
+                                            <li class="footer-subbox_contact">
+                                                <i
+                                                    class="footer-subbox_icon-contact fa-sharp fa-solid fa-location-dot"
+                                                ></i>
+                                                <p class="footer-box_desc ml-2">
+                                                    Đừng bỏ lỡ những sản phẩm và chương trình khuyến mãi hấp dẫn
+                                                </p>
+                                            </li>
+                                            <li class="footer-subbox_contact">
+                                                <i class="footer-subbox_icon-contact fa-solid fa-phone"></i>
+                                                <div class="footer-subbox_formcontact">
+                                                    <p class="footer-box_phone ml-2">Hotline đặt bàn: 1900 6750</p>
+                                                    <p class="footer-box_phone ml-2">Hotline giao hàng: 1900 6750</p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="col l-4 m-12 footer-box_item style">
+                                        <h3 class="footer-box_header">ĐĂNG KÝ NHẬN KHUYẾN MÃI</h3>
+                                        <p class="footer-box_desc">
+                                            Đừng bỏ lỡ những sản phẩm và chương trình khuyến mãi hấp dẫn
+                                        </p>
+                                        <div class="footer-box_form style">
+                                            <input class="footer-box_input" type="text" placeholder="Email của bạn" />
+                                            <a href="#" class="decoration cl-white footer-box_btn"> Đăng ký </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+        <div class="form js-form">
+            <div class="form-order js-form-order">
+                <div class="form-order_frame">
+                    <h3 class="form-order_header">Cafe Cupuchino</h3>
+                    <div class="form-order_covericon js-form-close">
+                        <i class="form-order_icon fa-solid fa-xmark"></i>
+                    </div>
+                </div>
+                <form action="" class="form-order-product">
+                    <div class="form-order-product_box">
+                        <div class="form-order-product_title">Đơn vị tính</div>
+                        <ul class="form-order-product_list style">
+                            <li class="form-order-product_item">
+                                <input id="size_L" type="radio" name="radio" class="form-order-product_choose" />
+                                <label for="size_L" class="form-order-product_type">Size L - 38.000₫</label>
+                            </li>
+                            <li class="form-order-product_item">
+                                <input id="size_M" type="radio" name="radio" class="form-order-product_choose" />
+                                <label for="size_M" class="form-order-product_type">Size L - 38.000₫</label>
+                            </li>
+                            <li class="form-order-product_item">
+                                <input id="size_C" type="radio" name="radio" class="form-order-product_choose" />
+                                <label for="size_C" class="form-order-product_type">Size L - 38.000₫</label>
+                            </li>
+                            <li class="form-order-product_item">
+                                <input id="size_D" type="radio" name="radio" class="form-order-product_choose" />
+                                <label for="size_D" class="form-order-product_type">Size L - 38.000₫</label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="form-order-product_box">
+                        <div class="form-order-product_title">Tỷ lệ đá</div>
+                        <ul class="form-order-product_list style">
+                            <li class="form-order-product_item">
+                                <input id="ice_full" type="radio" name="radio" class="form-order-product_choose" />
+                                <label for="ice_full" class="form-order-product_type">100% Đá - ₫0</label>
+                            </li>
+                            <li class="form-order-product_item">
+                                <input id="ice_medium" type="radio" name="radio" class="form-order-product_choose" />
+                                <label for="ice_medium" class="form-order-product_type">70% Đá - ₫0</label>
+                            </li>
+                            <li class="form-order-product_item">
+                                <input id="ice_half" type="radio" name="radio" class="form-order-product_choose" />
+                                <label for="ice_half" class="form-order-product_type">50% Đá - ₫0</label>
+                            </li>
+                            <li class="form-order-product_item">
+                                <input id="ice_emty" type="radio" name="radio" class="form-order-product_choose" />
+                                <label for="ice_emty" class="form-order-product_type">0% Đá - ₫0</label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="form-order-product_box">
+                        <div class="form-order-product_title">Tỷ lệ đường</div>
+                        <ul class="form-order-product_list style">
+                            <li class="form-order-product_item">
+                                <input id="suger_full" type="radio" name="radio" class="form-order-product_choose" />
+                                <label for="suger_full" class="form-order-product_type">100% Đường - ₫0</label>
+                            </li>
+                            <li class="form-order-product_item">
+                                <input id="suger_medium" type="radio" name="radio" class="form-order-product_choose" />
+                                <label for="suger_medium" class="form-order-product_type">70% Đường - ₫0</label>
+                            </li>
+                            <li class="form-order-product_item">
+                                <input id="suger_half" type="radio" name="radio" class="form-order-product_choose" />
+                                <label for="suger_half" class="form-order-product_type">50% Đường - ₫0</label>
+                            </li>
+                            <li class="form-order-product_item">
+                                <input id="suger_emty" type="radio" name="radio" class="form-order-product_choose" />
+                                <label for="suger_emty" class="form-order-product_type">0% Đường - ₫0</label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="form-order-product_box">
+                        <div class="form-order-product_title">Tùy chọn thêm</div>
+                        <div class="form-order-product_other">Chọn tối đa 5</div>
+                        <ul class="form-order-product_list style">
+                            <li class="form-order-product_item form-order-product_itemfull">
+                                <input id="cake" type="checkbox" class="form-order-product_choose" />
+                                <label for="cake" class="form-order-product_type">Bánh ngọt - ₫10.000</label>
+                                <span class="form-order-product_count">x1</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="form-order-product_box">
+                        <textarea
+                            name="message"
+                            id="message"
+                            cols="30"
+                            rows="10"
+                            placeholder="Thêm lời nhắn đến cửa hàng"
+                        ></textarea>
+                    </div>
+                </form>
+
+                <div class="form-order_frombuy">
+                    <div class="form-order_boxnumber">
+                        <div class="form-order_minus">
+                            <i class="form-order_changenumber-icon fa-solid fa-minus"></i>
+                        </div>
+                        <span class="form-order_number">1</span>
+                        <div class="form-order_plus">
+                            <i class="form-order_changenumber-icon fa-solid fa-plus"></i>
                         </div>
                     </div>
-                </footer>
-            </div>
-        </div>
-    </div>
-    <div class="form js-form">
-        <div class="form-order js-form-order">
-            <div class="form-order_frame">
-                <h3 class="form-order_header">
-                    Cafe Cupuchino
-                </h3>
-                <div class="form-order_covericon js-form-close">
-                    <i class="form-order_icon fa-solid fa-xmark"></i>
-                </div>
-            </div>
-            <form action="" class="form-order-product">
-                <div class="form-order-product_box">
-                    <div class="form-order-product_title">
-                        Đơn vị tính
+                    <div class="form-order_boxbuy">
+                        <a href="#" class="form-order_buy decoration cl-white">Chọn mua</a>
                     </div>
-                    <ul class="form-order-product_list style">
-                        <li class="form-order-product_item">
-                            <input id="size_L"  type="radio" name="radio" class="form-order-product_choose">
-                            <label for="size_L" class="form-order-product_type">Size L - 38.000₫</label>
-                        </li>
-                        <li class="form-order-product_item">
-                            <input id="size_M"  type="radio" name="radio" class="form-order-product_choose">
-                            <label for="size_M" class="form-order-product_type">Size L - 38.000₫</label>
-                        </li>
-                        <li class="form-order-product_item">
-                            <input id="size_C"  type="radio" name="radio" class="form-order-product_choose">
-                            <label for="size_C" class="form-order-product_type">Size L - 38.000₫</label>
-                        </li>
-                        <li class="form-order-product_item">
-                            <input id="size_D"  type="radio" name="radio" class="form-order-product_choose">
-                            <label for="size_D" class="form-order-product_type">Size L - 38.000₫</label>
-                        </li>
-                    </ul>
-                </div>
-                <div class="form-order-product_box">
-                    <div class="form-order-product_title">
-                        Tỷ lệ đá
-                    </div>
-                    <ul class="form-order-product_list style">
-                        <li class="form-order-product_item">
-                            <input id="ice_full"  type="radio" name="radio" class="form-order-product_choose">
-                            <label for="ice_full" class="form-order-product_type">100% Đá - ₫0</label>
-                        </li>
-                        <li class="form-order-product_item">
-                            <input id="ice_medium"  type="radio" name="radio" class="form-order-product_choose">
-                            <label for="ice_medium" class="form-order-product_type">70% Đá - ₫0</label>
-                        </li>
-                        <li class="form-order-product_item">
-                            <input id="ice_half"  type="radio" name="radio" class="form-order-product_choose">
-                            <label for="ice_half" class="form-order-product_type">50% Đá - ₫0</label>
-                        </li>
-                        <li class="form-order-product_item">
-                            <input id="ice_emty"  type="radio" name="radio" class="form-order-product_choose">
-                            <label for="ice_emty" class="form-order-product_type">0% Đá - ₫0</label>
-                        </li>
-                    </ul>
-                </div>
-                <div class="form-order-product_box">
-                    <div class="form-order-product_title">
-                        Tỷ lệ đường
-                    </div>
-                    <ul class="form-order-product_list style">
-                        <li class="form-order-product_item">
-                            <input id="suger_full"  type="radio" name="radio" class="form-order-product_choose">
-                            <label for="suger_full" class="form-order-product_type">100% Đường - ₫0</label>
-                        </li>
-                        <li class="form-order-product_item">
-                            <input id="suger_medium"  type="radio" name="radio" class="form-order-product_choose">
-                            <label for="suger_medium" class="form-order-product_type">70% Đường - ₫0</label>
-                        </li>
-                        <li class="form-order-product_item">
-                            <input id="suger_half"  type="radio" name="radio" class="form-order-product_choose">
-                            <label for="suger_half" class="form-order-product_type">50% Đường - ₫0</label>
-                        </li>
-                        <li class="form-order-product_item">
-                            <input id="suger_emty"  type="radio" name="radio" class="form-order-product_choose">
-                            <label for="suger_emty" class="form-order-product_type">0% Đường - ₫0</label>
-                        </li>
-                    </ul>
-                </div>
-                <div class="form-order-product_box">
-                    <div class="form-order-product_title">
-                        Tùy chọn thêm
-                    </div>
-                    <div class="form-order-product_other">
-                        Chọn tối đa  5
-                    </div>
-                    <ul class="form-order-product_list style">
-                        <li class="form-order-product_item form-order-product_itemfull">
-                            <input id="cake"  type="checkbox" class="form-order-product_choose">
-                            <label for="cake" class="form-order-product_type">Bánh ngọt - ₫10.000</label>
-                            <span class="form-order-product_count">x1</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="form-order-product_box">
-                    <textarea name="message" id="message" cols="30" rows="10" placeholder="Thêm lời nhắn đến cửa hàng"></textarea>
-                </div>
-                
-            </form>
-
-            <div class="form-order_frombuy">
-                <div class="form-order_boxnumber">
-                    <div class="form-order_minus">
-                        <i class="form-order_changenumber-icon fa-solid fa-minus"></i>
-                    </div>
-                    <span class="form-order_number">1</span>
-                    <div class="form-order_plus">
-                        <i class="form-order_changenumber-icon fa-solid fa-plus"></i>
-                    </div>
-                </div>
-                <div class="form-order_boxbuy">
-                    <a href="#" class="form-order_buy decoration cl-white">Chọn mua</a>
                 </div>
             </div>
         </div>
-    </div>
-
-    <script src="/static/js/index_js.js"></script>
-</body>
+    </body>
 </html>

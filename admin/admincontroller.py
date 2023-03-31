@@ -1,27 +1,11 @@
 
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from django.contrib.auth.decorators import login_required
-from home.models import connect_mysql_get_data
-from home.models import connect_mysql
-from home.models import addcategory
-from home.models import addproduct
-from home.models import listcategory
-from home.models import listproduct
-from home.models import liststaff
-from home.models import Register
-from home.models import updateproduct
-from home.models import updatestaff
-from home.models import get_product_by_id
-from home.models import get_staff_by_id
+
+from home.models import *
+
 import shutil
 import os
 
-
-def add_image_file(Image):
-    path = 'E:\Pictures'+ str('\\' + Image)
-    os.chmod('home/static/img/', 0o777)
-    shutil.copy(path, 'home/static/img/')
 
 def index(request):
     return render(request, 'pages/index.html')
@@ -32,10 +16,8 @@ def addProduct(request):
         Price = request.POST['price']
         Description = request.POST['description']
         Category_id = request.POST['category']
-        Image = request.POST['Image']
-        
-        add_image_file(Image)
-
+        Image = '/'
+    
         addproduct(NameProduct, Price, Description, Image, Category_id)
         return redirect('Admin:listproduct')
 
@@ -128,3 +110,8 @@ def updateStaff(request, id):
 
 def listStaffSales(request):
     return render(request, 'pages/listStaffSales.html')
+
+def delProduct (request,id):
+    deleteProduct(id)
+    return redirect('Admin:listproduct')
+    

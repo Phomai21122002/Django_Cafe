@@ -40,7 +40,7 @@
                                         <td>{{ product.Price }}₫</td>
                                         <td>{{ product.Description }}</td>
                                         <td>{{ product.Category.Name_Category }}</td>
-                                        <td><span><a href="{% url 'Admin:updateproduct' product.id %}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i> </a><a href="#" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-trash color-danger"></i></a></span>
+                                        <td><span><a href="{% url 'Admin:updateproduct' product.id %}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i> </a><a href="/admin/deleteproduct/{{ product.id }}/" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-trash color-danger"></i></a></span>
                                         </td>
                                     </tr>
                                 {% endfor %}
