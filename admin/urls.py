@@ -14,4 +14,5 @@ urlpatterns = [
     path("createaccount/",admincontroller.createAccount , name='createaccount'),
     path("updateproduct/<str:id>/",admincontroller.updateProduct , name='updateproduct'),
     path("updatestaff/<str:id>/",admincontroller.updateStaff , name='updatestaff'),
+    path("deleteproduct/<str:id>/",admincontroller.delProduct , name='delproduct'),
 ]
