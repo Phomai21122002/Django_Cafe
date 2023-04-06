@@ -1,9 +1,6 @@
 
 from django.shortcuts import render, redirect
-
 from home.models import *
-
-import shutil
 import os
 
 
@@ -16,7 +13,7 @@ def addProduct(request):
         Price = request.POST['price']
         Description = request.POST['description']
         Category_id = request.POST['category']
-        Image = '/'
+        Image = request.FILES['Image']
     
         addproduct(NameProduct, Price, Description, Image, Category_id)
         return redirect('Admin:listproduct')
@@ -29,7 +26,8 @@ def addProduct(request):
 def addCategory(request):
     if request.method == 'POST':
         NameCategory = request.POST['namecategory']
-        addcategory(NameCategory)
+        Image = request.FILES['Image']
+        addcategory(NameCategory, Image)
 
         return redirect('Admin:listcategory')
     return render(request, 'pages/addCategory.html')
@@ -72,24 +70,28 @@ def customerAccount(request):
 
 # adjust
 def updateProduct(request, id):
+    result = get_product_by_id(id)
 
     if request.method == 'POST':
         NameProduct = request.POST['nameproduct']
         Price = request.POST['price']
         Description = request.POST['description']
         Category = request.POST['category']
+        if len(request.FILES) != 0:
+            if len(result.Url_Image) > 0:
+                os.remove(result.Url_Image.path)
+            Image = request.FILES['Image']
+        else:
+            Image = result.Url_Image
 
-        updateproduct(id, NameProduct, Price, Description, Category)
+        updateproduct(id, NameProduct, Price, Description, Image, Category)
         return redirect('Admin:listproduct')
 
-    result = get_product_by_id(id)
     result_category = listcategory()
-
     context = {'Product': result, 'listCategory': result_category}
     return render(request, 'pages/updateProduct.html', context)
 
 def updateStaff(request, id):
-
     if request.method == "POST":
         LastName = request.POST['lastname']
         FirstName = request.POST['firstname']
@@ -97,21 +99,24 @@ def updateStaff(request, id):
         numberphone = request.POST['numberphone']
         password = request.POST['password']
         Date = request.POST['date']
-
         updatestaff(id, FirstName, Email, password, numberphone, LastName, Date)
-
         return redirect("Admin:staffaccounts")
-
     result = get_staff_by_id(id)
-
     context = {'staff': result}
     return render(request, 'pages/updateStaff.html', context)
 
 
 def listStaffSales(request):
-    return render(request, 'pages/listStaffSales.html')
+    result_orderDetail, result_order = sales_product(2)
+    context = {"result_orderDetail": result_orderDetail, "result_order": result_order}
+    return render(request, 'pages/listStaffSales.html', context)
 
 def delProduct (request,id):
     deleteProduct(id)
     return redirect('Admin:listproduct')
+
+def revenue(request):
+    result_orderDetail, result_order = revenue_product(2)
+    context = {"result_orderDetail": result_orderDetail, "result_order": result_order}
+    return render(request, 'pages/listRevenue.html')
     

@@ -13,7 +13,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">List Staff Sales</h4>
+                    <h4 class="card-title">List Revenue</h4>
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped verticle-middle">
                             <thead>
@@ -31,13 +31,12 @@
                                 <tr>
                                     <td>{{ orderDetail.id }}</td>
                                     <td>
-                                        {% for product in result_order %} {% for data in product %} 
-                                        {% if orderDetail.id == data.Order_Detail_id %}
+                                        {% for product in result_order %}
                                         <span style="display: block">
-                                            {{ data.Name_Product }}
-                                            <b style="color: #7571f9">x{{ data.Number}}</b>
+                                            {{ product.Name_Product }}
+                                            <b style="color: #7571f9">x{{ product.Number}}</b>
                                         </span>
-                                        {% endif %} {% endfor %} {% endfor %}
+                                        {% endfor %}
                                     </td>
                                     <td>{{ orderDetail.Number }}</td>
                                     <td>{{ orderDetail.Price_Total }}</td>

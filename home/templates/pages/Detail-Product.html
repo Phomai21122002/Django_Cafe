@@ -24,9 +24,10 @@
             <ul class="form-detailproduct_list row">
                 <li class="col l-6 m-6 c-12 form-detailproduct_item">
                     <div
+                        id="image_product"
                         class="form-detailproduct_img"
                         style="
-                            background-image: url(/static/img/img-collection1_f2fef799a4e449a3afb8efad867b176c_master.webp);
+                            background-image: url(/{{Product.Url_Image}});
                         "
                     ></div>
                 </li>
@@ -50,21 +51,7 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="form-order-product_box">
-                            <div class="form-order-product_title">Tùy chọn thêm</div>
-                            <div class="form-order-product_other">Chọn tối đa 5</div>
-                            <ul class="form-order-product_list style">
-                                {% for data in Products_different %}
-                                <li class="form-order-product_item form-order-product_itemfull">
-                                    <input id="cake" type="checkbox" class="form-order-product_choose" />
-                                    <label for="cake" class="form-order-product_type"
-                                        >{{data.Name_Product}} - ₫{{data.Price}}</label
-                                    >
-                                    <span class="form-order-product_count">x1</span>
-                                </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
+                        <div class="form-order-product_box"></div>
                         <div class="form-detailproduct_formbtn">
                             <div class="form-detailproduct_btn">
                                 <button
@@ -76,9 +63,10 @@
                                 </button>
                             </div>
                             <div class="form-detailproduct_btn">
-                                <form action="{% url 'Home:Detail-Product' Product.id %}" method="post">
+                                <form action="" method="post">
                                     {% csrf_token %}
                                     <input
+                                        id="buy_product_btn"
                                         type="submit"
                                         style="text-align: center"
                                         class="decoration form-detailproduct_linkbuy btn cl-white bg-color-base"
@@ -174,20 +162,6 @@
         render(amount);
     });
 
-    // chon dia diem giao hang
-
-    let order_shop = document.getElementById('order_shop');
-    let order_address = document.getElementById('order_address');
-    let fill_out = document.getElementById('form_fillout');
-    {% comment %} order_shop.addEventListener('change', () => {
-        fill_out.classList.add('open');
-    });
-
-    order_address.addEventListener('change', () => {
-        if (fill_out.classList.contains('open') == true) {
-            fill_out.classList.remove('open');
-        }
-    }); {% endcomment %}
 </script>
 
 <script src="/static/js/productDetail.js"></script>

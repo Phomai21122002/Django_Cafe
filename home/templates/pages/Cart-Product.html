@@ -1,82 +1,75 @@
-{% extends "pages/base.html" %}
+{% extends "pages/base.html" %} {% load static %} {% block body %}
 
-{% load static %}
-
-{% block body %}
-
-
-    <!-- Giỏ hàng -->
-    <div class="form-navbar">
-        <div class="grid wide">
+<!-- Giỏ hàng -->
+<div class="form-navbar">
+    <div class="grid wide">
+        <div class="header-navbar">
             <div class="header-navbar">
-                <div class="header-navbar">
-                    <a href="#" class="decoration header-navbar_home">Trang chủ</a>
-                </div>
-                <div class="header-navbar">
-                    /
-                </div>
-                <div class="header-navbar">
-                    <a href="#" class="decoration header-navbar_now cl-base">Giỏ hàng</a>
-                </div>
-                
+                <a href="#" class="decoration header-navbar_home">Trang chủ</a>
             </div>
+            <div class="header-navbar">/</div>
+            <div class="header-navbar">
+                <a href="#" class="decoration header-navbar_now cl-base">Giỏ hàng</a>
+            </div>
+        </div>
 
-            <div class="form-bill">
-                <h3 class="form-navbar-contact_title">
-                    Giỏ hàng của bạn
-                </h3>
-                <div class="form-bill-product">
-                    <div class="" style="width: 15%;">
-                        <a href="#" class="decoration" style="display: block;">
-                            <img src="./assets/img/cafe-sua.png" alt="" class="form-bill-product_img">
+        <div class="form-bill">
+            <h3 class="form-navbar-contact_title">Giỏ hàng của bạn</h3>
+            {% for cart in carts %}
+            <div class="form-bill-product">
+                <div class="" style="width: 15%">
+                    <a href="#" class="decoration" style="display: block">
+                        <img src="./assets/img/cafe-sua.png" alt="" class="form-bill-product_img" />
+                    </a>
+                </div>
+                <div class="form-bill-product_info" style="width: 30%">
+                    <div class="form-bill-product_nameproduct">
+                        <a href="#" class="decoration cl-black form-bill-product_nameproduct-link">
+                            {{ cart.Name_Product }}
                         </a>
                     </div>
-                    <div class="form-bill-product_info" style="width: 30%;">
-                        <div class="form-bill-product_nameproduct">
-                            <a href="#" class="decoration cl-black form-bill-product_nameproduct-link">Capuchino</a>
-                        </div>
-                        <div class="form-bill-product_money">55.000₫</div>
-                    </div>
-                    <div class="form-bill-product_active" style="width: 25%;">
-                        <div id="buy_amount" class="form-order_bill">
-                            <button onclick="handle_minus()" class="buy_btn form-order_minus-bill">
-                                <i class="form-order_changenumber-icon cl-white fa-solid fa-minus"></i>
-                            </button>
-                            <input type="text" name="amount" id="amount" value="1">
-                            <button onclick="handle_plus()" class="buy_btn form-order_plus-bill">
-                                <i class="form-order_changenumber-icon cl-white fa-solid fa-plus"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="form-bill-product_price a-text" style="width: 12%;">55.000₫</div>
-                    <div class="form-bill-product_delete" style="width: 18%;">
-                        <a href="" title="Xóa" class="decoration form-bill-product_linkicon">
-                            <i class="form-bill-product_icondelete cl-black fa-solid fa-xmark"></i>
-                        </a>
+                    <div class="form-bill-product_money">{{cart.Price}}₫</div>
+                </div>
+                <div class="form-bill-product_active" style="width: 25%">
+                    <div id="buy_amount" class="form-order_bill">
+                        <button onclick="handle_minus()" class="buy_btn form-order_minus-bill">
+                            <i class="form-order_changenumber-icon cl-white fa-solid fa-minus"></i>
+                        </button>
+                        <input type="text" name="amount" id="amount" value="{{cart.count}}" />
+                        <button onclick="handle_plus()" class="buy_btn form-order_plus-bill">
+                            <i class="form-order_changenumber-icon cl-white fa-solid fa-plus"></i>
+                        </button>
                     </div>
                 </div>
-
+                <div class="form-bill-product_price a-text" style="width: 12%">{{cart.total}}₫</div>
+                <div class="form-bill-product_delete" style="width: 18%">
+                    <a href="" title="Xóa" value="{{cart.idProduct}}" class="form-bill-product_linkicon">
+                        <i class="form-bill-product_icondelete cl-black fa-solid fa-xmark"></i>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+            <form action="" method="post">
                 <ul class="style box-order-address">
                     <h3 class="header_address">Tùy chọn địa điểm</h3>
                     <li class="order_item">
-                        <input id="order_shop" type="radio" name="choose_order">
+                        <input id="order_shop" value="here" type="radio" name="choose_order" />
                         <label class="label_address" for="order_shop">Order tại quán</label>
                     </li>
                     <li class="order_item">
-                        <input id="order_address" type="radio" name="choose_order">
+                        <input id="order_address" value="home" type="radio" name="choose_order" />
                         <label class="label_address" for="order_address">Giao hàng tới địa điểm</label>
                     </li>
                 </ul>
-
                 <div id="form_fillout" class="form-login form-choose-address">
-                    <input id="Number_Phone" type="text" placeholder="Number Phone">
-                    <input id="Address" type="text" placeholder="Address">
+                    <input id="Number_Phone" name="Number_Phone" type="text" placeholder="Number Phone" value="" />
+                    <input id="Address" name="Address" type="text" placeholder="Address" value="" />
                 </div>
-                
+
                 <div class="form-bill-total">
                     <ul class="row style form-bill-total_box">
                         <li class="col l-6 form-bill-total_title--name">Tổng tiền</li>
-                        <li class="col l-6 form-bill-total_title--money">220.000₫</li>
+                        <li class="col l-6 form-bill-total_title--money">{{total_price}}₫</li>
                     </ul>
                     <ul class="row style form-bill-total_box">
                         <li class="col l-6">
@@ -86,15 +79,102 @@
                             </a>
                         </li>
                         <li class="col l-6">
-                            <a href="{% url 'Home:Cart-Product' %}" class="btn decoration cl-white form-bill-total_link">
-                                <i class="fa-solid fa-check"></i>
-                                Tiến hành thanh toán
-                            </a>
+                            {% csrf_token %}
+                            <input
+                                id="pay_bill"
+                                class="btn cl-white form-bill-total_link"
+                                type="submit"
+                                value="Tiến hành thanh toán"
+                            />
                         </li>
                     </ul>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
+</div>
 
-{% endblock  %}
+<script>
+    // let amountElement = document.getElementById('amount'); // input tăng giảm số lượng
+    // let amount = amountElement.value;
+
+    // let render = (amount) => {
+    //     amountElement.value = amount;
+    // };
+
+    // let handle_plus = () => {
+    //     amount++;
+    //     render(amount);
+    // };
+
+    // let handle_minus = () => {
+    //     if (amount > 1) amount--;
+    //     render(amount);
+    // };
+
+    // amountElement.addEventListener('input', () => {
+    //     amount = amountElement.value;
+    //     amount = parseInt(amount);
+    //     amount = isNaN(amount) || amount == 0 ? 1 : amount;
+    //     render(amount);
+    // });
+
+    // chon dia diem giao hang
+
+    let order_shop = document.getElementById('order_shop');
+    let order_address = document.getElementById('order_address');
+    let fill_out = document.getElementById('form_fillout');
+    order_address.addEventListener('change', () => {
+        fill_out.classList.add('open');
+    });
+
+    order_shop.addEventListener('change', () => {
+        if (fill_out.classList.contains('open') == true) {
+            fill_out.classList.remove('open');
+        }
+    });
+
+//     const setCookie = (name, json) => {
+//     let cookieValue = '';
+//     let expire = '';
+//     let period = '';
+
+//     //Specify the cookie name and value
+//     cookieValue = name + '=' + JSON.stringify(json) + ';';
+
+//     //Specify the path to set the cookie
+//     cookieValue += 'path=/ ;';
+
+//     //Specify how long you want to keep cookie
+//     period = 30; //days to store
+//     expire = new Date();
+//     expire.setTime(expire.getTime() + 1000 * 3600 * 24 * period);
+//     expire.toUTCString();
+//     cookieValue += 'expires=' + expire + ';';
+
+//     document.cookie = cookieValue;
+// };
+
+    let icon_delete = document.querySelectorAll('.form-bill-product_linkicon')
+
+    icon_delete.forEach(icon_delete => {
+        cart = JSON.parse(document.cookie.split('cart=')[1]);
+        icon_delete.addEventListener('click', () => {
+            let id_del_product = icon_delete.getAttribute('value')
+            for (let i = 0; i < cart.length; i++){
+                if(cart[i].idProduct == id_del_product) {
+                    cart.pop(i);
+                    setCookie('cart', cart);
+                }
+            }
+        })
+    })
+
+
+    
+
+
+</script>
+<!-- <script src="/static/js/index_js.js"></script> -->
+
+{% endblock %}

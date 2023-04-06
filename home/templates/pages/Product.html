@@ -1,49 +1,39 @@
-
-{% extends "pages/base.html" %}
-{% load static %}
-
-{% block body %}
-    <!-- produce -->
-    <div class="form-navbar">
-        <div class="grid wide">
+{% extends "pages/base.html" %} {% load static %} {% block body %}
+<!-- produce -->
+<div class="form-navbar">
+    <div class="grid wide">
+        <div class="header-navbar">
             <div class="header-navbar">
-                <div class="header-navbar">
-                    <a href="/" class="decoration header-navbar_home">Trang chủ</a>
-                </div>
-                <div class="header-navbar">
-                    /
-                </div>
-                <div class="header-navbar">
-                    <a href="/Product" class="decoration header-navbar_now cl-base">Sản phẩm</a>
-                </div>
+                <a href="/" class="decoration header-navbar_home">Trang chủ</a>
             </div>
-            <div class="header-produce">
-                Tất cả sản phẩm
+            <div class="header-navbar">/</div>
+            <div class="header-navbar">
+                <a href="/Product" class="decoration header-navbar_now cl-base">Sản phẩm</a>
             </div>
-            
-            <ul class="row body-menu_list style">
-                {% for product in Products %}
-                    <li class="col l-3 m-4 c-6 body-menu_item">
-                        <a href="" class="body-menu_linkcafe decoration cl-black">
-                            <div class="body-menu_background">
-                                <img src="/static/img/{{product.Url_Image}}" alt="" class="body-menu_img">
-                            </div>
-                            <div class="body-menu_box">
-                                <h3 class="body-menu_namecafe">
-                                    {{product.Name_Product}}
-                                </h3>
-                                <div class="body-menu_price">
-                                    <p class="body-menu_title">Giá: </p>
-                                    <div class="body-menu_money">{{ product.Price }}đ</div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="body-menu_modalcart">
-                            <button class="body-menu_btncart js-btn-cart">Thêm vào giỏ hàng</button>
-                        </div>
-                    </li>
-                {% endfor %}
-            </ul>
         </div>
+        <div class="header-produce">Tất cả sản phẩm</div>
+
+        <ul class="row body-menu_list style">
+            {% for product in Products %}
+            <li class="col l-3 m-4 c-6 body-menu_item">
+                <a href="" class="body-menu_linkcafe decoration cl-black">
+                    <div class="body-menu_background">
+                        <img src="{{product.Url_Image}}" alt="" class="body-menu_img" />
+                    </div>
+                    <div class="body-menu_box">
+                        <h3 class="body-menu_namecafe">{{product.Name_Product}}</h3>
+                        <div class="body-menu_price">
+                            <p class="body-menu_title">Giá:</p>
+                            <div class="body-menu_money">{{ product.Price }}đ</div>
+                        </div>
+                    </div>
+                </a>
+                <div class="body-menu_modalcart">
+                    <a href="{% url 'Home:Detail-Product' product.id %}" class="decoration body-menu_btncart">Thêm vào giỏ hàng</a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
     </div>
-{% endblock  %}
+</div>
+{% endblock %}

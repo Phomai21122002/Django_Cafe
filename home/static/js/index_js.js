@@ -1,3 +1,4 @@
+
 const setCookie = (name, json) => {
     let cookieValue = '';
     let expire = '';
@@ -105,3 +106,10 @@ for (let i = 0; i < cart.length; i++) {
     const product = cart[i];
     addProductViewCart({ product });
 }
+
+const cart_header = document.querySelectorAll('.header-top-shipment_btndelete');
+cart_header.forEach(cart => {
+    cart.addEventListener('click', () => {
+        console.log(cart)
+    })
+})

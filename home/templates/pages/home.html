@@ -12,7 +12,7 @@
                 <li class="col l-3 m-6 c-6">
                     <div class="body-box-cover_box">
                         <a href="{% url 'Home:Product' category.id %}" class="body-box-cover_link">
-                            <img src="/static/img/{{category.Url_Image}}" alt="" class="body-box-cover_img" />
+                            <img src="{{category.Url_Image}}" alt="" class="body-box-cover_img" />
                         </a>
                     </div>
                     <div class="body-box-cover_box">
@@ -92,9 +92,9 @@
             <ul class="row body-menu_list style">
                 {% for product in Products %}
                 <li class="col l-3 m-4 c-6 body-menu_item">
-                    <a href="{% url 'Home:Product' product.id %}" class="body-menu_linkcafe decoration cl-black">
+                    <a href="{% url 'Home:Detail-Product' product.id %}" class="body-menu_linkcafe decoration cl-black">
                         <div class="body-menu_background">
-                            <img src="/static/img/{{product.Url_Image}}" alt="" class="body-menu_img" />
+                            <img src="{{product.Url_Image}}" alt="" class="body-menu_img" />
                         </div>
                         <div class="body-menu_box">
                             <h3 class="body-menu_namecafe">{{product.Name_Product}}</h3>
@@ -108,7 +108,6 @@
                         <a href="{% url 'Home:Detail-Product' product.id %}" class="decoration body-menu_btncart"
                             >Thêm vào giỏ hàng</a
                         >
-                        {% comment %} js-btn-cart {% endcomment %}
                     </div>
                 </li>
                 {% endfor %}
@@ -316,6 +315,6 @@
     </div>
 </div>
 {% endcomment %}
-<script src="/static/js/index_js.js"></script>
+<!-- <script src="/static/js/index_js.js"></script> -->
 
 {% endblock %}

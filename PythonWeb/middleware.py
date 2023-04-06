@@ -9,8 +9,9 @@ class LoginRequiredMiddleware:
     def __call__(self, request):
         if ('admin/' in request.path) and (request.session.get('id') == None) :
             return redirect('Home:Login')
-        if ('admin/' not in request.path) and (request.session.get('id') != None) :
-            del request.session['id']
+        # if ('admin/' not in request.path) and (request.session.get('id') != None) :
+        #     print(request.session.get('id'))
+        #     del request.session['id']
         response = self.get_response(request)
         return response
     

@@ -1,6 +1,4 @@
-{% extends './baseAdmin.html' %}
-
-{% block body %}
+{% extends './baseAdmin.html' %} {% block body %}
 <div class="row page-titles mx-0">
     <div class="col p-md-0">
         <ol class="breadcrumb">
@@ -10,14 +8,13 @@
     </div>
 </div>
 
-
 <div class="container-fluid">
     <div class="row">
         <div class="col">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Staff Accounts</h4>
-                    <div class="table-responsive"> 
+                    <div class="table-responsive">
                         <table class="table table-bordered table-striped verticle-middle">
                             <thead>
                                 <tr>
@@ -30,19 +27,26 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {% csrf_token %}
-                                {% for staff in staffs %}
-                                    <tr>
-                                        <td>{{ staff.id }}</td>
-                                        <td>
-                                            {{ staff.Email }}
-                                        </td>
-                                        <td>{{ staff.Phone_Number }}</td>
-                                        <td>{{ staff.Fisrt_Name }}</td>
-                                        <td>{{ staff.Last_Name }}</td>
-                                        <td><span><a href="{% url 'Admin:updatestaff' staff.id %}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i> </a><a href="#" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-trash color-danger"></i></a></span>
-                                        </td>
-                                    </tr>
+                                {% csrf_token %} {% for staff in staffs %}
+                                <tr>
+                                    <td>{{ staff.id }}</td>
+                                    <td>{{ staff.Email }}</td>
+                                    <td>{{ staff.Phone_Number }}</td>
+                                    <td>{{ staff.Fisrt_Name }}</td>
+                                    <td>{{ staff.Last_Name }}</td>
+                                    <td>
+                                        <span
+                                            ><a
+                                                href="{% url 'Admin:updatestaff' staff.id %}"
+                                                data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="Edit"
+                                                ><i class="fa fa-pencil color-muted m-r-5"></i> </a
+                                            ><a href="#" data-toggle="tooltip" data-placement="top" title="Close"
+                                                ><i class="fa fa-trash color-danger"></i></a
+                                        ></span>
+                                    </td>
+                                </tr>
                                 {% endfor %}
                             </tbody>
                         </table>

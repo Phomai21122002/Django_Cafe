@@ -11,6 +11,7 @@ urlpatterns = [
     path("staffaccounts/",admincontroller.staffAccount , name='staffaccounts'),
     path("customeraccounts/",admincontroller.customerAccount , name='customeraccounts'),
     path("liststaffsales/",admincontroller.listStaffSales , name='liststaffsales'),
+    path("revenue/",admincontroller.revenue , name='revenue'),
     path("createaccount/",admincontroller.createAccount , name='createaccount'),
     path("updateproduct/<str:id>/",admincontroller.updateProduct , name='updateproduct'),
     path("updatestaff/<str:id>/",admincontroller.updateStaff , name='updatestaff'),

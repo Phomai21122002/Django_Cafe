@@ -1,4 +1,7 @@
 const addBtn = document.getElementById('add_product_btn');
+const buyBtn = document.getElementById('buy_product_btn');
+const payBill = document.getElementById('pay_bill');
+
 
 const setCookie = (name, json) => {
     let cookieValue = '';
@@ -50,8 +53,9 @@ const addProductIntoCookie = ({ product }) => {
     }
 };
 
-addBtn.addEventListener('click', () => {
-    const count = document.getElementById('amount').value;
+buyBtn.addEventListener('click', () => {
+    const count = Number(document.getElementById('amount').value);
+    console.log(count);
     const path = window.location.pathname;
     const id = path.split('/')[2];
     const nameProduct = document.querySelector('.form-navbar-contact_title').textContent.trim();
@@ -103,10 +107,10 @@ const addProductViewCart = ({ product }) => {
                                         </li>
                                     </ul>
                                     <div class="header-top-shipment_boxbottom">
-                                        <button class="header-top-shipment_btndelete btn-delete">
+                                        <button value="${product.idProduct}" class="header-top-shipment_btndelete btn-delete">
                                             Xóa
                                         </button>
-                                        <div class="form-order_boxnumber">
+                                        <div class="form-order_boxnumber ">
                                             <div class="form-order_minus pd">
                                                 <i class="form-order_changenumber-icon fa-solid fa-minus"></i>
                                             </div>
@@ -130,3 +134,7 @@ for (let i = 0; i < cart.length; i++) {
     const product = cart[i];
     addProductViewCart({ product });
 }
+
+payBill.addEventListener('click', () => {
+    setCookie('cart', []);
+});
