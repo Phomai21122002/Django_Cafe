@@ -1,4 +1,3 @@
-
 const setCookie = (name, json) => {
     let cookieValue = '';
     let expire = '';
@@ -107,9 +106,10 @@ for (let i = 0; i < cart.length; i++) {
     addProductViewCart({ product });
 }
 
-const cart_header = document.querySelectorAll('.header-top-shipment_btndelete');
-cart_header.forEach(cart => {
-    cart.addEventListener('click', () => {
-        console.log(cart)
-    })
-})
+const delete_btns = document.querySelectorAll('.header-top-shipment_btndelete');
+
+for (let index = 0; index < array.length; index++) {
+    delete_btns.addEventListener('click', () => {
+        console.log('click');
+    });
+}
