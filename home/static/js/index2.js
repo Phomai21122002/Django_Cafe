@@ -1,8 +1,4 @@
-const addBtn = document.getElementById('add_product_btn');
-const buyBtn = document.getElementById('buy_product_btn');
-const payBill = document.getElementById('pay_bill');
-
-const setCookie = (name, json) => {
+const addCookie = (name, json) => {
     let cookieValue = '';
     let expire = '';
     let period = '';
@@ -42,41 +38,19 @@ const addProductIntoCookie = ({ product }) => {
     }
 
     if (isValidID) {
-        setCookie('cart', cart);
+        addCookie('cart', cart);
 
         return { result: false, count: count, idProduct: idProduct }; // chỉ thêm số lượng
     } else {
         cart.push(product);
-        setCookie('cart', cart);
+        addCookie('cart', cart);
         return { result: true, product: product };
     }
 };
 
-buyBtn.addEventListener('click', () => {
-    const count = Number(document.getElementById('amount').value);
-    console.log(count);
-    const path = window.location.pathname;
-    const id = path.split('/')[2];
-    const nameProduct = document.querySelector('.form-navbar-contact_title').textContent.trim();
-    const price = Number(document.getElementById('price_product').textContent);
-
-    const product = {
-        idProduct: id,
-        count: count,
-        nameProduct: nameProduct,
-        price: price,
-    };
-
-    const resultHandle = addProductIntoCookie({ product: product });
-
-    if (resultHandle.result == true) {
-        addProductViewCart({ product: resultHandle.product });
-    }
-});
-
 const addProductViewCart = ({ product }) => {
     const formshipment = document.querySelector('.header-top-shipment_list');
-    formshipment.innerHTML += `<li class="header-top-shipment_item">
+    formshipment.innerHTML += `<li id=${product.idProduct} class="header-top-shipment_item">
                                     <div class="header-top-shipment_box">
                                         <div class="header-top-shipment_box-flex">
                                             <div class="header-top-shipment_name">
@@ -106,10 +80,10 @@ const addProductViewCart = ({ product }) => {
                                         </li>
                                     </ul>
                                     <div class="header-top-shipment_boxbottom">
-                                        <button value="${product.idProduct}" class="header-top-shipment_btndelete btn-delete">
+                                        <button class="header-top-shipment_btndelete btn-delete">
                                             Xóa
                                         </button>
-                                        <div class="form-order_boxnumber ">
+                                        <div class="form-order_boxnumber">
                                             <div class="form-order_minus pd">
                                                 <i class="form-order_changenumber-icon fa-solid fa-minus"></i>
                                             </div>
@@ -122,18 +96,33 @@ const addProductViewCart = ({ product }) => {
                                 </li>`;
 };
 
+const deleteProductInCookie = ({ idProduct }) => {
+    var cart = JSON.parse(document.cookie.split('cart=')[1]);
+    const newCart = cart.filter((item) => {
+        return item.idProduct != idProduct;
+    });
+    addCookie('cart', newCart);
+    console.log(newCart);
+};
+
 if (document.cookie.split('cart=').length < 2) {
-    setCookie('cart', []);
+    addCookie('cart', []);
 }
 
-// Lấy dữ liệu cart từ cookie và gán vào view
 var cart = JSON.parse(document.cookie.split('cart=')[1]);
-
 for (let i = 0; i < cart.length; i++) {
     const product = cart[i];
     addProductViewCart({ product });
 }
 
-payBill.addEventListener('click', () => {
-    setCookie('cart', []);
-});
+const delete_btns = document.querySelectorAll('.header-top-shipment_btndelete');
+
+for (let index = 0; index < delete_btns.length; index++) {
+    delete_btns[index].addEventListener('click', (e) => {
+        const delete_btn = e.currentTarget;
+        const wrapper = delete_btn.parentElement.parentElement;
+        const id = wrapper.getAttribute('id');
+        wrapper.style.display = 'none';
+        deleteProductInCookie({ idProduct: id });
+    });
+}

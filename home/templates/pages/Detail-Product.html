@@ -161,9 +161,34 @@
         amount = isNaN(amount) || amount == 0 ? 1 : amount;
         render(amount);
     });
-
 </script>
 
-<script src="/static/js/productDetail.js"></script>
+<script>
+    const addBtn = document.getElementById('add_product_btn');
+    const buyBtn = document.getElementById('buy_product_btn');
+    const payBill = document.getElementById('pay_bill');
+
+    addBtn.addEventListener('click', () => {
+        const count = Number(document.getElementById('amount').value);
+        console.log(count);
+        const path = window.location.pathname;
+        const id = path.split('/')[2];
+        const nameProduct = document.querySelector('.form-navbar-contact_title').textContent.trim();
+        const price = Number(document.getElementById('price_product').textContent);
+
+        const product = {
+            idProduct: id,
+            count: count,
+            nameProduct: nameProduct,
+            price: price,
+        };
+
+        const resultHandle = addProductIntoCookie({ product: product });
+
+        if (resultHandle.result == true) {
+            addProductViewCart({ product: resultHandle.product });
+        }
+    });
+</script>
 
 {% endblock %}
