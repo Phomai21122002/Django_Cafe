@@ -64,11 +64,7 @@
                                     <a href="./CartProduce.html" class="header-top_lable decoration cl-white"
                                         >Giỏ hàng</a
                                     >
-                                    <div
-                                        style="display: flex"
-                                        id="formshipment"
-                                        class="header-top_formshipment cl-black"
-                                    >
+                                    <div id="formshipment" class="header-top_formshipment cl-black">
                                         <div class="header-top-shipment">
                                             <h3 class="header-top-shipment_header">Giỏ hàng</h3>
                                             <ul class="header-top-shipment_list style"></ul>
@@ -375,8 +371,6 @@
 </html>
 
 <script>
-    console.log('base');
-    var delete_btns = document.querySelectorAll('.header-top-shipment_btndelete');
     const setCookie = (name, json) => {
         let cookieValue = '';
         let expire = '';
@@ -399,7 +393,11 @@
     };
 
     const addProductIntoCookie = ({ product }) => {
-        var cart = JSON.parse(document.cookie.split('cart=')[1]);
+        let decodedCookie = decodeURIComponent(document.cookie);
+        var cartStr = decodedCookie.split('cart=')[1];
+        var cart = cartStr.split(';')[0];
+
+        cart = JSON.parse(cart);
         var isValidID = false;
         var count = 0;
         var idProduct;
@@ -429,7 +427,7 @@
 
     const addProductViewCart = ({ product }) => {
         const formshipment = document.querySelector('.header-top-shipment_list');
-        formshipment.innerHTML += `<li class="header-top-shipment_item">
+        formshipment.innerHTML += `<li id="${product.idProduct}" class="header-top-shipment_item">
                                             <div class="header-top-shipment_box">
                                                 <div class="header-top-shipment_box-flex">
                                                     <div class="header-top-shipment_name">
@@ -474,7 +472,6 @@
                                             </div>
                                         </li>`;
         delete_btns = document.querySelectorAll('.header-top-shipment_btndelete');
-        console.log(delete_btns);
         for (let index = 0; index < delete_btns.length; index++) {
             delete_btns[index].addEventListener('click', (e) => {
                 const delete_btn = e.currentTarget;
@@ -487,31 +484,59 @@
     };
 
     const deleteProductInCookie = ({ idProduct }) => {
+        console.log('delete');
         var cart = JSON.parse(document.cookie.split('cart=')[1]);
         var newCart = [];
 
         for (let i = 0; i < cart.length; i++) {
-            console.log(cart[i]);
+            if (cart[i].idProduct != idProduct) {
+                newCart.push(cart[i]);
+            }
+        }
+        setCookie('cart', newCart);
+    };
+
+    const handleDeleteBtn = (e) => {
+        const delete_btn = e.currentTarget;
+        const wrapper = delete_btn.parentElement.parentElement;
+        const id = wrapper.getAttribute('id');
+        console.log(id);
+        deleteProductInCookie({ idProduct: id });
+        resetDomDelbtn();
+    };
+
+    const RemoveDelBtnListener = () => {
+        for (let i = 0; i < delete_btns.length; i++) {
+            delete_btns[i].removeEventListener('click', handleDeleteBtn);
+        }
+    };
+
+    const resetDomDelbtn = () => {
+        RemoveDelBtnListener();
+        delete_btns = document.querySelectorAll('.header-top-shipment_btndelete');
+        for (let i = 0; i < delete_btns.length; i++) {
+            delete_btns[i].addEventListener('click', handleDeleteBtn);
         }
     };
 
     if (document.cookie.split('cart=').length < 2) {
         setCookie('cart', []);
     }
+    let decodedCookie = decodeURIComponent(document.cookie);
 
-    var cart = JSON.parse(document.cookie.split('cart=')[1]);
+    var cartStr = decodedCookie.split('cart=')[1];
+    var cart = cartStr.split(';')[0];
+
+    cart = JSON.parse(cart);
+
     for (let i = 0; i < cart.length; i++) {
         const product = cart[i];
         addProductViewCart({ product });
     }
 
+    var delete_btns = document.querySelectorAll('.header-top-shipment_btndelete');
+
     for (let index = 0; index < delete_btns.length; index++) {
-        delete_btns[index].addEventListener('click', (e) => {
-            const delete_btn = e.currentTarget;
-            const wrapper = delete_btn.parentElement.parentElement;
-            const id = wrapper.getAttribute('id');
-            wrapper.style.display = 'none';
-            deleteProductInCookie({ idProduct: id });
-        });
+        delete_btns[index].addEventListener('click', handleDeleteBtn);
     }
 </script>
