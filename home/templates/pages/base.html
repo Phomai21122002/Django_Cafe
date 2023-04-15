@@ -394,9 +394,9 @@
 
     const addProductIntoCookie = ({ product }) => {
         let decodedCookie = decodeURIComponent(document.cookie);
-        // console.log(decodedCookie);
-        const cartStr = decodedCookie.split(';')[1];
-        var cart = cartStr.split('=')[1];
+        var cartStr = decodedCookie.split('cart=')[1];
+        var cart = cartStr.split(';')[0];
+
         cart = JSON.parse(cart);
         var isValidID = false;
         var count = 0;
@@ -524,8 +524,9 @@
     }
     let decodedCookie = decodeURIComponent(document.cookie);
 
-    const cartStr = decodedCookie.split(';')[1];
-    var cart = cartStr.split('=')[1];
+    var cartStr = decodedCookie.split('cart=')[1];
+    var cart = cartStr.split(';')[0];
+
     cart = JSON.parse(cart);
 
     for (let i = 0; i < cart.length; i++) {
