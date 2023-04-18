@@ -107,6 +107,7 @@ def listOrderDetail():
     resultOrderDetail = orderdetail.objects.all()
     return resultOrderDetail
 
+
 def listproduct():
     listProduct = product.objects.all()
     return listProduct

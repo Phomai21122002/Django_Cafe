@@ -120,6 +120,6 @@ def revenue(request):
     context = {"result_orderDetail": result_orderDetail, "result_order": result_order}
     return render(request, 'pages/listRevenue.html')
 
-def delCategory(request, id):
-    deleteCategory(id)
-    return redirect('Admin:listcategory')
+def Logout(request):
+    del request.session['id']
+    return redirect('Home:Home')
