@@ -18,4 +18,6 @@ urlpatterns = [
     path("updatestaff/<str:id>/",admincontroller.updateStaff , name='updatestaff'),
     path("deleteproduct/<str:id>/",admincontroller.delProduct , name='delproduct'),
     path("logout/",admincontroller.Logout , name='logout'),
+    path("profile/",admincontroller.Profile , name='profile'),
+    path("changepassword/",admincontroller.ChangePassWord , name='password'),
 ]

@@ -15,61 +15,31 @@
             <div class="card">
                 <div class="card-body">
                     <div class="form-validation">
-                        <form
-                            class="form-valide"
-                            action="{% url 'Admin:updateproduct' Product.id %}"
-                            method="post"
-                            enctype="multipart/form-data"
-                        >
+                        <form class="form-valide" action="{% url 'Admin:updateproduct' Product.id %}" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                             <div class="form-group row">
-                                <label class="col-lg-4 col-form-label" for="nameproduct"
-                                    >Name Product<span class="text-danger"></span>
-                                </label>
+                                <label class="col-lg-4 col-form-label" for="nameproduct">Name Product<span class="text-danger"></span> </label>
                                 <div class="col-lg-6">
-                                    <input
-                                        required
-                                        type="text"
-                                        class="form-control"
-                                        id="nameproduct"
-                                        name="nameproduct"
-                                        value="{{ Product.Name_Product }}"
-                                    />
+                                    <input required type="text" class="form-control" id="nameproduct" name="nameproduct" value="{{ Product.Name_Product }}" />
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-lg-4 col-form-label" for="price"
-                                    >Price<span class="text-danger"></span>
-                                </label>
+                                <label class="col-lg-4 col-form-label" for="price">Price<span class="text-danger"></span> </label>
                                 <div class="col-lg-6">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="price"
-                                        name="price"
-                                        value="{{ Product.Price }}"
-                                    />
+                                    <input type="text" class="form-control" id="price" name="price" value="{{ Product.Price }}" />
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-lg-4 col-form-label" for="description"
-                                    >Description <span class="text-danger"></span>
-                                </label>
+                                <label class="col-lg-4 col-form-label" for="description">Description <span class="text-danger"></span> </label>
                                 <div class="col-lg-6">
-                                    <textarea class="form-control" id="description" name="description" rows="5">
-{{ Product.Description }}</textarea
-                                    >
+                                    <textarea class="form-control" id="description" name="description" rows="5">{{ Product.Description }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-lg-4 col-form-label" for="category"
-                                    >Category <span class="text-danger"></span>
-                                </label>
+                                <label class="col-lg-4 col-form-label" for="category">Category <span class="text-danger"></span> </label>
                                 <div class="col-lg-6">
                                     <select class="form-control" id="category" name="category" rows="5">
-                                        <option value="{{ Product.Category_id }}">
-                                            {{ Product.Category.Name_Category }}
-                                        </option>
+                                        <option value="{{ Product.Category_id }}">{{ Product.Category.Name_Category }}</option>
                                         {% for category in listCategory %} {% if category.id != Product.Category_id %}
                                         <option value="{{ category.id }}">{{ category.Name_Category }}</option>
                                         {% endif %} {% endfor %}
@@ -78,11 +48,9 @@
                             </div>
                             <div class="form-group row">
                                 {% if Product.Url_Image %}
-                                <img src="{{ Product.Url_Image.url }}" alt="image here" class="product-size" />
+                                <img src="/{{ Product.Url_Image.url }}" alt="image here" class="product-size" />
                                 {% endif %}
-                                <label class="col-lg-4 col-form-label" for="Image"
-                                    >Image<span class="text-danger"></span>
-                                </label>
+
                                 <div class="col-lg-6">
                                     <input type="file" class="form-control" id="Image" name="Image" />
                                 </div>

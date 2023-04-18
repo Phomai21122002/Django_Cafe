@@ -1661,3 +1661,12 @@
 .product-size {
     margin: 20px auto;
 }
+
+.detail_product_btn {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 1.4rem;
+    cursor: pointer;
+}
+.detail_product_btn:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
