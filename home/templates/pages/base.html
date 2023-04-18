@@ -371,6 +371,18 @@
 </html>
 
 <script>
+    var total = 0;
+    var first = true;
+    const totalElement = document.querySelector('.header-top-shipment_totalprice');
+
+    const getCartInCookie = () => {
+        let decodedCookie = decodeURIComponent(document.cookie);
+        var cartStr = decodedCookie.split('cart=')[1];
+        var cart = cartStr.split(';')[0];
+        cart = JSON.parse(cart);
+        return cart;
+    };
+
     const setCookie = (name, json) => {
         let cookieValue = '';
         let expire = '';
@@ -473,13 +485,7 @@
                                         </li>`;
         delete_btns = document.querySelectorAll('.header-top-shipment_btndelete');
         for (let index = 0; index < delete_btns.length; index++) {
-            delete_btns[index].addEventListener('click', (e) => {
-                const delete_btn = e.currentTarget;
-                const wrapper = delete_btn.parentElement.parentElement;
-                const id = wrapper.getAttribute('id');
-                wrapper.style.display = 'none';
-                deleteProductInCookie({ idProduct: id });
-            });
+            delete_btns[index].addEventListener('click', handleDeleteBtn);
         }
     };
 
@@ -499,10 +505,14 @@
     const handleDeleteBtn = (e) => {
         const delete_btn = e.currentTarget;
         const wrapper = delete_btn.parentElement.parentElement;
+        wrapper.remove();
         const id = wrapper.getAttribute('id');
         console.log(id);
         deleteProductInCookie({ idProduct: id });
         resetDomDelbtn();
+
+        var total = calTotal({ cart: getCartInCookie() });
+        updateTotalView({ total });
     };
 
     const RemoveDelBtnListener = () => {
@@ -531,12 +541,96 @@
 
     for (let i = 0; i < cart.length; i++) {
         const product = cart[i];
+        total += Number(product.price) * Number(product.count);
         addProductViewCart({ product });
     }
+
+    const VND = new Intl.NumberFormat('vi-VN', {
+        style: 'currency',
+        currency: 'VND',
+    });
+
+    totalElement.innerText = VND.format(total);
 
     var delete_btns = document.querySelectorAll('.header-top-shipment_btndelete');
 
     for (let index = 0; index < delete_btns.length; index++) {
         delete_btns[index].addEventListener('click', handleDeleteBtn);
+    }
+</script>
+
+<script>
+    const calTotal = ({ cart }) => {
+        var total = 0;
+        cart.map((item) => {
+            total += Number(item.price) * Number(item.count);
+        });
+        return total;
+    };
+
+    const updateTotalView = ({ total }) => {
+        totalElement.innerText = VND.format(total);
+    };
+
+    const handleMinus = (e) => {
+        const munusBtn = e.currentTarget;
+        const id = munusBtn.parentElement.parentElement.parentElement.getAttribute('id');
+        const countElement = munusBtn.parentElement.querySelector('.form-order_number');
+
+        var count = Number(countElement.innerText);
+
+        // update số lượng trong view
+        if (count > 1) {
+            countElement.innerText = --count;
+            // update số lượng biến cart
+            for (let i = 0; i < cart.length; i++) {
+                const element = cart[i];
+                if (element.idProduct == id) {
+                    cart[i].count -= 1;
+                }
+            }
+
+            // update lại trong cookie
+            setCookie('cart', cart);
+
+            // update lại total trong view
+
+            var total = calTotal({ cart });
+            updateTotalView({ total });
+        }
+    };
+
+    const handlePlus = (e) => {
+        const plusBtn = e.currentTarget;
+        const id = plusBtn.parentElement.parentElement.parentElement.getAttribute('id');
+        const countElement = plusBtn.parentElement.querySelector('.form-order_number');
+        var count = Number(countElement.innerText);
+
+        countElement.innerText = ++count;
+        // update số lượng biến cart
+        for (let i = 0; i < cart.length; i++) {
+            const element = cart[i];
+            if (element.idProduct == id) {
+                cart[i].count += 1;
+            }
+        }
+
+        // update lại trong cookie
+        setCookie('cart', cart);
+
+        // update lại total trong view
+        var total = calTotal({ cart });
+        updateTotalView({ total });
+    };
+
+    var minusCounts = document.querySelectorAll('.form-order_minus');
+    var plusCounts = document.querySelectorAll('.form-order_plus');
+
+    for (let i = 0; i < minusCounts.length; i++) {
+        minusCounts[i].addEventListener('click', handleMinus);
+    }
+
+    for (let i = 0; i < plusCounts.length; i++) {
+        plusCounts[i].addEventListener('click', handlePlus);
     }
 </script>

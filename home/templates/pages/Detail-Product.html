@@ -42,11 +42,11 @@
                         <div class="form-detailproduct_quantity">
                             <div class="form-detailproduct_title">Số lượng:</div>
                             <div id="buy_amount" class="form-order_boxnumber">
-                                <button onclick="handle_minus()" class="buy_btn form-order_minus pd">
+                                <button id="detail_minusbtn" class="buy_btn detail_product_btn pd">
                                     <i class="form-order_changenumber-icon fa-solid fa-minus"></i>
                                 </button>
                                 <input type="text" name="amount" id="amount" value="1" />
-                                <button onclick="handle_plus()" class="buy_btn form-order_plus pd">
+                                <button id="detail_plusbtn" class="buy_btn detail_product_btn pd">
                                     <i class="form-order_changenumber-icon fa-solid fa-plus"></i>
                                 </button>
                             </div>
@@ -138,35 +138,39 @@
 </div>
 
 <script>
-    let amountElement = document.getElementById('amount'); // input tăng giảm số lượng
-    let amount = amountElement.value;
+    const countElement = document.getElementById('amount');
 
-    let render = (amount) => {
-        amountElement.value = amount;
-    };
+    const minusBtnDetailProduct = document.getElementById('detail_minusbtn');
+    const plusBtnDetailProduct = document.getElementById('detail_plusbtn');
 
-    let handle_plus = () => {
-        amount++;
-        render(amount);
-    };
+    minusBtnDetailProduct.addEventListener('click', () => {
+        var count = countElement.value;
+        if (count > 1) {
+            countElement.value = --count;
+        }
+    });
 
-    let handle_minus = () => {
-        if (amount > 1) amount--;
-        render(amount);
-    };
-
-    amountElement.addEventListener('input', () => {
-        amount = amountElement.value;
-        amount = parseInt(amount);
-        amount = isNaN(amount) || amount == 0 ? 1 : amount;
-        render(amount);
+    plusBtnDetailProduct.addEventListener('click', () => {
+        var count = countElement.value;
+        countElement.value = ++count;
     });
 </script>
 
 <script>
     const addBtn = document.getElementById('add_product_btn');
-    const buyBtn = document.getElementById('buy_product_btn');
-    const payBill = document.getElementById('pay_bill');
+
+    const updateCountProductInViewCart = ({ idProduct, countAdd }) => {
+        const products = document.querySelectorAll('.header-top-shipment_item');
+        for (let i = 0; i < products.length; i++) {
+            const element = products[i];
+            if (element.getAttribute('id') == idProduct) {
+                var countElement = element.querySelector('.form-order_number');
+                var countValue = Number(countElement.innerText);
+                countValue += countAdd;
+                countElement.innerText = countValue;
+            }
+        }
+    };
 
     addBtn.addEventListener('click', () => {
         const count = Number(document.getElementById('amount').value);
@@ -187,6 +191,12 @@
 
         if (resultHandle.result == true) {
             addProductViewCart({ product: resultHandle.product });
+            var total = calTotal({ cart: getCartInCookie() });
+            updateTotalView({ total });
+        } else {
+            updateCountProductInViewCart({ idProduct: id, countAdd: count });
+            var total = calTotal({ cart: getCartInCookie() });
+            updateTotalView({ total });
         }
     });
 </script>

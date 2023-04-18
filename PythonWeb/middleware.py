@@ -14,12 +14,14 @@ def LoginRequiredMiddleware(get_response):
     #     response = self.get_response(request)
     #     return response
     
-    def middleware(request):
+    def middleware(request):        # print(request.session.get('id'))
         if ('admin/' in request.build_absolute_uri()) and (request.session.get('id') == None):
             return redirect('Home:Login')
+        # print(request.headers)
         if 'Referer' in request.headers:
             pass
         else:
+            # print('khong')
             if not ('admin/' in request.path) and request.session.get('id') != None:
                 del request.session['id']
         response = get_response(request)

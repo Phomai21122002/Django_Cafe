@@ -151,3 +151,10 @@ def revenue(request):
 def Logout(request):
     del request.session['id']
     return redirect('Home:Home')
+
+def Profile(request):
+    return render(request, 'pages/profile.html')
+    
+def ChangePassWord(request):
+    return render(request, 'pages/changepassword.html')
+    
