@@ -119,4 +119,7 @@ def revenue(request):
     result_orderDetail, result_order = revenue_product(2)
     context = {"result_orderDetail": result_orderDetail, "result_order": result_order}
     return render(request, 'pages/listRevenue.html')
-    
+
+def delCategory(request, id):
+    deleteCategory(id)
+    return redirect('Admin:listcategory')

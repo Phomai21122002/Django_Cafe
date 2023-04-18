@@ -63,6 +63,9 @@ def listcategory():
     listCategory = category.objects.all()
     return listCategory
 
+def deleteCategory(idCategory):
+    category.objects.filter(id=idCategory).delete()
+
 def addproduct(Name_Product, Price, Description, Url_Image, Category_id):
     Product = product(Name_Product = Name_Product, Price = Price, Description = Description, Url_Image = Url_Image, Category_id = Category_id)
     Product.save()
@@ -159,7 +162,7 @@ def sales_product(Status):
 def revenue_product(Status):
     result_orderDetail = None
     result_order = None
-    result_orderDetail = orderdetail.objects.filter(Status = Status)
+    result_orderDetail = orderdetail.objects.filter(Status = Status)        
     for data in result_orderDetail:
         result_order = order.objects.filter(Order_Detail_id = data.id)
     return result_orderDetail, result_order

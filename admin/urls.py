@@ -16,4 +16,6 @@ urlpatterns = [
     path("updateproduct/<str:id>/",admincontroller.updateProduct , name='updateproduct'),
     path("updatestaff/<str:id>/",admincontroller.updateStaff , name='updatestaff'),
     path("deleteproduct/<str:id>/",admincontroller.delProduct , name='delproduct'),
+    path("deletecategory/<str:id>/",admincontroller.delCategory,name="deletecategory")
+    
 ]
