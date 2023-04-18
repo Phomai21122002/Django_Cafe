@@ -20,7 +20,10 @@ urlpatterns = [
     path("updatestaff/<str:id>/",admincontroller.updateStaff , name='updatestaff'),
     path("deleteproduct/<str:id>/",admincontroller.delProduct , name='delproduct'),
     path("deletecategory/<str:id>/",admincontroller.delCategory , name='delcategory'),
+    path("resetpassword/<str:id>/",admincontroller.ResetPassword , name='resetpass'),
     path("logout/",admincontroller.Logout , name='logout'),
     path("profile/",admincontroller.Profile , name='profile'),
-    path("changepassword/",admincontroller.ChangePassWord , name='password'),
+    path("changepassword/",admincontroller.ChangePassWord , name='password'), #view
+    path("updateprofile/",admincontroller.UpdateProfile,name='updateprofile'),
+    path("updatepassword/",admincontroller.UpdatePassword , name='updatepass'),
 ]
