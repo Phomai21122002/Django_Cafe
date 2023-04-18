@@ -1,5 +1,4 @@
 from django.db import models
-import mysql.connector
 
 class user(models.Model):
     Fisrt_Name = models.TextField()
@@ -30,12 +29,13 @@ class product(models.Model):
 
 class order(models.Model):
     User = models.ForeignKey(user, on_delete=models.CASCADE)
-    Product = models.ManyToManyField(product)
+    # Product = models.ManyToManyField(product)
     Price = models.IntegerField()
     Price_Total = models.IntegerField()
     Name_Product = models.CharField(max_length=50)
     Number = models.IntegerField()
     Order_Detail = models.ForeignKey(orderdetail, on_delete=models.CASCADE)
+    # Status = models.IntegerField()
 
 class orderProduct(models.Model):
     order = models.ForeignKey(order, on_delete=models.CASCADE)
@@ -58,6 +58,10 @@ def Register(FirstName, Email, PassWord, NumberPhone, Classify, LastName, Date):
 def addcategory(Name_Category, Image):
     Category = category(Name_Category = Name_Category, Url_Image = Image)
     Category.save()
+
+def get_category_by_id(id):
+    Category = category.objects.get(id = id)
+    return Category
 
 def listcategory():
     listCategory = category.objects.all()
@@ -99,6 +103,12 @@ def updateOrderDetail(id, Number, Price_Total, Status):
     OrderDetail.Price_Total = Price_Total
     OrderDetail.Status = Status
     OrderDetail.save()
+
+def update_category(id, Name_Category, Url_Image):
+    Category = category.objects.get(id = id)
+    Category.Name_Category = Name_Category
+    Category.Url_Image = Url_Image
+    Category.save()
 
 def listOrderDetail():
     resultOrderDetail = orderdetail.objects.all()
@@ -145,8 +155,23 @@ def updateproduct(id, Name_Product, Price, Description, Url_Image, Category_id):
 def updatestaff(id, First_Name, Email, Pass_Word, Number_Phone, Last_Name, Date):
     user.objects.filter(id = id).update(Fisrt_Name = First_Name, Email = Email, Pass_Word = Pass_Word, Phone_Number = Number_Phone, Last_Name = Last_Name, Date = Date)
 
+def deleteProduct_Order(idProduct):
+    ProductOrder = orderProduct.objects.filter(product_id = idProduct)
+    for i in ProductOrder:
+        i.delete()
+
 def deleteProduct(idProduct):
-    product.objects.filter(id=idProduct).delete()
+    Product = product.objects.get(id = idProduct)
+    Product.delete()
+
+def deleteCategory(idCategory):
+    Products = product.objects.filter(Category_id = idCategory)
+    for Product in Products:
+        deleteProduct_Order(Product.id)
+        deleteProduct(Product.id)
+    Category = category.objects.get(id = idCategory)
+    Category.delete()
+        
 
 def sales_product(Status):
     result_orderDetail = None
@@ -184,7 +209,7 @@ def handle_order(carts, Number_Phone, Address):
     # da thanh toan thi them vao cai moi va them
     id = addOrderDetail_get_id(tatol_product, tatol_price, 0, Number_Phone, Address)
     for data in listCart:
-        order_id = addOrder_get_id(data['Price'], data['total'], data['Name_Product'], data['count'], 2, id)
+        order_id = addOrder_get_id(data['Price'], data['total'], data['Name_Product'], data['count'], 1, id)
         add_order_product(order_id, data['idProduct'])
 
 

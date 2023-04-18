@@ -37,6 +37,12 @@ def listProduct(request):
     context = {'products': result}
     return render(request, 'pages/listProduct.html', context)
 
+def listProduct_by_Category(request, id):
+    products = get_product_by_category_id(id)
+
+    context = {'products': products}
+    return render(request, 'pages/listProduct.html', context)
+
 def listCategory(request):
     result = listcategory()
     context = {'categorys': result}
@@ -91,6 +97,23 @@ def updateProduct(request, id):
     context = {'Product': result, 'listCategory': result_category}
     return render(request, 'pages/updateProduct.html', context)
 
+def updateCategory(request, id):
+    Category = get_category_by_id(id)
+
+    if request.method == 'POST':
+        NameCategory = request.POST['nameCategory']
+        if len(request.FILES) != 0:
+            if len(Category.Url_Image) > 0:
+                os.remove(Category.Url_Image.path)
+            Image = request.FILES['Image']
+        else:
+            Image = Category.Url_Image
+
+        update_category(id, NameCategory, Image)
+        return redirect('Admin:listcategory')
+    context = {"Category": Category}
+    return render(request, 'pages/updateCategory.html', context)
+
 def updateStaff(request, id):
     if request.method == "POST":
         LastName = request.POST['lastname']
@@ -112,8 +135,13 @@ def listStaffSales(request):
     return render(request, 'pages/listStaffSales.html', context)
 
 def delProduct (request,id):
+    deleteProduct_Order(id)
     deleteProduct(id)
     return redirect('Admin:listproduct')
+
+def delCategory(request, id):
+    deleteCategory(id)
+    return redirect('Admin:listcategory')
 
 def revenue(request):
     result_orderDetail, result_order = revenue_product(2)

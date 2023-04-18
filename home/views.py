@@ -33,15 +33,15 @@ def Cart_Product(request):
     carts = json.loads(request.COOKIES.get('cart'))
 
     if request.method == 'POST':
-        # choose = request.POST['choose_order']
-        # if choose == 'here':
-        #     Number_Phone = request.POST['Number_Phone']  
-        #     Address = request.POST['Address']  
-        #     models.handle_order(carts, Number_Phone, Address)
-        # elif choose == 'home':
-        #     Number_Phone = request.POST['Number_Phone']  
-        #     Address = request.POST['Address']  
-        #     models.handle_order(carts, Number_Phone, Address)
+        choose = request.POST['choose_order']
+        if choose == 'here':
+            Number_Phone = request.POST['Number_Phone']  
+            Address = request.POST['Address']  
+            models.handle_order(carts, Number_Phone, Address)
+        elif choose == 'home':
+            Number_Phone = request.POST['Number_Phone']  
+            Address = request.POST['Address']  
+            models.handle_order(carts, Number_Phone, Address)
         return redirect('Home:Cart-Product')
 
     listCart = []
