@@ -372,6 +372,7 @@
 
 <script>
     var total = 0;
+    var first = true;
     const totalElement = document.querySelector('.header-top-shipment_totalprice');
 
     const getCartInCookie = () => {
@@ -626,12 +627,10 @@
     var plusCounts = document.querySelectorAll('.form-order_plus');
 
     for (let i = 0; i < minusCounts.length; i++) {
-        const element = minusCounts[i];
-        element.addEventListener('click', handleMinus);
+        minusCounts[i].addEventListener('click', handleMinus);
     }
 
     for (let i = 0; i < plusCounts.length; i++) {
-        const element = plusCounts[i];
-        element.addEventListener('click', handlePlus);
+        plusCounts[i].addEventListener('click', handlePlus);
     }
 </script>

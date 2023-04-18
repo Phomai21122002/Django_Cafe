@@ -102,4 +102,5 @@ def Register(request):
 
     return render(request, 'pages/Register.html')
 
+
 # Create your views here.

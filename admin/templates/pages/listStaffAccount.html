@@ -35,16 +35,11 @@
                                     <td>{{ staff.Fisrt_Name }}</td>
                                     <td>{{ staff.Last_Name }}</td>
                                     <td>
-                                        <span
-                                            ><a
-                                                href="{% url 'Admin:updatestaff' staff.id %}"
-                                                data-toggle="tooltip"
-                                                data-placement="top"
-                                                title="Edit"
-                                                ><i class="fa fa-pencil color-muted m-r-5"></i> </a
-                                            ><a href="#" data-toggle="tooltip" data-placement="top" title="Close"
-                                                ><i class="fa fa-trash color-danger"></i></a
-                                        ></span>
+                                        <span>
+                                            <a href="{% url 'Admin:updatestaff' staff.id %}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i></a>
+                                            <a href="" data-toggle="tooltip" data-placement="top" title="ResetPass"><i class="fa fa-rotate-right color-muted m-r-5"></i></a>
+                                            <a href="#" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-trash color-danger"></i></a>
+                                        </span>
                                     </td>
                                 </tr>
                                 {% endfor %}
