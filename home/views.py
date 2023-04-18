@@ -80,10 +80,10 @@ def Login(request):
         PassWord = request.POST['password']
         checkLogin = models.Login(Email, PassWord)
 
-        if checkLogin != 0:
+        if checkLogin:
             request.session['id'] = checkLogin.id
             request.session['classify'] = checkLogin.Classify
-        return redirect('Admin:Admin')     
+        return redirect('Admin:Admin')  
     return render(request, 'pages/Login.html')
 
 def Register(request):
