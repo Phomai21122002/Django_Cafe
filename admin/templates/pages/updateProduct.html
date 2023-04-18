@@ -78,11 +78,9 @@
                             </div>
                             <div class="form-group row">
                                 {% if Product.Url_Image %}
-                                <img src="{{ Product.Url_Image.url }}" alt="image here" class="product-size" />
+                                <img src="/{{ Product.Url_Image.url }}" alt="image here" class="product-size" />
                                 {% endif %}
-                                <label class="col-lg-4 col-form-label" for="Image"
-                                    >Image<span class="text-danger"></span>
-                                </label>
+
                                 <div class="col-lg-6">
                                     <input type="file" class="form-control" id="Image" name="Image" />
                                 </div>
