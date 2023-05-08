@@ -26,6 +26,6 @@ urlpatterns = [
     path("profile/",admincontroller.Profile , name='profile'),
     path("changepassword/",admincontroller.ChangePassWord , name='password'),
     path("updatesales/<str:id>/",admincontroller.updateSales , name='updatesales'),
-    path("view/<str:id>/",admincontroller.updateSales , name='view'),
+    path("viewdetailenvenue/<str:id>/",admincontroller.detailEnvenue , name='viewdetailenvenue'),
     path("viewdetailbill/<str:id>/",admincontroller.viewdetailbill , name='viewdetailbill'),
 ]
