@@ -5,8 +5,11 @@ import json
 
 def index(request):
     result = models.listcategory()
-    result_product = models.get_product_by_category_id(4)
-    product_order = models.get_different_product(4)
+    for i in result:
+        if( i.Name_Category == 'Cafe'):
+            id_product = i.id
+    result_product = models.get_product_by_category_id(id_product)
+    product_order = models.get_different_product(id_product)
 
     context = {'Categorys': result, 'Products': result_product, 'Product_Order': product_order}
     return render(request, 'pages/home.html', context)
@@ -78,12 +81,16 @@ def Login(request):
     if request.method == "POST":
         Email = request.POST['email']
         PassWord = request.POST['password']
-        checkLogin = models.Login(Email, PassWord)
+        checkLogin, classify = models.Login(Email, PassWord)
 
-        if checkLogin:
+        if checkLogin and classify == "1":
             request.session['id'] = checkLogin.id
             request.session['classify'] = checkLogin.Classify
-        return redirect('Admin:Admin')  
+            return redirect('Admin:Admin')
+        elif checkLogin and classify == "2":
+            request.session['id'] = checkLogin.id
+            request.session['classify'] = checkLogin.Classify
+            return redirect('Staff:Staff')
     return render(request, 'pages/Login.html')
 
 def Register(request):

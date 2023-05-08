@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 class user(models.Model):
     Fisrt_Name = models.TextField()
@@ -14,6 +15,7 @@ class orderdetail(models.Model):
     Price_Total = models.IntegerField()
     Number_Phone = models.CharField(max_length=10, blank=True)
     Address = models.CharField(max_length=255, blank=True)
+    DateTime = models.DateTimeField(auto_now_add=True)
     Status = models.IntegerField()
 
 class category(models.Model):
@@ -46,10 +48,12 @@ def Login(Email, PassWord):
     for data in listUser:
         if (data.Email == Email) and (data.Pass_Word == PassWord):
             result = user.objects.get(Email = Email, Pass_Word = PassWord)
+            classify = result.Classify
             break
         else:
             result = 0
-    return result
+            classify = 0
+    return result, classify
 
 def Register(FirstName, Email, PassWord, NumberPhone, Classify, LastName, Date):
     User = user(Fisrt_Name = FirstName, Email = Email, Pass_Word = PassWord, Phone_Number = NumberPhone, Classify = Classify, Last_Name = LastName, Date = Date)
@@ -84,8 +88,8 @@ def addOrder_get_id(Price, Price_Total, Name_Product, Number, User_id, Order_Det
     Order_id = result.id
     return Order_id
 
-def addOrderDetail_get_id(Number, Price_Total, Status, Number_Phone, Address):
-    OrderDetail = orderdetail(Number = Number, Price_Total = Price_Total, Status = Status, Number_Phone = Number_Phone, Address = Address)
+def addOrderDetail_get_id(Number, Price_Total, Status, Number_Phone, Address, Date_Time):
+    OrderDetail = orderdetail(Number = Number, Price_Total = Price_Total, Status = Status, Number_Phone = Number_Phone, Address = Address, DateTime = Date_Time)
     OrderDetail.save()
     OrderDetail_id = OrderDetail.id
     return OrderDetail_id
@@ -144,7 +148,7 @@ def get_staff_by_id(id):
     return staff
 
 def liststaff():
-    listStaff = user.objects.filter(Classify = 1)
+    listStaff = user.objects.filter(Classify = 2)
     return listStaff
 
 def updateproduct(id, Name_Product, Price, Description, Url_Image, Category_id):
@@ -157,7 +161,14 @@ def updateproduct(id, Name_Product, Price, Description, Url_Image, Category_id):
     Product.save()
 
 def updatestaff(id, First_Name, Email, Pass_Word, Number_Phone, Last_Name, Date):
-    user.objects.filter(id = id).update(Fisrt_Name = First_Name, Email = Email, Pass_Word = Pass_Word, Phone_Number = Number_Phone, Last_Name = Last_Name, Date = Date)
+    User = user.objects.filter(id = id).update(Fisrt_Name = First_Name, Email = Email, Pass_Word = Pass_Word, Phone_Number = Number_Phone, Last_Name = Last_Name, Date = Date)
+
+def resetpass(id):
+    User = user.objects.filter(id = id).update(Pass_Word = 123456)
+
+def deletestaff(id):
+    User = user.objects.get(id = id)
+    User.delete()
 
 def deleteProduct_Order(idProduct):
     ProductOrder = orderProduct.objects.filter(product_id = idProduct)
@@ -180,17 +191,36 @@ def deleteCategory(idCategory):
 def sales_product(Status):
     result_orderDetail = None
     result_order = []
-    result_orderDetail = orderdetail.objects.exclude(Status = Status)
+    result_orderDetail = orderdetail.objects.exclude(Status = Status).order_by('-DateTime')
     for data in result_orderDetail:
         result_order.append(order.objects.filter(Order_Detail_id = data.id))
     return result_orderDetail, result_order
 
+def sales_product_by_id(idOrderDetail):
+    result_orderDetail = None
+    result_order = []
+    result_orderDetail = orderdetail.objects.get(id = idOrderDetail)
+    result_staff = order.objects.filter(Order_Detail_id = result_orderDetail.id)[:1]
+    id_staff = result_staff[0].User_id
+    result_user = user.objects.get(id = id_staff)
+    result_order.append(order.objects.filter(Order_Detail_id = result_orderDetail.id))
+    return result_orderDetail, result_order, result_user
+
+def update_sales(id, id_session):
+    result = orderdetail.objects.get(id = id)
+    result.Status = 1
+    result.DateTime = datetime.now()
+    result.save()
+    resultOrder = order.objects.get(Order_Detail_id = id)
+    resultOrder.User_id = id_session
+    resultOrder.save()
+
 def revenue_product(Status):
     result_orderDetail = None
-    result_order = None
-    result_orderDetail = orderdetail.objects.filter(Status = Status)        
+    result_order = []
+    result_orderDetail = orderdetail.objects.filter(Status = Status).order_by('-DateTime')        
     for data in result_orderDetail:
-        result_order = order.objects.filter(Order_Detail_id = data.id)
+        result_order.append(order.objects.filter(Order_Detail_id = data.id))
     return result_orderDetail, result_order
 
 def handle_order(carts, Number_Phone, Address):
@@ -211,7 +241,7 @@ def handle_order(carts, Number_Phone, Address):
         tatol_product += int(cart['count'])
         tatol_price +=  int(cart['count'])*product.Price
     # da thanh toan thi them vao cai moi va them
-    id = addOrderDetail_get_id(tatol_product, tatol_price, 0, Number_Phone, Address)
+    id = addOrderDetail_get_id(tatol_product, tatol_price, 0, Number_Phone, Address, datetime.now())
     for data in listCart:
         order_id = addOrder_get_id(data['Price'], data['total'], data['Name_Product'], data['count'], 1, id)
         add_order_product(order_id, data['idProduct'])

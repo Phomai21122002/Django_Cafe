@@ -1,4 +1,4 @@
-{% extends './baseAdmin.html' %} {% block body %}
+{% extends './baseStaff.html' %} {% block body %}
 <div class="row page-titles mx-0">
     <div class="col p-md-0">
         <ol class="breadcrumb">
@@ -36,9 +36,8 @@
                                     <td>{{ staff.Last_Name }}</td>
                                     <td>
                                         <span>
-                                            <a href="{% url 'Admin:updatestaff' staff.id %}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i></a>
-                                            <a href="{% url 'Admin:resetpass' staff.id %}" data-toggle="tooltip" data-placement="top" title="ResetPass"><i class="fa fa-rotate-right color-muted m-r-5"></i></a>
-                                            <a href="{% url 'Admin:delstaff' staff.id %}" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-trash color-danger"></i></a>
+                                            <a href="{% url 'Staff:updatestaff' staff.id %}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i></a>
+                                            <!-- <a href="" data-toggle="tooltip" data-placement="top" title="ResetPass"><i class="fa fa-rotate-right color-muted m-r-5"></i></a> -->
                                         </span>
                                     </td>
                                 </tr>

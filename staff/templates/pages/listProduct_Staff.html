@@ -1,4 +1,4 @@
-{% extends './baseAdmin.html' %}
+{% extends './baseStaff.html' %}
 
 {% block body %}
 <div class="row page-titles mx-0">
@@ -16,28 +16,31 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">List Category</h4>
+                    <h4 class="card-title">List Product</h4>
                     <div class="table-responsive"> 
                         <table class="table table-bordered table-striped verticle-middle">
                             <thead>
                                 <tr>
-                                    <th scope="col">IDCategory</th>
+                                    <th scope="col">IDProduct</th>
+                                    <th scope="col">Name Product</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Description</th>
                                     <th scope="col">Name Category</th>
-                                    <th scope="col">Number Product</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% csrf_token %}
-                                {% for category in categorys %}
+                            {% csrf_token %}
+                                {% for product in products %}
                                     <tr>
-                                        <td>{{ category.id }}</td>
+                                        <td>{{ product.id }}</td>
                                         <td>
-                                            {{ category.Name_Category }}
+                                            {{ product.Name_Product }}
                                         </td>
-                                        <td><span><a href="{% url 'Admin:listproductbycategory' category.id %}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="ti-layout-list-post"></i></a></span>
-                                        </td>
-                                        <td><span><a href="{% url 'Admin:updateCategory' category.id %}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i> </a><a href="{% url 'Admin:delcategory' category.id %}" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-trash color-danger"></i></a></span>
+                                        <td>{{ product.Price }}₫</td>
+                                        <td>{{ product.Description }}</td>
+                                        <td>{{ product.Category.Name_Category }}</td>
+                                        <td><span><a href="{% url 'Staff:updateproduct' product.id %}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i> </a></span>
                                         </td>
                                     </tr>
                                 {% endfor %}

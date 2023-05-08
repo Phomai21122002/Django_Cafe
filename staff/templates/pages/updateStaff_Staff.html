@@ -1,4 +1,4 @@
-{% extends './baseAdmin.html' %}
+{% extends './baseStaff.html' %}
 
 {% block body %}
     <div class="row page-titles mx-0">
@@ -17,13 +17,13 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="form-validation">
-                            <form class="form-valide" action="{% url 'Admin:createaccount' %}" method="post">
+                            <!-- <form class="form-valide" action="" method="post"> -->
                                 {% csrf_token %}
                                 <div class="form-group row">
                                     <label class="col-lg-4 col-form-label" for="firstname">First Name<span class="text-danger"></span>
                                     </label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control" id="firstname" name="firstname" >
+                                        <input readonly type="text" class="form-control" id="firstname" name="firstname" value="{{ staff.Fisrt_Name }}">
                                     </div>
                                 </div>
 
@@ -31,7 +31,7 @@
                                     <label class="col-lg-4 col-form-label" for="lastname">Last Name<span class="text-danger"></span>
                                     </label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control" id="lastname" name="lastname" >
+                                        <input readonly type="text" class="form-control" id="lastname" name="lastname" value="{{ staff.Last_Name }}">
                                     </div>
                                 </div>
 
@@ -39,7 +39,7 @@
                                     <label class="col-lg-4 col-form-label" for="date">Birthday<span class="text-danger"></span>
                                     </label>
                                     <div class="col-lg-6">
-                                        <input type="date" class="form-control" id="date" name="date">
+                                        <input readonly type="date" class="form-control" id="date" name="date" value="{{ staff.Date }}">
                                     </div>
                                 </div>
 
@@ -47,42 +47,43 @@
                                     <label class="col-lg-4 col-form-label" for="email">Email<span class="text-danger"></span>
                                     </label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control" id="email" name="email">
+                                        <input readonly type="text" class="form-control" id="email" name="email" value="{{ staff.Email }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-4 col-form-label" for="numberphone">Phonenumber<span class="text-danger"></span>
                                     </label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control" id="numberphone" name="numberphone">
+                                        <input readonly type="text" class="form-control" id="numberphone" name="numberphone" value="{{ staff.Phone_Number }}">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label" for="classify">Permission<span class="text-danger"></span>
+                                    <label class="col-lg-4 col-form-label" for="val-email">Permission<span class="text-danger"></span>
                                     </label>
                                     <div class="col-lg-6">
-                                        <select class="form-control" id="classify" name="classify">
-                                            <option value="1">Admin</option>
-                                            <option value="2">Staff</option>
+                                        <select readonly class="form-control" id="val-skill" name="val-skill">
+                                            <option value="1">Staff</option>
                                         </select>
                                     </div>
                                 </div>
 
-                                <div class="form-group row">
+                                <!-- <div class="form-group row">
                                     <label class="col-lg-4 col-form-label" for="password">Password<span class="text-danger"></span>
                                     </label>
                                     <div class="col-lg-6">
-                                        <input type="password" class="form-control" id="password" name="password">
+                                        <input type="password" class="form-control" id="password" name="password" value="{{ staff.Pass_Word }}">
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <div class="form-group row">
                                     <div class="col-lg-8 ml-auto">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <a href="{% url 'Staff:staffaccounts' %}">
+                                            <button type="submit" class="btn btn-primary">Quay lại</button>
+                                        </a>
                                     </div>
                                 </div>
-                            </form>
+                            <!-- </form> -->
                         </div>
                     </div>
                 </div>

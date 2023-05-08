@@ -21,4 +21,5 @@ from django.conf import settings
 urlpatterns = [
     path('', include('home.urls')),
     path('admin/', include('admin.urls')),
+    path('staff/', include('staff.urls')),
 ] + static(settings.STATIC_IMG, document_root = settings.STATIC_ROOT)

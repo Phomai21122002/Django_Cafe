@@ -1,4 +1,4 @@
-{% extends './baseAdmin.html' %} {% block body %}
+{% extends './baseStaff.html' %} {% block body %}
 <div class="row page-titles mx-0">
     <div class="col p-md-0">
         <ol class="breadcrumb">
@@ -13,7 +13,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">List Staff Sales</h4>
+                    <h4 class="card-title">List Revenue</h4>
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped verticle-middle">
                             <thead>
@@ -22,7 +22,7 @@
                                     <th scope="col">Product</th>
                                     <th scope="col">Total</th>
                                     <th scope="col">Total Price</th>
-                                    <th scope="col">Status</th>
+                                    <th scope="col">Date Time</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -31,24 +31,19 @@
                                 <tr>
                                     <td>{{ orderDetail.id }}</td>
                                     <td>
-                                        {% for product in result_order %} {% for data in product %} 
-                                        {% if orderDetail.id == data.Order_Detail_id %}
+                                        {% for product in result_order %}
                                         <span style="display: block">
-                                            {{ data.Name_Product }}
-                                            <b style="color: #7571f9">x{{ data.Number}}</b>
+                                            {{ product.Name_Product }}
+                                            <b style="color: #7571f9">x{{ product.Number}}</b>
                                         </span>
-                                        {% endif %} {% endfor %} {% endfor %}
+                                        {% endfor %}
                                     </td>
                                     <td>{{ orderDetail.Number }}</td>
                                     <td>{{ orderDetail.Price_Total }}</td>
-                                    {% if orderDetail.Status == 0 %}
-                                    <td><span class="badge badge-danger px-2">Chưa xử lý</span></td>
-                                    {% endif %} {% if orderDetail.Status == 1 %}
-                                    <td><span class="badge badge-success px-2">Đã xử lý</span></td>
-                                    {% endif %}
+                                    <td>{{ orderDetail.DateTime }}</td>
                                     <td>
                                         <span>
-                                            <a href="{% url 'Admin:updatesales' orderDetail.id %}" data-toggle="tooltip" data-placement="top" title="Confirm"
+                                            <a href="{% url 'Staff:updatesales' orderDetail.id %}" data-toggle="tooltip" data-placement="top" title="Confirm"
                                                 ><i class="fa fa-pencil color-muted m-r-5"></i>
                                             </a>
                                             <a href="#" data-toggle="tooltip" data-placement="top" title="Close">

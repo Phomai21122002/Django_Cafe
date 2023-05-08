@@ -1,4 +1,4 @@
-{% extends './baseAdmin.html' %}
+{% extends './baseStaff.html' %}
 
 {% block body %}
     <div class="row page-titles mx-0">
@@ -17,7 +17,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="form-validation">
-                            <form class="form-valide" action="{% url 'Admin:createaccount' %}" method="post">
+                            <form class="form-valide" action="{% url 'Staff:createaccount' %}" method="post">
                                 {% csrf_token %}
                                 <div class="form-group row">
                                     <label class="col-lg-4 col-form-label" for="firstname">First Name<span class="text-danger"></span>
@@ -63,7 +63,7 @@
                                     </label>
                                     <div class="col-lg-6">
                                         <select class="form-control" id="classify" name="classify">
-                                            <option value="1">Admin</option>
+                                            <option value="1">Staff</option>
                                             <option value="2">Staff</option>
                                         </select>
                                     </div>

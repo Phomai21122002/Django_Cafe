@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <title>Admin</title>
+        <title>Staff</title>
         <!-- Favicon icon -->
         <link rel="icon" type="/static/template/image/png" sizes="16x16" href="/static/template/images/favicon.png" />
         <!-- Pignose Calender -->
@@ -43,7 +43,7 @@
         ***********************************-->
             <div class="nav-header">
                 <div class="brand-logo">
-                    <a href="{% url 'Admin:Admin' %}">
+                    <a href="{% url 'Staff:Staff' %}">
                         <b class="logo-abbr"><img src="/static/template/images/logo.png" alt="" /> </b>
                         <span class="logo-compact"><img src="/static/template/images/logo-compact.png" alt="" /></span>
                         <span class="brand-title">
@@ -268,7 +268,7 @@
                                                 >
                                             </li>
                                             <li>
-                                                <a href="{% url 'Admin:logout' %}"
+                                                <a href="{% url 'Staff:logout' %}"
                                                     ><i class="icon-key"></i> <span>Logout</span></a
                                                 >
                                             </li>
@@ -296,10 +296,10 @@
                                 <i class="icon-speedometer menu-icon"></i><span class="nav-text">Sản Phẩm</span>
                             </a>
                             <ul aria-expanded="false">
-                                <li><a href="{% url 'Admin:listproduct' %}">Danh Sách Sản Phẩm</a></li>
-                                <li><a href="{% url 'Admin:listcategory' %}">Danh Sách Loại Sản Phẩm</a></li>
-                                <li><a href="{% url 'Admin:addproduct' %}">Thêm Sản Phẩm</a></li>
-                                <li><a href="{% url 'Admin:addcategory' %}">Thêm Loại Sản Phẩm</a></li>
+                                <li><a href="{% url 'Staff:listproduct' %}">Danh Sách Sản Phẩm</a></li>
+                                <li><a href="{% url 'Staff:listcategory' %}">Danh Sách Loại Sản Phẩm</a></li>
+                                <!-- <li><a href="{% url 'Staff:addproduct' %}">Thêm Sản Phẩm</a></li>
+                                <li><a href="{% url 'Staff:addcategory' %}">Thêm Loại Sản Phẩm</a></li> -->
                             </ul>
                         </li>
                         <li class="mega-menu mega-menu-sm">
@@ -307,9 +307,9 @@
                                 <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Account</span>
                             </a>
                             <ul aria-expanded="false">
-                                <li><a href="{% url 'Admin:createaccount' %}">Create Account</a></li>
-                                <li><a href="{% url 'Admin:staffaccounts' %}">Staff Account</a></li>
-                                <!-- <li><a href="{% url 'Admin:customeraccounts' %}">Customer Account</a></li> -->
+                                <!-- <li><a href="{% url 'Staff:createaccount' %}">Create Account</a></li> -->
+                                <li><a href="{% url 'Staff:staffaccounts' %}">Staff Account</a></li>
+                                <!-- <li><a href="{% url 'Staff:customeraccounts' %}">Customer Account</a></li> -->
                             </ul>
                         </li>
                         <li class="mega-menu mega-menu-sm">
@@ -317,8 +317,8 @@
                                 <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Sales</span>
                             </a>
                             <ul aria-expanded="false">
-                                <li><a href="{% url 'Admin:liststaffsales' %}">Danh Sách Bán Hàng</a></li>
-                                <li><a href="{% url 'Admin:revenue' %}">Doanh Thu</a></li>
+                                <li><a href="{% url 'Staff:liststaffsales' %}">Danh Sách Bán Hàng</a></li>
+                                <!-- <li><a href="{% url 'Staff:revenue' %}">Doanh Thu</a></li> -->
                             </ul>
                         </li>
                         <li class="nav-label">Apps</li>

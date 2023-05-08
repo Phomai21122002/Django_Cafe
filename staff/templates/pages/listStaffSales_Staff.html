@@ -1,4 +1,4 @@
-{% extends './baseAdmin.html' %} {% block body %}
+{% extends './baseStaff.html' %} {% block body %}
 <div class="row page-titles mx-0">
     <div class="col p-md-0">
         <ol class="breadcrumb">
@@ -48,7 +48,7 @@
                                     {% endif %}
                                     <td>
                                         <span>
-                                            <a href="{% url 'Admin:updatesales' orderDetail.id %}" data-toggle="tooltip" data-placement="top" title="Confirm"
+                                            <a href="{% url 'Staff:updatesales' orderDetail.id %}" data-toggle="tooltip" data-placement="top" title="Confirm"
                                                 ><i class="fa fa-pencil color-muted m-r-5"></i>
                                             </a>
                                             <a href="#" data-toggle="tooltip" data-placement="top" title="Close">
