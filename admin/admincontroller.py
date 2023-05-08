@@ -1,6 +1,7 @@
 
 from django.shortcuts import render, redirect
 from home.models import *
+from django.http import JsonResponse
 import os
 
 
@@ -194,8 +195,56 @@ def Logout(request):
     return redirect('Home:Home')
 
 def Profile(request):
-    return render(request, 'pages/profile.html')
+    idUser = request.session.get('id')
+    myProfile = getUserByID(idUser)
+    context = {"user": myProfile}
+    return render(request, 'pages/profile.html', context)
     
 def ChangePassWord(request):
     return render(request, 'pages/changepassword.html')
+    
+def UpdateProfile (request):
+
+    idUser = request.session.get('id')
+
+    if request.method == "POST":
+        lastName = request.POST['lastname']
+        firsttName = request.POST['firstname']
+        numberphone = request.POST['numberphone']
+        updateProfile(id=idUser, firstName=firsttName, lastName=lastName, phoneNumber=numberphone)
+        return redirect("Admin:profile")
+
+def ResetPassword (request,id):
+    resetPass(id)
+    return redirect("Admin:staffaccounts")
+
+def UpdatePassword(request):
+
+    idUser = request.session.get('id')
+
+    if request.method == "POST":
+        oldPass = request.POST['oldpass']
+        newPass = request.POST['newpass']
+
+        print(oldPass)
+        print(newPass)
+        user = getUserByID(id = idUser)
+        if(oldPass == user.Pass_Word):
+            updatePass(id=idUser, newPass=newPass)
+            data = {
+                'result': True,
+            }
+            return JsonResponse(data)
+        else:
+            data = {
+                'result': False,
+            }
+            return JsonResponse(data)
+
+        
+        
+        
+    
+    
+   
     

@@ -43,6 +43,19 @@ class orderProduct(models.Model):
     order = models.ForeignKey(order, on_delete=models.CASCADE)
     product = models.ForeignKey(product, on_delete=models.CASCADE)
 
+def getUserByID(id):
+    return user.objects.get(id = id)
+    
+def updateProfile(id,firstName , lastName , phoneNumber):
+   user.objects.filter(id = id).update(Fisrt_Name = firstName, Phone_Number = phoneNumber, Last_Name = lastName)
+
+def resetPass(id):
+    user.objects.filter(id = id).update(Pass_Word = '12345678')
+    
+
+def updatePass(id,newPass):
+    user.objects.filter(id = id).update(Pass_Word = newPass)
+
 def Login(Email, PassWord):
     listUser = user.objects.all()
     for data in listUser:

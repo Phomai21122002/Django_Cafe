@@ -16,24 +16,26 @@
                 <div class="card-body">
                     <h4 class="card-title">Thông Tin Người Dùng</h4>
                     <div class="form-validation">
-                        <form class="form-valide" action="/admin/updateprofile" method="post">
+                        <form class="form-valide" action="/admin/updateprofile/" method="post">
+                            {% csrf_token %}
                             <div class="form-group row">
-                                <label class="col-lg-4 col-form-label" for="val-username">Tên Người Dùng<span class="text-danger">*</span> </label>
+                                <label class="col-lg-4 col-form-label" for="val-username">First Name<span class="text-danger">*</span> </label>
                                 <div class="col-lg-6">
-                                    <input value="{{user.UserName}}" type="text" class="form-control" id="val-username" name="UserName" required />
+                                    <input value="{{user.Fisrt_Name}}" type="text" class="form-control" id="val-username" name="firstname" required />
                                 </div>
                             </div>
+
                             <div class="form-group row">
-                                <label class="col-lg-4 col-form-label" for="val-confirm-password">Địa Chỉ<span class="text-danger">*</span> </label>
+                                <label class="col-lg-4 col-form-label" for="val-username">Last Name<span class="text-danger">*</span> </label>
                                 <div class="col-lg-6">
-                                    <input value="{{user.Address}}" type="text" class="form-control" id="val-confirm-password" name="Address" placeholder="Address" required />
+                                    <input value="{{user.Last_Name}}" type="text" class="form-control" id="val-username" name="lastname" required />
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-lg-4 col-form-label" for="val-confirm-password">Số Điện Thoại<span class="text-danger">*</span> </label>
                                 <div class="col-lg-6">
-                                    <input value="{{user.PhoneNumber}}" require type="text" class="form-control" id="val-confirm-password" name="PhoneNumber" placeholder="054321..." required />
+                                    <input value="{{user.Phone_Number}}" require type="text" class="form-control" id="val-confirm-password" name="numberphone" placeholder="054321..." required />
                                 </div>
                             </div>
 
@@ -44,10 +46,6 @@
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </div>
-                        </form>
-
-                        <form id="form_avatar" action="" method="post" enctype="multipart/form-data" style="display: none">
-                            <input name="Image" type="file" id="input_avatar" />
                         </form>
                     </div>
                 </div>
