@@ -11,5 +11,5 @@ urlpatterns = [
     path("Login/", views.Login, name='Login'),
     path("Register/", views.Register, name='Register'),
     path("Detail-Product/<str:id>/", views.Detail_Product, name='Detail-Product'),
-    path("Cart-Product", views.Cart_Product, name='Cart-Product'),
+    path("Cart-Product/", views.Cart_Product, name='Cart-Product'),
 ]

@@ -19,7 +19,7 @@
             <div class="form-bill-product">
                 <div class="" style="width: 15%">
                     <a href="#" class="decoration" style="display: block">
-                        <img src="./assets/img/cafe-sua.png" alt="" class="form-bill-product_img" />
+                        <img src="/{{ cart.Picture }}" alt="" class="form-bill-product_img" />
                     </a>
                 </div>
                 <div class="form-bill-product_info" style="width: 30%">
@@ -49,7 +49,7 @@
                 </div>
             </div>
             {% endfor %}
-            <form action="" method="post">
+            <!-- <form action="" method="post"> -->
                 <ul class="style box-order-address">
                     <h3 class="header_address">Tùy chọn địa điểm</h3>
                     <li class="order_item">
@@ -79,22 +79,63 @@
                             </a>
                         </li>
                         <li class="col l-6">
-                            {% csrf_token %}
-                            <input
+                            <!-- {% csrf_token %} -->
+                            <!-- <input
                                 id="pay_bill"
                                 class="btn cl-white form-bill-total_link"
                                 type="submit"
                                 value="Tiến hành thanh toán"
-                            />
+                            /> -->
+                            <div id="pay_bill" class="btn cl-white form-bill-total_link">Tiến hành thanh toán</div>
                         </li>
                     </ul>
                 </div>
-            </form>
+            <!-- </form> -->
         </div>
     </div>
 </div>
 
 <script>
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === name + '=') {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    var numberPhone = document.getElementById('Number_Phone')
+    var Address = document.getElementById('Address')
+    let payBill = document.getElementById('pay_bill')
+
+
+    var http = new XMLHttpRequest();
+    payBill.preventDefault;
+    payBill.addEventListener('click', () => {
+        var csrftoken = getCookie('csrftoken');
+        http.open('POST', '/Cart-Product/');
+        http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        http.setRequestHeader('X-CSRFToken', csrftoken);
+        http.send('numberPhone=' + numberPhone.value + '&Address=' + Address.value);
+
+        http.onreadystatechange = function () {
+                if (this.readyState == 4) {
+                    console.log(this.responseText);
+                    var response = JSON.parse(this.responseText);
+                    if (response.result == true) {
+                        setCookie('cart', []);
+                        window.location.href = "http://localhost:8000/Cart-Product/"
+                    }
+                }
+            };
+    })
     // let amountElement = document.getElementById('amount'); // input tăng giảm số lượng
     // let amount = amountElement.value;
 

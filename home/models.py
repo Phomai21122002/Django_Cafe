@@ -63,9 +63,18 @@ def Login(Email, PassWord):
             result = user.objects.get(Email = Email, Pass_Word = PassWord)
             classify = result.Classify
             break
+        elif( (data.Email != Email) and (data.Pass_Word == PassWord)):
+            result = user.objects.get(Pass_Word = PassWord)
+            classify = result.Classify
+            break
+        elif( (data.Email == Email) and (data.Pass_Word != PassWord)):
+            result = user.objects.get(Email = Email)
+            classify = result.Classify
+            break
         else:
             result = 0
             classify = 0
+    
     return result, classify
 
 def Register(FirstName, Email, PassWord, NumberPhone, Classify, LastName, Date):

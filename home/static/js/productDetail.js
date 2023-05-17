@@ -134,6 +134,3 @@ for (let i = 0; i < cart.length; i++) {
     addProductViewCart({ product });
 }
 
-payBill.addEventListener('click', () => {
-    setCookie('cart', []);
-});

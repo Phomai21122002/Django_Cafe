@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from . import models
 from django.http import HttpResponse
 import json
+from django.http import JsonResponse
 
 def index(request):
     result = models.listcategory()
@@ -36,16 +37,13 @@ def Cart_Product(request):
     carts = json.loads(request.COOKIES.get('cart'))
 
     if request.method == 'POST':
-        choose = request.POST['choose_order']
-        if choose == 'here':
-            Number_Phone = request.POST['Number_Phone']  
-            Address = request.POST['Address']  
-            models.handle_order(carts, Number_Phone, Address)
-        elif choose == 'home':
-            Number_Phone = request.POST['Number_Phone']  
-            Address = request.POST['Address']  
-            models.handle_order(carts, Number_Phone, Address)
-        return redirect('Home:Cart-Product')
+        Number_Phone = request.POST['numberPhone']  
+        Address = request.POST['Address']  
+        models.handle_order(carts, Number_Phone, Address)
+        data = {
+            'result': True,
+        }
+        return JsonResponse(data)
 
     listCart = []
     total_product = 0
@@ -58,6 +56,7 @@ def Cart_Product(request):
             'idProduct': product.id,
             'Name_Product': product.Name_Product,
             'Price': product.Price,
+            'Picture': product.Url_Image,
             'count': int(cart['count']),
             'total': int(cart['count'])*product.Price,
         })
@@ -82,15 +81,46 @@ def Login(request):
         Email = request.POST['email']
         PassWord = request.POST['password']
         checkLogin, classify = models.Login(Email, PassWord)
+        print(Email, PassWord)
+        print(checkLogin.id)
+        print(classify)
+        if(classify == "1" and Email == checkLogin.Email and PassWord == checkLogin.Pass_Word):
+            print(checkLogin)
+            request.session['id'] = checkLogin.id
+            request.session['classify'] = checkLogin.Classify
+            data = {
+                'id': checkLogin.id,
+                'classify': checkLogin.Classify,
+            }
+            return JsonResponse(data) 
+        elif(classify == "2" and Email == checkLogin.Email and PassWord == checkLogin.Pass_Word):
+            print('nhan vien',checkLogin)
+            request.session['id'] = checkLogin.id
+            request.session['classify'] = checkLogin.Classify
+            data = {
+                'id': checkLogin.id,
+                'classify': checkLogin.Classify,
+            }
+            return JsonResponse(data)
+        elif(checkLogin == False):
+            print('error email')
+            data = {
+                'result': True,
+            }
+            return JsonResponse(data)
+        elif(Email == checkLogin.Email and PassWord != checkLogin.Pass_Word):
+            print('error pass')
+            data = {
+                'result': False,
+            }
+            return JsonResponse(data)
+        elif(checkLogin == 0 and classify == 0):
+            print('error')
+            data = {
+                'result': 0,
+            }
+            return JsonResponse(data)
 
-        if checkLogin and classify == "1":
-            request.session['id'] = checkLogin.id
-            request.session['classify'] = checkLogin.Classify
-            return redirect('Admin:Admin')
-        elif checkLogin and classify == "2":
-            request.session['id'] = checkLogin.id
-            request.session['classify'] = checkLogin.Classify
-            return redirect('Staff:Staff')
     return render(request, 'pages/Login.html')
 
 def Register(request):
@@ -103,7 +133,7 @@ def Register(request):
         password = request.POST['password']
         Date = request.POST['datetime']
         
-        models.Register(FirstName, Email, password, numberphone, 1, LastName, Date)
+        models.Register(FirstName, Email, password, numberphone, '2', LastName, Date)
 
         return redirect("Home:Login")
 
