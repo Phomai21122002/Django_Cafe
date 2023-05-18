@@ -1,121 +1,100 @@
-{% extends "pages/base.html" %}
-
-{% load static %}
-
-{% block body %}
-    <div class="grid wide body-login">
+{% extends "pages/base.html" %} {% load static %} {% block body %}
+<div class="grid wide body-login">
+    <div class="header-navbar">
         <div class="header-navbar">
-            <div class="header-navbar">
-                <a href="/" class="decoration header-navbar_home">Trang chủ</a>
-            </div>
-            <div class="header-navbar">
-                /
-            </div>
-            <div class="header-navbar">
-                <a href="/Login/" class="decoration header-navbar_now cl-base">Đăng nhập tài khoản</a>
-            </div>
+            <a href="/" class="decoration header-navbar_home">Trang chủ</a>
         </div>
-        <div class="body-login-box">
-            <div class="body-login-box_header">
-                <h3 class="body-login-box_title">Đăng nhập</h3>
-                <p class="body-login-box_desc">Nếu bạn chưa có tài khoản, đăng ký tại đây</p>
-            </div>
+        <div class="header-navbar">/</div>
+        <div class="header-navbar">
+            <a href="/Login/" class="decoration header-navbar_now cl-base">Đăng nhập tài khoản</a>
+        </div>
+    </div>
+    <div class="body-login-box">
+        <div class="body-login-box_header">
+            <h3 class="body-login-box_title">Đăng nhập</h3>
+            <p class="body-login-box_desc">Nếu bạn chưa có tài khoản, đăng ký tại đây</p>
+        </div>
 
-            <!-- <form action="{% url 'Home:Login' %}" method="POST"> -->
-                <!-- {% csrf_token %} -->
-                <div class="form-login">
-                    <p id="err_email" style="margin: 5px 0px 0px 0px; color: red; display: none">*Email không chính xác</p>
-                    <input name="email" id="email" type="text" placeholder="Email">
-                    <p id="err_pass" style="margin: 5px 0px 0px 0px; color: red; display: none">*Mật Khẩu không chính xác</p>
-                    <input name="password" id="password" type="password" placeholder="Mật khẩu">
-                    <input id="btn" type="submit" value="Đăng nhập">
-                </div>
-            <!-- </form> -->
-            <div class="body-login-box_different">
-                <div class="body-login-box_forget">
-                    <a href="#" class="decoration body-login-box_link">
-                        Quên mật khẩu
-                    </a>
-                </div>
-                <div class="body-login-box_restore">
-                    Hoặc đăng nhập bằng
-                </div>
-                <div class="body-login-box_new">
-                    <a href="" class="decoration body-login-box_iconlink">
-                        <img src="{% static 'img/fb-btn.svg' %}" alt="">
-                    </a>
-                    <a href="" class="decoration body-login-box_iconlink">
-                        <img src="{% static 'img/gp-btn.svg' %}" alt="">
-                    </a>
-                </div>
+        <!-- <form action="{% url 'Home:Login' %}" method="POST"> -->
+        <!-- {% csrf_token %} -->
+        <div class="form-login">
+            <p id="err_email" style="margin: 5px 0px 0px 0px; color: red; display: none">*Email không chính xác</p>
+            <input name="email" id="email" type="text" placeholder="Email" />
+            <p id="err_pass" style="margin: 5px 0px 0px 0px; color: red; display: none">* Email hoặc Mật Khẩu không chính xác</p>
+            <input name="password" id="password" type="password" placeholder="Mật khẩu" />
+            <input id="btn" type="submit" value="Đăng nhập" />
+        </div>
+        <!-- </form> -->
+        <div class="body-login-box_different">
+            <div class="body-login-box_forget">
+                <a href="#" class="decoration body-login-box_link"> Quên mật khẩu </a>
+            </div>
+            <div class="body-login-box_restore">Hoặc đăng nhập bằng</div>
+            <div class="body-login-box_new">
+                <a href="" class="decoration body-login-box_iconlink">
+                    <img src="{% static 'img/fb-btn.svg' %}" alt="" />
+                </a>
+                <a href="" class="decoration body-login-box_iconlink">
+                    <img src="{% static 'img/gp-btn.svg' %}" alt="" />
+                </a>
             </div>
         </div>
     </div>
+</div>
 
+<script>
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === name + '=') {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
 
+    var email = document.getElementById('email');
+    var pass = document.getElementById('password');
 
-    <script>
-        function getCookie(name) {
-            var cookieValue = null;
-            if (document.cookie && document.cookie !== '') {
-                var cookies = document.cookie.split(';');
-                for (var i = 0; i < cookies.length; i++) {
-                    var cookie = cookies[i].trim();
-                    // Does this cookie string begin with the name we want?
-                    if (cookie.substring(0, name.length + 1) === name + '=') {
-                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                        break;
+    var errEmail = document.getElementById('err_email');
+    var errPass = document.getElementById('err_pass');
+
+    var http = new XMLHttpRequest();
+
+    var submitBtn = document.getElementById('btn');
+    submitBtn.preventDefault;
+
+    submitBtn.addEventListener('click', function () {
+        errEmail.style.display = 'none';
+        errPass.style.display = 'none';
+        var csrftoken = getCookie('csrftoken');
+
+        http.open('POST', '/Login/');
+        http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        http.setRequestHeader('X-CSRFToken', csrftoken);
+        http.send('email=' + email.value + '&password=' + pass.value);
+
+        http.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                var response = JSON.parse(this.responseText);
+                console.log(response);
+                if (response.result == false) {
+                    errPass.style.display = 'block';
+                } else {
+                    if (response.user.Classify == '1') {
+                        window.location.href = 'http://localhost:8000/admin/';
+                    } else {
+                        window.location.href = 'http://localhost:8000/staff/';
                     }
                 }
             }
-            return cookieValue;
-        }
-    
-        var email = document.getElementById('email');
-        var pass = document.getElementById('password');
-    
-        var errEmail = document.getElementById('err_email');
-        var errPass = document.getElementById('err_pass');
-    
-        var http = new XMLHttpRequest();
-    
-        var submitBtn = document.getElementById('btn');
-        submitBtn.preventDefault;
-    
-        submitBtn.addEventListener('click', function () {
-            errEmail.style.display = 'none';
-            errPass.style.display = 'none';
-            var csrftoken = getCookie('csrftoken');
-
-            http.open('POST', '/Login/');
-            http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-            http.setRequestHeader('X-CSRFToken', csrftoken);
-            http.send('email=' + email.value + '&password=' + pass.value);
-
-            http.onreadystatechange = function () {
-                if (this.readyState == 4) {
-                    console.log(this.responseText);
-                    var response = JSON.parse(this.responseText);
-                    if (response.classify == '1') {
-                        window.location.href = "http://localhost:8000/admin/"
-                    }
-                    else if (response.classify == '2') {
-                        window.location.href = "http://localhost:8000/staff/"
-                    }
-                    else if (response.result == true) {
-                        errEmail.style.display = 'block';
-                        errPass.style.display = 'none';
-                    }
-                    else if(response.result == false) {
-                        errEmail.style.display = 'none';
-                        errPass.style.display = 'block';
-                    }
-                    else {
-                        errEmail.style.display = 'block';
-                        errPass.style.display = 'block';
-                    }
-                }
-            };
-        });
-    </script>
-{% endblock  %}
+        };
+    });
+</script>
+{% endblock %}

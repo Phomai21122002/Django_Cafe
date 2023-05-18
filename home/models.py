@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+from django.db.models import Q
 
 class user(models.Model):
     Fisrt_Name = models.TextField()
@@ -57,25 +58,28 @@ def updatePass(id,newPass):
     user.objects.filter(id = id).update(Pass_Word = newPass)
 
 def Login(Email, PassWord):
-    listUser = user.objects.all()
-    for data in listUser:
-        if (data.Email == Email) and (data.Pass_Word == PassWord):
-            result = user.objects.get(Email = Email, Pass_Word = PassWord)
-            classify = result.Classify
-            break
-        elif( (data.Email != Email) and (data.Pass_Word == PassWord)):
-            result = user.objects.get(Pass_Word = PassWord)
-            classify = result.Classify
-            break
-        elif( (data.Email == Email) and (data.Pass_Word != PassWord)):
-            result = user.objects.get(Email = Email)
-            classify = result.Classify
-            break
-        else:
-            result = 0
-            classify = 0
+    data = user.objects.filter(Q(Email = Email) & Q(Pass_Word = PassWord))
+    return data
+
+    # listUser = user.objects.all()
+    # for data in listUser:
+    #     if (data.Email == Email) and (data.Pass_Word == PassWord):
+    #         result = user.objects.get(Email = Email, Pass_Word = PassWord)
+    #         classify = result.Classify
+    #         break
+    #     elif( (data.Email != Email) and (data.Pass_Word == PassWord)):
+    #         result = user.objects.get(Pass_Word = PassWord)
+    #         classify = result.Classify
+    #         break
+    #     elif( (data.Email == Email) and (data.Pass_Word != PassWord)):
+    #         result = user.objects.get(Email = Email)
+    #         classify = result.Classify
+    #         break
+    #     else:
+    #         result = 0
+    #         classify = 0
     
-    return result, classify
+    # return result, classify
 
 def Register(FirstName, Email, PassWord, NumberPhone, Classify, LastName, Date):
     User = user(Fisrt_Name = FirstName, Email = Email, Pass_Word = PassWord, Phone_Number = NumberPhone, Classify = Classify, Last_Name = LastName, Date = Date)
