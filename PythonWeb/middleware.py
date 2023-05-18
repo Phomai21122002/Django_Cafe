@@ -15,19 +15,15 @@ def LoginRequiredMiddleware(get_response):
     #     return response
     
     def middleware(request):        # print(request.session.get('id'))
-        if ('admin/' in request.build_absolute_uri()) and (request.session.get('id') == None):
+        if ('admin/' in request.build_absolute_uri()) and (request.session.get('id') == None or request.session.get('classify') != '1') :
             return redirect('Home:Login')
         
-        if ('staff/' in request.build_absolute_uri()) and (request.session.get('id') == None):
+        if ('staff/' in request.build_absolute_uri()) and (request.session.get('id') == None or request.session.get('classify') != '2'):
             return redirect('Home:Login')
-        # print(request.headers)
-        if 'Referer' in request.headers:
-            pass
         else:
-            # print('khong')
-            if not ('admin/' and 'staff/' in request.path) and request.session.get('id') != None:
-                del request.session['id']
-                return redirect('Home:Login')
-        response = get_response(request)
-        return response
+            response = get_response(request)
+            return response
+            
     return middleware
+
+

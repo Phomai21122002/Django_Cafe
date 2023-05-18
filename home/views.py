@@ -80,47 +80,33 @@ def Login(request):
     if request.method == "POST":
         Email = request.POST['email']
         PassWord = request.POST['password']
-        checkLogin, classify = models.Login(Email, PassWord)
-        print(Email, PassWord)
-        print(checkLogin.id)
-        print(classify)
-        if(classify == "1" and Email == checkLogin.Email and PassWord == checkLogin.Pass_Word):
-            print(checkLogin)
-            request.session['id'] = checkLogin.id
-            request.session['classify'] = checkLogin.Classify
-            data = {
-                'id': checkLogin.id,
-                'classify': checkLogin.Classify,
+        data = models.Login(Email, PassWord)
+
+
+        if(len(data) > 0):
+
+            user = {
+                'Email': data[0].Email,
+                'Classify': data[0].Classify
             }
-            return JsonResponse(data) 
-        elif(classify == "2" and Email == checkLogin.Email and PassWord == checkLogin.Pass_Word):
-            print('nhan vien',checkLogin)
-            request.session['id'] = checkLogin.id
-            request.session['classify'] = checkLogin.Classify
-            data = {
-                'id': checkLogin.id,
-                'classify': checkLogin.Classify,
+
+            request.session['id'] = data[0].id
+            request.session['classify'] = data[0].Classify
+            
+            result = {
+                'user': user,
+                'result': True
             }
-            return JsonResponse(data)
-        elif(checkLogin == False):
-            print('error email')
-            data = {
-                'result': True,
-            }
-            return JsonResponse(data)
-        elif(Email == checkLogin.Email and PassWord != checkLogin.Pass_Word):
-            print('error pass')
-            data = {
+
+            return JsonResponse(result)
+
+        else:
+            result = {
                 'result': False,
             }
-            return JsonResponse(data)
-        elif(checkLogin == 0 and classify == 0):
-            print('error')
-            data = {
-                'result': 0,
-            }
-            return JsonResponse(data)
 
+            return JsonResponse(result)
+        
     return render(request, 'pages/Login.html')
 
 def Register(request):
